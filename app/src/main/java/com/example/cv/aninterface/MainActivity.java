@@ -21,8 +21,17 @@ public class MainActivity extends AppCompatActivity {
         a1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent A1 = new Intent (MainActivity.this, AddPlan.class);
+                Intent A1 = new Intent (MainActivity.this,AddTask.class);
                 startActivity(A1);
+            }
+        });
+
+        a2 = (ImageButton) findViewById(R.id.addplanbtn);
+        a2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent A2 = new Intent (MainActivity.this, AddPlan.class);
+                startActivity(A2);
             }
         });
     }
