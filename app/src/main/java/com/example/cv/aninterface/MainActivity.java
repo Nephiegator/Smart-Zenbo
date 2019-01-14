@@ -11,7 +11,7 @@ import android.widget.ImageButton;
 
 
 public class MainActivity extends AppCompatActivity {
-    ImageButton a1, a2, a3, a4, a5, s6;
+    ImageButton a1, a2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

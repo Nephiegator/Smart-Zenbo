@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">interface</string>
+    <string name="app_name">Zenbo Smart</string>
     <string name="title_activity_loginhamburger">loginhamburger</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -7,5 +7,7 @@
     <string name="nav_header_subtitle">user.email@email.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_login">login</string>
+    <string name="title_activity_login">Zenbo Smart</string>
+    <string name="add_plan">Add Plan</string>
+    <string name="task_name">Task\'s Name</string>
 </resources>
