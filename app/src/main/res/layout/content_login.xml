@@ -8,9 +8,9 @@
     tools:context=".login"
     tools:showIn="@layout/app_bar_login">
 
-    <!-- <include
+    <include
         layout="@layout/activity_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" /> -->
+        android:layout_height="match_parent" />
 
 </android.support.constraint.ConstraintLayout>
