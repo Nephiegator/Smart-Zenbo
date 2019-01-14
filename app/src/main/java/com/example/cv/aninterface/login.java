@@ -18,12 +18,32 @@ import android.widget.ImageButton;
 public class login extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    ImageButton a1, a2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        a1 = (ImageButton) findViewById(R.id.addtaskbtn);
+        a1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent A1 = new Intent (login.this,AddTask.class);
+                startActivity(A1);
+            }
+        });
+
+        a2 = (ImageButton) findViewById(R.id.addplanbtn);
+        a2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent A2 = new Intent (login.this,AddPlan.class);
+                startActivity(A2);
+            }
+        });
 
       /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

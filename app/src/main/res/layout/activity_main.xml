@@ -9,105 +9,97 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/app_bar_login">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <!-- 1st line -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <!-- Add Task Button -->
+                <ImageButton
+                    android:id="@+id/addtaskbtn"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/addtask_mainpage"
+                    android:scaleType="fitXY" />
+
+                <!-- Add Plan button -->
+                <ImageButton
+                    android:id="@+id/addplanbtn"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/addplan_mainpage"
+                    android:scaleType="fitXY" />
+            </LinearLayout>
+
+            <!-- 2nd line -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
-                <!-- 1st line -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <!-- Add Task Button -->
-                    <ImageButton
-                        android:id="@+id/addtaskbtn"
-                        android:layout_width="200dp"
-                        android:layout_height="match_parent"
-                        android:adjustViewBounds="true"
-                        android:background="@null"
-                        android:scaleType="fitXY"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/addtask_mainpage" />
-
-                    <!-- Add Plan button -->
-                    <ImageButton
-                        android:id="@+id/addplanbtn"
-                        android:layout_width="200dp"
-                        android:layout_height="match_parent"
-                        android:adjustViewBounds="true"
-                        android:background="@null"
-                        android:scaleType="fitXY"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/addplan_mainpage" />
-                </LinearLayout>
-
-                <!-- 2nd line -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <!-- Manage Schedule Button -->
-                    <ImageButton
-                        android:id="@+id/managebtn"
-                        android:layout_width="200dp"
-                        android:layout_height="match_parent"
-                        android:adjustViewBounds="true"
-                        android:background="@null"
-                        android:scaleType="fitXY"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/manage_mainpage" />
-
-                    <!-- View history button -->
-                    <ImageButton
-                        android:id="@+id/viewhisbtn"
-                        android:layout_width="200dp"
-                        android:layout_height="match_parent"
-                        android:adjustViewBounds="true"
-                        android:background="@null"
-                        android:scaleType="fitXY"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/viewhis_mainpage" />
-                </LinearLayout>
-
-                <!-- Get Estimate Time Button -->
+                <!-- Manage Schedule Button -->
                 <ImageButton
-                    android:id="@+id/getestimatetimebtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:id="@+id/managebtn"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:background="@null"
                     android:scaleType="fitXY"
-                    app:srcCompat="@drawable/getestimate_mainpage" />
+                    app:srcCompat="@drawable/manage_mainpage" />
 
-                <!-- News Button -->
+                <!-- View history button -->
                 <ImageButton
-                    android:id="@+id/newsbtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:id="@+id/viewhisbtn"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:background="@null"
                     android:scaleType="fitXY"
-                    app:srcCompat="@drawable/news_mainpage" />
+                    app:srcCompat="@drawable/viewhis_mainpage" />
             </LinearLayout>
 
-        </ScrollView>
+            <!-- Get Estimate Time Button -->
+            <ImageButton
+                android:id="@+id/getestimatetimebtn"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="@null"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/getestimate_mainpage" />
 
-    </LinearLayout>
+            <!-- News Button -->
+            <ImageButton
+                android:id="@+id/newsbtn"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="@null"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/news_mainpage" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
