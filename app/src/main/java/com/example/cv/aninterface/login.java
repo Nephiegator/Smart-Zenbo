@@ -27,24 +27,6 @@ public class login extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        a1 = (ImageButton) findViewById(R.id.addtaskbtn);
-        a1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent A1 = new Intent (login.this,AddTask.class);
-                startActivity(A1);
-            }
-        });
-
-        a2 = (ImageButton) findViewById(R.id.addplanbtn);
-        a2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent A2 = new Intent (login.this,AddPlan.class);
-                startActivity(A2);
-            }
-        });
-
       /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +46,24 @@ public class login extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        a1 = (ImageButton) findViewById(R.id.addtaskbtn);
+        a1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent A1 = new Intent (login.this,AddTask.class);
+                startActivity(A1);
+            }
+        });
+
+        a2 = (ImageButton) findViewById(R.id.addplanbtn);
+        a2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent A2 = new Intent (login.this,AddPlan.class);
+                startActivity(A2);
+            }
+        });
     }
 
     @Override
