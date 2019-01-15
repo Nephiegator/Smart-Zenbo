@@ -9,12 +9,18 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="306dp"
-        android:layout_height="431dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginBottom="68dp"
         android:background="@drawable/box"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="68dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView2"
@@ -45,10 +51,10 @@
             android:layout_height="35dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-            android:autofillHints=""
             android:background="@drawable/border"
             android:hint="@string/title"
-            android:inputType="text" />
+            android:inputType="text"
+            android:autofillHints="" />
 
         <Spinner
             android:id="@+id/ctgspinner"
@@ -56,7 +62,7 @@
             android:layout_height="35dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/border" />
+            android:background="@drawable/border"/>
 
 
     </LinearLayout>
