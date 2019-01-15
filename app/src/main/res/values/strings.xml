@@ -10,4 +10,11 @@
     <string name="title_activity_login">Zenbo Smart</string>
     <string name="add_plan">Add Plan</string>
     <string name="task_name">Task\'s Name</string>
+    <string-array name="categories">
+        <item>News Report</item>
+        <item>Remind</item>
+        <item>Take Medicine</item>
+        <item>Weather Roport</item>
+        <item>Estimate Time</item>
+    </string-array>
 </resources>
