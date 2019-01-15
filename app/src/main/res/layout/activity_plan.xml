@@ -44,6 +44,24 @@
                 android:hint="@string/task_name" />
 
         </android.support.design.widget.TextInputLayout>
+
+        <EditText
+            android:layout_width="280dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:hint=" Categories"
+            android:background="@drawable/border"/>
+
+        <Spinner
+            android:id="@+id/ctgspinner"
+            android:layout_width="280dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border"/>
+
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
