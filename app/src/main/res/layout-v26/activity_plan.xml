@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    tools:context="com.example.cv.aninterface.AddTask">
+    tools:context="com.example.cv.aninterface.AddPlan">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -19,10 +19,8 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView2"
@@ -48,12 +46,15 @@
         </android.support.design.widget.TextInputLayout>
 
         <EditText
+            android:id="@+id/plan_title"
             android:layout_width="280dp"
             android:layout_height="35dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/border"
-            android:hint=" Categories" />
+            android:hint="@string/title"
+            android:inputType="text"
+            android:autofillHints="" />
 
         <Spinner
             android:id="@+id/ctgspinner"
@@ -61,35 +62,9 @@
             android:layout_height="35dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/border" />
-
-        <EditText
-            android:layout_width="280dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/border"
-            android:hint=" Detail" />
-
-        <EditText
-            android:layout_width="280dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/border"
-            android:hint=" Location" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:gravity="center"
-            android:text="Add task" />
+            android:background="@drawable/border"/>
 
 
     </LinearLayout>
-
 
 </android.support.constraint.ConstraintLayout>
