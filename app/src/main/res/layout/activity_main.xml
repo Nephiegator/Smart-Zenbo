@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,30 +11,24 @@
     android:orientation="vertical"
     tools:showIn="@layout/app_bar_login">
 
-        <TextView
-            android:id="@+id/myDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mark Your Date"
-            android:textColor="@color/colorPrimary"
-            android:textSize="23dp"
-            android:layout_marginLeft="105dp"
-            android:layout_marginTop="48dp"/>
-        <LinearLayout
-            android:layout_marginTop="48dp"
-            android:background="@drawable/bg_calen"
-            android:layout_marginLeft="44dp"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content">
+    <com.applandeo.materialcalendarview.CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:headerColor="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <CalendarView
-                android:id="@+id/calendarView"
-                android:layout_width="300dp"
-                android:layout_height="310dp">
-
-            </CalendarView>
-        </LinearLayout>
-
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16"
+        android:src="@drawable/ic_add_white_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <include
         layout="@layout/bottomnavigation"
@@ -140,4 +134,4 @@
 
 
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
