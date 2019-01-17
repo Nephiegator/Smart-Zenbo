@@ -24,8 +24,7 @@ public class bottomnavigation extends AppCompatActivity {
                     return true;
                 case R.id.navigation_dashboard:
                     mTextMessage.setText(R.string.title_plan);
-                    in = new Intent(getBaseContext(), AddPlan.class);
-                    startActivity(in);
+
                     return true;
                 case R.id.navigation_notifications:
                     mTextMessage.setText(R.string.title_notifications);
