@@ -12,11 +12,4 @@
 
     <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="CalendarTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="one">@color/one</item>
-        <item name="two">@color/two</item>
-        <item name="three">@color/three</item>
-    </style>
-
 </resources>
