@@ -21,7 +21,7 @@ import android.widget.TextView;
 public class login extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    ImageButton a1, a2;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,9 +50,9 @@ public class login extends AppCompatActivity
 
         CalendarView calendarView;
         final TextView myDate;
-
+/*
         calendarView = (CalendarView) findViewById(R.id.calendarView);
-        myDate = (TextView) findViewById(R.id.myDate);
+         myDate = (TextView) findViewById(R.id.myDate);
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -60,7 +60,7 @@ public class login extends AppCompatActivity
                 String date = (month + 1) + "/" + dayOfMonth + "/" + year;
                 myDate.setText(date);
             }
-        });
+        });*/
     }
 
 
