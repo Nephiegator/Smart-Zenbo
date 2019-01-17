@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,37 +7,23 @@
     android:background="@drawable/bg"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
-    android:orientation="vertical"
     tools:showIn="@layout/app_bar_login">
 
-    <com.applandeo.materialcalendarview.CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-    <!-- app:headerColor="@color/colorPrimary" -->
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="53dp"
-        android:layout_height="48dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="68dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <include
-        layout="@layout/bottomnavigation"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <com.github.sundeepk.compactcalendarview.CompactCalendarView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/compactcalendar_view"
+        android:layout_width="fill_parent"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:layout_height="300dp"
+        app:compactCalendarTargetHeight="300dp"
+        app:compactCalendarTextSize="20sp"
+        app:compactCalendarBackgroundColor="#303980"
+        app:compactCalendarTextColor="#fff"
+        app:compactCalendarCurrentSelectedDayBackgroundColor="#7AC0F7"
+        app:compactCalendarCurrentDayBackgroundColor="#5264C9"
+        app:compactCalendarMultiEventIndicatorColor="#03A9F4"
         />
-
-
-
     <!--
     <ScrollView
         android:layout_width="match_parent"
@@ -133,6 +118,9 @@
 
     </ScrollView> -->
 
-
-
-</android.support.constraint.ConstraintLayout>
+    <include
+        android:id="@+id/include"
+        layout="@layout/bottomnavigation"
+        android:layout_width="411dp"
+        android:layout_height="675dp" />
+</RelativeLayout>

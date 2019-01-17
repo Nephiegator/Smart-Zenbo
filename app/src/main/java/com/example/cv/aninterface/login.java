@@ -1,10 +1,13 @@
 package com.example.cv.aninterface;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,11 +20,21 @@ import android.view.MenuItem;
 import android.widget.CalendarView;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.github.sundeepk.compactcalendarview.CompactCalendarView;
+import com.github.sundeepk.compactcalendarview.domain.Event;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class login extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    
+    CompactCalendarView compactcalendar;
+    private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMM- yyyy", Locale.getDefault());
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +43,35 @@ public class login extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Create Calendar
+        final ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(false);
+        actionBar.setTitle(null);
+
+        compactcalendar = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
+        compactcalendar.setUseThreeLetterAbbreviation(true);
+
+        //Set an event for Teachers' Profession Day of 2019
+        Event ev1 = new Event(Color.rgb(3, 169, 244), 1547614800000L, "Teacher Profession Day");
+        compactcalendar.addEvent(ev1);
+
+        compactcalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
+            @Override
+            public void onDayClick(Date dateClicked) {
+                Context context = getApplicationContext();
+
+                if (dateClicked.toString().compareTo("Wed Jan 16 12:00:00 AST 2019") == 0) {
+                    Toast.makeText(login.this, "Teacher Day", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(login.this, "No Event Planned for this day", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onMonthScroll(Date firstDayOfNewMonth) {
+                actionBar.setTitle(dateFormatMonth.format(firstDayOfNewMonth));
+            }
+        });
       /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +103,11 @@ public class login extends AppCompatActivity
                 myDate.setText(date);
             }
         });*/
+
+        //Calendar
+
+
+
     }
 
 
