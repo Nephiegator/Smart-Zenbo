@@ -13,7 +13,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CalendarView;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class login extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -45,22 +47,17 @@ public class login extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //--------------------- Image Button -----------------------------------
-        a1 = (ImageButton) findViewById(R.id.addtaskbtn);
-        a1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent A1 = new Intent (login.this,AddTask.class);
-                startActivity(A1);
-            }
-        });
+        CalendarView calendarView;
+        final TextView myDate;
 
-        a2 = (ImageButton) findViewById(R.id.addplanbtn);
-        a2.setOnClickListener(new View.OnClickListener() {
+        calendarView = (CalendarView) findViewById(R.id.calendarView);
+        myDate = (TextView) findViewById(R.id.myDate);
+
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onClick(View v) {
-                Intent A2 = new Intent (login.this,AddPlan.class);
-                startActivity(A2);
+            public void onSelectedDayChange(@androidx.annotation.NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                String date = (month + 1) + "/" + dayOfMonth + "/" + year;
+                myDate.setText(date);
             }
         });
     }
