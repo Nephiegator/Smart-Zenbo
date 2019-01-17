@@ -4,4 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="bluesky">#9bd6da</color>
+    <color name="one">#ebc6ed</color>
+    <color name="two">#9abfe4</color>
+    <color name="three">#faf4be</color>
 </resources>
