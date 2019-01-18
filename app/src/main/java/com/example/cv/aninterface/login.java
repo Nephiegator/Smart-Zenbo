@@ -18,7 +18,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CalendarView;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,12 +27,14 @@ import com.github.sundeepk.compactcalendarview.domain.Event;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Calendar;
 
 public class login extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     CompactCalendarView compactcalendar;
-    private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMM- yyyy", Locale.getDefault());
+    private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM", Locale.getDefault());
+    private SimpleDateFormat dateFormatYear = new SimpleDateFormat("yyyy", Locale.getDefault());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,16 +44,23 @@ public class login extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //test
+        final TextView yLabel = (TextView)findViewById(R.id.yLabel);
+        final TextView mLabel = (TextView)findViewById(R.id.mLabel);
+
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MMMM", Locale.US);
+        String strDate = sdf.format(cal.getTime());
+
+        String[] values = strDate.split("/",0);
+
         //Create Calendar
-        final ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(false);
-        actionBar.setTitle(null);
 
         compactcalendar = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
         compactcalendar.setUseThreeLetterAbbreviation(true);
 
-        //Set an event for Teachers' Profession Day of 2019
-        Event ev1 = new Event(Color.rgb(3, 169, 244), 1547614800000L, "Teacher Profession Day");
+        //Set an event for Teachers' Day of 2019
+        Event ev1 = new Event(Color.rgb(3, 169, 244), 1546300800000L, "New Year's Day");
         compactcalendar.addEvent(ev1);
 
         compactcalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
@@ -60,16 +68,18 @@ public class login extends AppCompatActivity
             public void onDayClick(Date dateClicked) {
                 Context context = getApplicationContext();
 
-                if (dateClicked.toString().compareTo("Wed Jan 16 12:00:00 AST 2019") == 0) {
-                    Toast.makeText(login.this, "Teacher Day", Toast.LENGTH_SHORT).show();
+                if (dateClicked.toString().compareTo("Tue Jan 1 07:00:00 GMT+07:00 2019") == 0) {
+                    Toast.makeText(context, "New Year's Day", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(login.this, "No Event Planned for this day", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "No Event Planned for this day", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
-                actionBar.setTitle(dateFormatMonth.format(firstDayOfNewMonth));
+
+                mLabel.setText(dateFormatMonth.format(firstDayOfNewMonth));
+                yLabel.setText(dateFormatYear.format(firstDayOfNewMonth));
             }
         });
       /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
