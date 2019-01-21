@@ -20,5 +20,5 @@
     </string-array>
     <string name="title_home">Home</string>
     <string name="title_plan">Plan</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_history">History</string>
 </resources>
