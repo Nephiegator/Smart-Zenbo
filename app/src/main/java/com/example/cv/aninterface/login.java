@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
@@ -55,7 +56,6 @@ public class login extends AppCompatActivity
         String[] values = strDate.split("/",0);
 
         //Create Calendar
-
         compactcalendar = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
         compactcalendar.setUseThreeLetterAbbreviation(true);
 
@@ -114,10 +114,30 @@ public class login extends AppCompatActivity
             }
         });*/
 
-        //Calendar
+        //Bottom Navigation Bar
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
+        bottomnavigation.disableShiftMode(bottomNavigationView);
 
-
-
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.navigation_home:
+                        Intent a1 = new Intent(login.this, login.class);
+                        startActivity(a1);
+                        break;
+                    case R.id.navigation_plan:
+                        Intent a2 = new Intent(login.this, AddPlan.class);
+                        startActivity(a2);
+                        break;
+                    case R.id.navigation_history:
+                        Intent a3 = new Intent(login.this, AddTask.class);
+                        startActivity(a3);
+                        break;
+                }
+                return false;
+            }
+        });
     }
 
 
