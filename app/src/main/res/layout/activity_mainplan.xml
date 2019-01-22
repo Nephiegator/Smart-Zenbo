@@ -4,7 +4,8 @@
     android:background="@drawable/bg"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
@@ -19,7 +20,7 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-    </LinearLayout>
+    </ScrollView>
 
 
 </RelativeLayout>
