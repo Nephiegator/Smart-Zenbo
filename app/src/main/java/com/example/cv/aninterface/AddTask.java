@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toolbar;
 
 public class AddTask extends AppCompatActivity {
     @Override
@@ -44,5 +45,9 @@ public class AddTask extends AppCompatActivity {
                 return false;
             }
         });  */
+
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
     }
 }
