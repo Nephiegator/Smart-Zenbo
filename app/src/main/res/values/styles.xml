@@ -15,4 +15,16 @@
     <style name="InputText" parent="TextAppearance.Design.Counter">
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
+
+    <!-- Application theme. -->
+    <style name="AddPlanTheme" parent="Theme.AppCompat.Light">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:actionOverflowButtonStyle">@style/MyActionButtonOverflow</item>
+    </style>
+
+    <!-- Style to replace actionbar overflow icon. set item 'android:actionOverflowButtonStyle' in AppTheme -->
+    <style name="MyActionButtonOverflow" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_plus</item>
+    </style>
+
 </resources>
