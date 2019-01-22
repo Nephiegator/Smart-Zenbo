@@ -116,7 +116,7 @@ public class login extends AppCompatActivity
 
         //Bottom Navigation Bar
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
-        bottomnavigation.disableShiftMode(bottomNavigationView);
+        //bottomnavigation.disableShiftMode(bottomNavigationView);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

@@ -27,7 +27,7 @@
             android:layout_height="35dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="40dp"
-            android:text="Add Plan"
+            android:text="  Title"
             android:layout_marginStart="15dp"
             android:background="@drawable/roundbox"
             android:textSize="20sp"/>

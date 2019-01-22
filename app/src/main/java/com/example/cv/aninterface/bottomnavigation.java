@@ -16,9 +16,9 @@ import java.lang.reflect.Field;
 
 public class bottomnavigation {
 
-   /* private TextView mTextMessage;
+   private TextView mTextMessage;
 
-
+ /*
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 

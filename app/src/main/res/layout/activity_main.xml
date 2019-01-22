@@ -32,6 +32,8 @@
             android:text="Year"
             android:gravity="end"
             android:layout_marginRight="15dp"/>
+
+
     </LinearLayout>
 
     <com.github.sundeepk.compactcalendarview.CompactCalendarView
