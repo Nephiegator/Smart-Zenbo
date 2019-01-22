@@ -18,6 +18,13 @@
         <item>Kitchen</item>
         <item>Living Room</item>
     </string-array>
+    <string-array name="ObjPerson">
+        <item>Lilly</item>
+        <item>Richard</item>
+        <item>Baby</item>
+        <item>Kendal</item>
+    </string-array>
+
     <string name="title_home">Home</string>
     <string name="title_plan">Plan</string>
     <string name="title_history">History</string>
