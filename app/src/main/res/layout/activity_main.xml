@@ -33,7 +33,6 @@
             android:gravity="end"
             android:layout_marginRight="15dp"/>
 
-
     </LinearLayout>
 
     <com.github.sundeepk.compactcalendarview.CompactCalendarView
@@ -146,9 +145,28 @@
 
     </ScrollView> -->
 
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="68dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/addsong"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
     <include
         android:id="@+id/include"
         layout="@layout/bottomnavigation"
         android:layout_width="411dp"
         android:layout_height="675dp" />
+
+
 </RelativeLayout>
