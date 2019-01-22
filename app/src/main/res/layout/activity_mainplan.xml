@@ -1,5 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.v7.widget.RecyclerView
+        tools:listitem="@layout/list_item"
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>
+
 <!-- A RecyclerView with some commonly used attributes -->
+<!--
 <android.support.v7.widget.RecyclerView android:id="@+id/my_recycler_view"
     android:scrollbars="vertical"
     android:background="@drawable/bg"
@@ -14,3 +27,4 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 </android.support.v7.widget.RecyclerView>
+-->
