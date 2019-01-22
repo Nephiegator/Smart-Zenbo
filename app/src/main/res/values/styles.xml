@@ -17,7 +17,7 @@
     </style>
 
     <!-- Application theme. -->
-    <style name="AddPlanTheme" parent="Theme.AppCompat.Light">
+    <style name="AddPlanTheme" parent="Widget.AppCompat.ActionButton.Overflow">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <item name="android:actionOverflowButtonStyle">@style/MyActionButtonOverflow</item>
     </style>
@@ -25,6 +25,8 @@
     <!-- Style to replace actionbar overflow icon. set item 'android:actionOverflowButtonStyle' in AppTheme -->
     <style name="MyActionButtonOverflow" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
         <item name="android:src">@drawable/ic_plus</item>
+        <item name="android:background">?android:attr/actionBarItemBackground</item>
+        <item name="android:contentDescription">"plus"</item>
     </style>
 
 </resources>
