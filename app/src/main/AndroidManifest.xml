@@ -21,8 +21,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".AddTask" />
-        <activity android:name=".AddPlan"/>
+        <activity android:name=".AddTask"
+            android:label=" "
+            />
+        <activity android:name=".AddPlan" />
     </application>
 
 </manifest>
