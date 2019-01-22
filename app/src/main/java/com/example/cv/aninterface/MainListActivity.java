@@ -29,14 +29,12 @@ public class MainListActivity extends AppCompatActivity {
 
     private List<BaseItem> createItem() {
         List<BaseItem> itemList = new ArrayList<>();
-        /*itemList.add(new CardViewItem()
-                .setCardViewText("Hello World"));
         itemList.add(new CardViewItem()
-                .setCardViewImage(R.mipmap.ic_launcher_round)
-                .setCardViewText("Hello RecyclerView"));
+                .setText("Hello World"));
         itemList.add(new CardViewItem()
-                .setCardViewImage(R.mipmap.ic_launcher)
-                .setCardViewText("Hello Android"));*/
+                .setText("Hello RecyclerView"));
+        itemList.add(new CardViewItem()
+                .setText("Hello Android"));
         return itemList;
     }
 }
