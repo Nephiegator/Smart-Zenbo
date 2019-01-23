@@ -5,20 +5,12 @@
     android:background="@drawable/bg"
     xmlns:tools="http://schemas.android.com/tools"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
-<!--
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            app:popupTheme="@style/PopupOverlay"
-            app:menu="@menu/activity_mainplan_menu"/>
-    </android.support.design.widget.AppBarLayout>
+    <include
+        android:id="@+id/appbar"
+        layout="@layout/addplan_app_bar">
+
+    </include>
 
     <TextView
         android:id="@+id/textView4"
@@ -46,10 +38,7 @@
         android:layout_height="match_parent"/>
     </ScrollView>
 
-    <include
-        android:id="@+id/actionbar"
-        layout="@layout/action_bar"
-        ></include>
+
 
 </RelativeLayout>
 

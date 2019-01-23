@@ -29,17 +29,11 @@ public class MainListActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         //header Navigation Bar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.actionbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.appbar);
         setSupportActionBar(toolbar);
     }
 
-    // Menu icons are inflated just as they were with actionbar
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.activity_mainplan_menu, menu);
-        return true;
-    }
+
 
     private List<BaseItem> createItem() {
         List<BaseItem> itemList = new ArrayList<>();
