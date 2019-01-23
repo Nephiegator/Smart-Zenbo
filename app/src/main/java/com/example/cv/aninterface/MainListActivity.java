@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +27,18 @@ public class MainListActivity extends AppCompatActivity {
         adapter = new MainAdapter();
         adapter.setItemList(createItem());
         recyclerView.setAdapter(adapter);
+
+        //header Navigation Bar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+    }
+
+    // Menu icons are inflated just as they were with actionbar
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.activity_mainplan_menu, menu);
+        return true;
     }
 
     private List<BaseItem> createItem() {

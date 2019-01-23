@@ -126,7 +126,7 @@ public class login extends AppCompatActivity
                         startActivity(a1);
                         break;
                     case R.id.navigation_plan:
-                        Intent a2 = new Intent(login.this, AddPlan.class);
+                        Intent a2 = new Intent(login.this, MainListActivity.class);
                         startActivity(a2);
                         break;
                     case R.id.navigation_history:

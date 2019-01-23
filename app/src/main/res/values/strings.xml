@@ -8,10 +8,11 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">Zenbo Smart</string>
-    <string name="add_plan">New Plan</string>
+    <string name="add_plan">Add Plan</string>
     <string name="add_task">New Task</string>
     <string name="plan_name">Plan\'s name</string>
     <string name="title">Title</string>
+    <string name="overflow">Overflow</string>
     <string-array name="inLocation">
         <item>Mom Room</item>
         <item>Dad Room</item>

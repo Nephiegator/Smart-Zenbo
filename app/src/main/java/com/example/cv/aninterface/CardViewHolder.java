@@ -12,9 +12,8 @@ public class CardViewHolder extends BaseViewHolder{
         imageView = (ImageView) itemView.findViewById(R.id.imageView);
         textView = (TextView) itemView.findViewById(R.id.textView);
     }
-    public void setImage(int image) {
-        imageView.setImageResource(image);
-    }
+
+
     public void setText(String text) {
         textView.setText(text);
     }
