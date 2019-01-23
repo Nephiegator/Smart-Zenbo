@@ -73,7 +73,6 @@
         fab:menu_colorNormal="@color/colorPrimary"
         fab:menu_colorPressed="#414886"
         fab:menu_colorRipple="#3F51B5"
-        fab:menu_fab_label="Floating Action Menu"
         fab:menu_fab_size="normal"
         fab:menu_icon="@drawable/fab_add"
         fab:menu_labels_colorNormal="#333"
@@ -94,32 +93,54 @@
         fab:menu_openDirection="up">
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/material_design_floating_action_menu_item1"
+            android:id="@+id/floating_btn_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_menu_share"
-            fab:fab_label="Explore"
+            android:src="@drawable/ic_storm"
+            fab:fab_label="Weather Report"
             fab:fab_size="mini"
-            app:fab_colorNormal="#217CD6"
+            app:fab_colorNormal="#fff"
             app:fab_colorPressed="#3E97F3"/>
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/material_design_floating_action_menu_item2"
+            android:id="@+id/floating_btn_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_add_reminder"
-            fab:fab_label="Messange"
+            android:src="@drawable/ic_newspaper"
+            fab:fab_label="News Report"
             fab:fab_size="mini"
             app:fab_colorNormal="@color/white"
             app:fab_colorPressed="#3E97F3"/>
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/material_design_floating_action_menu_item3"
+            android:id="@+id/floating_btn_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_add_alarm"
+            android:src="@drawable/ic_appointment"
             android:tint="@color/two"
-            fab:fab_label="Filter"
+            fab:fab_label="Appointment"
+            fab:fab_size="mini"
+            app:fab_colorNormal="@color/white"
+            app:fab_colorPressed="#3E97F3"/>
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/floating_btn_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_pills"
+            android:tint="@color/two"
+            fab:fab_label="Take a Pills"
+            fab:fab_size="mini"
+            app:fab_colorNormal="@color/white"
+            app:fab_colorPressed="#3E97F3"/>
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/floating_btn_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_ring"
+            android:tint="@color/two"
+            fab:fab_label="Reminder"
             fab:fab_size="mini"
             app:fab_colorNormal="@color/white"
             app:fab_colorPressed="#3E97F3"/>
