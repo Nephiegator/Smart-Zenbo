@@ -5,7 +5,7 @@
     android:background="@drawable/bg"
     xmlns:tools="http://schemas.android.com/tools"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
+<!--
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,6 +46,10 @@
         android:layout_height="match_parent"/>
     </ScrollView>
 
+    <include
+        android:id="@+id/actionbar"
+        layout="@layout/action_bar"
+        ></include>
 
 </RelativeLayout>
 

@@ -52,102 +52,6 @@
         app:compactCalendarCurrentDayBackgroundColor="#5264C9"
         app:compactCalendarMultiEventIndicatorColor="#03A9F4"
         />
-    <!--
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="190dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-
-                <ImageButton
-                    android:id="@+id/addtaskbtn"
-                    android:layout_width="200dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/addtask_mainpage"
-                    android:scaleType="fitXY" />
-
-
-                <ImageButton
-                    android:id="@+id/addplanbtn"
-                    android:layout_width="200dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/addplan_mainpage"
-                    android:scaleType="fitXY" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-
-                <ImageButton
-                    android:id="@+id/managebtn"
-                    android:layout_width="200dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:background="@null"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/manage_mainpage" />
-
-
-                <ImageButton
-                    android:id="@+id/viewhisbtn"
-                    android:layout_width="200dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:background="@null"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/viewhis_mainpage" />
-            </LinearLayout>
-
-
-            <ImageButton
-                android:id="@+id/getestimatetimebtn"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:background="@null"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/getestimate_mainpage" />
-
-
-            <ImageButton
-                android:id="@+id/newsbtn"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:background="@null"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/news_mainpage" />
-
-        </LinearLayout>
-
-    </ScrollView> -->
-
-
-
     <include
         android:id="@+id/include"
         layout="@layout/bottomnavigation"
@@ -168,7 +72,7 @@
         fab:menu_buttonSpacing="0dp"
         fab:menu_colorNormal="@color/colorPrimary"
         fab:menu_colorPressed="#414886"
-        fab:menu_colorRipple="#3351F5"
+        fab:menu_colorRipple="#3F51B5"
         fab:menu_fab_label="Floating Action Menu"
         fab:menu_fab_size="normal"
         fab:menu_icon="@drawable/fab_add"
@@ -203,20 +107,21 @@
             android:id="@+id/material_design_floating_action_menu_item2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_menu_send"
+            android:src="@drawable/ic_add_reminder"
             fab:fab_label="Messange"
             fab:fab_size="mini"
-            app:fab_colorNormal="#217CD6"
+            app:fab_colorNormal="@color/white"
             app:fab_colorPressed="#3E97F3"/>
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/material_design_floating_action_menu_item3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_menu_manage"
+            android:src="@drawable/ic_add_alarm"
+            android:tint="@color/two"
             fab:fab_label="Filter"
             fab:fab_size="mini"
-            app:fab_colorNormal="#217CD6"
+            app:fab_colorNormal="@color/white"
             app:fab_colorPressed="#3E97F3"/>
 
 
