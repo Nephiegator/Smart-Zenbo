@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="15dp"
-        android:background="@drawable/roundbox"
+        android:background="@drawable/gradient_1"
         android:orientation="vertical">
 
         <TextView
