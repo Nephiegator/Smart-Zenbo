@@ -25,7 +25,9 @@
             android:label="New Task"
             />
         <activity android:name=".MainListActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
+        <activity android:name=".AddPlan" />
     </application>
 
 </manifest>
