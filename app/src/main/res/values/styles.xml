@@ -16,17 +16,12 @@
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
-    <!-- Application theme. -->
-    <style name="AddPlanTheme" parent="Widget.AppCompat.ActionButton.Overflow">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-        <item name="android:actionOverflowButtonStyle">@style/MyActionButtonOverflow</item>
+    <style name="Widget.ActionButton.Overflow" parent="@android:style/Widget.Holo.ActionButton.Overflow">
+        <item name="android:contentDescription">@string/overflow</item>
     </style>
 
-    <!-- Style to replace actionbar overflow icon. set item 'android:actionOverflowButtonStyle' in AppTheme -->
-    <style name="MyActionButtonOverflow" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
-        <item name="android:src">@drawable/ic_plus</item>
-        <item name="android:background">?android:attr/actionBarItemBackground</item>
-        <item name="android:contentDescription">"plus"</item>
+    <style name="Your.Theme" parent="@android:style/Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionOverflowButtonStyle">@style/Widget.ActionButton.Overflow</item>
     </style>
 
 </resources>

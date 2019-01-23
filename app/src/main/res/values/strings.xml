@@ -12,6 +12,7 @@
     <string name="add_task">New Task</string>
     <string name="plan_name">Plan\'s name</string>
     <string name="title">Title</string>
+    <string name="overflow">Overflow</string>
     <string-array name="inLocation">
         <item>Mom Room</item>
         <item>Dad Room</item>

@@ -1,22 +1,16 @@
 package com.example.cv.aninterface;
 
-import android.app.ActionBar;
-import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toolbar;
+
 import java.util.Calendar;
 
 public class AddPlan extends AppCompatActivity implements
@@ -31,14 +25,14 @@ public class AddPlan extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan);
 
-        btnDatePicker=(Button)findViewById(R.id.btn_date);
-        btnTimePicker=(Button)findViewById(R.id.btn_time);
-        txtDate=(EditText)findViewById(R.id.in_date);
-        txtTime=(EditText)findViewById(R.id.in_time);
+        btnDatePicker = (Button) findViewById(R.id.btn_date);
+        btnTimePicker = (Button) findViewById(R.id.btn_time);
+        txtDate = (EditText) findViewById(R.id.in_date);
+        txtTime = (EditText) findViewById(R.id.in_time);
 
         //btnDatePicker.setOnClickListener(this);
         //btnTimePicker.setOnClickListener(this);
-
+        
 
     }
 
