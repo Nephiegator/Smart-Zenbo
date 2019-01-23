@@ -152,7 +152,8 @@ public class login extends AppCompatActivity
         floatingActionButton1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //TODO something when floating action menu first item clicked
-
+                Intent f1 = new Intent(login.this, AddTask.class);
+                startActivity(f1);
             }
         });
         floatingActionButton2.setOnClickListener(new View.OnClickListener() {
