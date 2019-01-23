@@ -141,19 +141,20 @@ public class login extends AppCompatActivity
 
 
         FloatingActionMenu materialDesignFAM;
-        FloatingActionButton floatingActionButton1, floatingActionButton2, floatingActionButton3;
+        FloatingActionButton floatingActionButton1, floatingActionButton2, floatingActionButton3,
+                floatingActionButton4, floatingActionButton5;
 
         materialDesignFAM = findViewById(R.id.fab);
-        floatingActionButton1 = findViewById(R.id.material_design_floating_action_menu_item1);
-        floatingActionButton2 = findViewById(R.id.material_design_floating_action_menu_item2);
-        floatingActionButton3 = findViewById(R.id.material_design_floating_action_menu_item3);
+        floatingActionButton1 = findViewById(R.id.floating_btn_1);
+        floatingActionButton2 = findViewById(R.id.floating_btn_2);
+        floatingActionButton3 = findViewById(R.id.floating_btn_3);
+        floatingActionButton4 = findViewById(R.id.floating_btn_4);
+        floatingActionButton5 = findViewById(R.id.floating_btn_5);
 
 
         floatingActionButton1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //TODO something when floating action menu first item clicked
-                Intent f1 = new Intent(login.this, AddTask.class);
-                startActivity(f1);
             }
         });
         floatingActionButton2.setOnClickListener(new View.OnClickListener() {
@@ -166,6 +167,19 @@ public class login extends AppCompatActivity
             public void onClick(View v) {
                 //TODO something when floating action menu third item clicked
 
+            }
+        });
+        floatingActionButton4.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //TODO something when floating action menu third item clicked
+
+            }
+        });
+        floatingActionButton5.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //TODO something when floating action menu third item clicked
+                Intent f5 = new Intent(login.this, AddTask.class);
+                startActivity(f5);
             }
         });
 
