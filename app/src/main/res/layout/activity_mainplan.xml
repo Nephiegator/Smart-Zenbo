@@ -5,7 +5,7 @@
     android:background="@drawable/bg"
     xmlns:tools="http://schemas.android.com/tools"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
+<!--
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
             app:popupTheme="@style/PopupOverlay"
             app:menu="@menu/activity_mainplan_menu"/>
     </android.support.design.widget.AppBarLayout>
-
+-->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -37,6 +37,10 @@
         android:layout_height="match_parent"/>
     </ScrollView>
 
+    <include
+        android:id="@+id/actionbar"
+        layout="@layout/action_bar"
+        ></include>
 
 </RelativeLayout>
 

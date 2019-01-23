@@ -29,7 +29,7 @@ public class MainListActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         //header Navigation Bar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.actionbar);
         setSupportActionBar(toolbar);
     }
 
