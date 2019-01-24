@@ -99,9 +99,9 @@ public class login extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        CalendarView calendarView;
+     /*   CalendarView calendarView;
         final TextView myDate;
-/*
+
         calendarView = (CalendarView) findViewById(R.id.calendarView);
          myDate = (TextView) findViewById(R.id.myDate);
 
