@@ -1,9 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    xmlns:tools="http://schemas.android.com/tools"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <android.support.design.widget.AppBarLayout
@@ -21,10 +21,10 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Plan"
-        android:layout_marginTop="65dp"
         android:layout_marginLeft="10dp"
-        android:textSize="25dp"/>
+        android:layout_marginTop="65dp"
+        android:text="Plan"
+        android:textSize="25dp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -36,19 +36,18 @@
         android:layout_marginBottom="68dp"
         android:background="@drawable/box"
         android:orientation="vertical">
-    <android.support.v7.widget.RecyclerView
-        tools:listitem="@layout/list_item"
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-    </ScrollView>
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/list_item" />
+    </ScrollView>
 
 
 </RelativeLayout>
 
-<!-- A RecyclerView with some commonly used attributes -->
-<!--
+    <!-- A RecyclerView with some commonly used attributes --><!--
 <android.support.v7.widget.RecyclerView android:id="@+id/my_recycler_view"
     android:scrollbars="vertical"
     android:background="@drawable/bg"
