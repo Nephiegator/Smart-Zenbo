@@ -1,4 +1,4 @@
-package in.wptrafficanalyzer.listviewdeleteitems;
+package com.example.cv.aninterface;
 
 import java.util.ArrayList;
 
@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.cv.aninterface.R;
 
 public class MainUpdatePlan extends ListActivity {
 
