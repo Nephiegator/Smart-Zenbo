@@ -165,19 +165,18 @@ public class login extends AppCompatActivity
         });
         floatingActionButton3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //TODO something when floating action menu third item clicked
-
+                Intent f3 = new Intent(login.this, AddTaskApm.class);
+                startActivity(f3);
             }
         });
         floatingActionButton4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //TODO something when floating action menu third item clicked
-
+                Intent f4 = new Intent(login.this, AddTaskMed.class);
+                startActivity(f4);
             }
         });
         floatingActionButton5.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //TODO something when floating action menu third item clicked
                 Intent f5 = new Intent(login.this, AddTask.class);
                 startActivity(f5);
             }
