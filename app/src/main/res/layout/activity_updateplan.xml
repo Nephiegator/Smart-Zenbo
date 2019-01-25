@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <EditText
         android:id="@+id/txtItem"
@@ -29,13 +30,19 @@
         android:gravity="center_horizontal"
         />
 
-    <ListView
+    <!--<ListView
         android:id="@android:id/list"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txtItem"
         android:choiceMode="multipleChoice" >
-    </ListView>
+    </ListView>-->
+    <android.support.v7.widget.DropDownListView
+        tools:listitem="@layout/task_details"
+        android:id="@+id/recyclerView"
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <Button
         android:id="@+id/btnDel"
