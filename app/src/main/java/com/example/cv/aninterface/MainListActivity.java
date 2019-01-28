@@ -43,6 +43,7 @@ public class MainListActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),login.class));
             }
         });
+
     }
 
     @Override
@@ -70,6 +71,7 @@ public class MainListActivity extends AppCompatActivity {
                 .setText("Hello RecyclerView"));
         itemList.add(new CardViewItem()
                 .setText("Hello Android"));
+
         return itemList;
     }
 }
