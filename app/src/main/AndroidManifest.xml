@@ -24,18 +24,13 @@
 
         <activity android:name=".AddTask"
             android:label="New Task" />
+
         <activity android:name=".AddTaskMed"
             android:label="Take A Pill"/>
 
         <activity android:name=".AddTaskApm"
             android:label="New Appointment" />
 
-        <activity android:name=".MainListActivity"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-
-        <activity
-            android:name=".AddTask"
-            android:label="New Task" />
         <activity
             android:name=".MainListActivity"
             android:parentActivityName=".login"
