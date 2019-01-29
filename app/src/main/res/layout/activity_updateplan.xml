@@ -3,9 +3,17 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
+    android:background="@drawable/bg"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <include
+        android:id="@+id/appbar"
+        layout="@layout/addplan_app_bar">
+
+    </include>
+
     <EditText
+        android:layout_marginTop="60dp"
         android:id="@+id/txtItem"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
@@ -14,6 +22,7 @@
         />
 
     <Button
+        android:layout_marginTop="60dp"
         android:id="@+id/btnAdd"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -40,7 +49,10 @@
     <android.support.v7.widget.DropDownListView
         tools:listitem="@layout/task_details"
         android:id="@+id/recyclerView"
-        android:layout_margin="15dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="60dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
