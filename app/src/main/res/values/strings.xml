@@ -34,5 +34,8 @@
     <string name="lblBtnAdd">Add Item</string>
     <string name="txtEmpty">List is empty</string>
     <string name="lblBtnDel">Delete Selected Items</string>
+    
+    <string name="facebook_app_id">add later</string>
+    <string name="facebook_login_protocol_schema">add later</string>
 
 </resources>
