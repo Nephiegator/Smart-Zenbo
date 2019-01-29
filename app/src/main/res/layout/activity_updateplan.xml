@@ -51,10 +51,14 @@
     <android.support.v7.widget.DropDownListView
         tools:listitem="@layout/task_details"
         android:id="@+id/recyclerView"
+<<<<<<< HEAD
+        android:layout_margin="20dp"
+=======
         android:layout_marginTop="150dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="60dp"
+>>>>>>> 58860b8782573fcf4fc45d5a2012f6b269d5472f
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
