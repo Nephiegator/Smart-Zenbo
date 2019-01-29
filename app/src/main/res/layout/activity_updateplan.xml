@@ -40,7 +40,7 @@
     <android.support.v7.widget.DropDownListView
         tools:listitem="@layout/task_details"
         android:id="@+id/recyclerView"
-        android:layout_margin="15dp"
+        android:layout_margin="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
