@@ -10,7 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.widget.ImageButton;
 
 
-public class MainActivity extends AppCompatActivity {
+public class SignIn extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

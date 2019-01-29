@@ -46,31 +46,6 @@ public class MainListActivity extends AppCompatActivity {
             }
         });
 
-
-        //Bottom Navigation Bar
-        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
-        //bottomnavigation.disableShiftMode(bottomNavigationView);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.navigation_home:
-                        Intent a1 = new Intent(MainListActivity.this, login.class);
-                        startActivity(a1);
-                        break;
-                    case R.id.navigation_plan:
-                        Intent a2 = new Intent(MainListActivity.this, MainListActivity.class);
-                        startActivity(a2);
-                        break;
-                    case R.id.navigation_history:
-                        Intent a3 = new Intent(MainListActivity.this, AddTask.class);
-                        startActivity(a3);
-                        break;
-                }
-                return false;
-            }
-        });
     }
 
     @Override
@@ -98,6 +73,7 @@ public class MainListActivity extends AppCompatActivity {
                 .setText("Hello RecyclerView"));
         itemList.add(new CardViewItem()
                 .setText("Hello Android"));
+
         return itemList;
     }
 }
