@@ -2,6 +2,8 @@ package com.example.cv.aninterface;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -41,6 +43,32 @@ public class MainListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),login.class));
+            }
+        });
+
+
+        //Bottom Navigation Bar
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
+        //bottomnavigation.disableShiftMode(bottomNavigationView);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.navigation_home:
+                        Intent a1 = new Intent(MainListActivity.this, login.class);
+                        startActivity(a1);
+                        break;
+                    case R.id.navigation_plan:
+                        Intent a2 = new Intent(MainListActivity.this, MainListActivity.class);
+                        startActivity(a2);
+                        break;
+                    case R.id.navigation_history:
+                        Intent a3 = new Intent(MainListActivity.this, AddTask.class);
+                        startActivity(a3);
+                        break;
+                }
+                return false;
             }
         });
     }
