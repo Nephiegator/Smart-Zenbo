@@ -34,17 +34,17 @@ public class MainListActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         //header Navigation Bar
-        Toolbar toolbar = findViewById(R.id.appbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),login.class));
-            }
-        });
+//        Toolbar toolbar = findViewById(R.id.appbar);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
+//
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(getApplicationContext(),login.class));
+//            }
+//        });
 
     }
 
