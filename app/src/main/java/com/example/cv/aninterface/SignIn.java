@@ -28,7 +28,7 @@ public class SignIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
 
-        SharedPreferences pref = getPreferences(Context.MODE_PRIVATE);
+        /*SharedPreferences pref = getPreferences(Context.MODE_PRIVATE);
         if (pref.getBoolean(LOGIN_KEY, false)) {
             startActivity(new Intent(this, login.class));
             finish();
@@ -36,10 +36,10 @@ public class SignIn extends AppCompatActivity {
             pref.edit().putBoolean(LOGIN_KEY, true).apply();
         }
 
-        printKeyHash();
+        printKeyHash(); */
     }
 
-    private void printKeyHash() {
+    /*private void printKeyHash() {
         try {
             PackageInfo info = getPackageManager().getPackageInfo("com.example.cv.aninterface", PackageManager.GET_SIGNATURES);
             for (Signature signature:info.signatures) {
@@ -52,5 +52,5 @@ public class SignIn extends AppCompatActivity {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }
