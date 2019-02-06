@@ -30,7 +30,7 @@ public class SignIn extends AppCompatActivity {
 
         /*SharedPreferences pref = getPreferences(Context.MODE_PRIVATE);
         if (pref.getBoolean(LOGIN_KEY, false)) {
-            startActivity(new Intent(this, login.class));
+            startActivity(new Intent(this, Home.class));
             finish();
         } else {
             pref.edit().putBoolean(LOGIN_KEY, true).apply();
