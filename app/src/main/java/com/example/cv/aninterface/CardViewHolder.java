@@ -9,7 +9,7 @@ public class CardViewHolder extends BaseViewHolder{
     private TextView textView;
     public CardViewHolder(View itemView) {
         super(itemView);
-        imageView = (ImageView) itemView.findViewById(R.id.imageView);
+        //imageView = (ImageView) itemView.findViewById(R.id.imageView);
         textView = (TextView) itemView.findViewById(R.id.textView);
     }
 

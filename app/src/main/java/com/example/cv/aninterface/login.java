@@ -25,7 +25,6 @@ import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
