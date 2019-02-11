@@ -2,14 +2,11 @@ package com.example.cv.aninterface;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -18,20 +15,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class login extends AppCompatActivity
+public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     CompactCalendarView compactcalendar;
@@ -124,15 +119,15 @@ public class login extends AppCompatActivity
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.navigation_home:
-                        Intent a1 = new Intent(login.this, login.class);
+                        Intent a1 = new Intent(Home.this, Home.class);
                         startActivity(a1);
                         break;
                     case R.id.navigation_plan:
-                        Intent a2 = new Intent(login.this, MainListActivity.class);
+                        Intent a2 = new Intent(Home.this, MainListActivity.class);
                         startActivity(a2);
                         break;
                     case R.id.navigation_history:
-                        Intent a3 = new Intent(login.this, AddTask.class);
+                        Intent a3 = new Intent(Home.this, AddTask.class);
                         startActivity(a3);
                         break;
                 }
@@ -167,19 +162,19 @@ public class login extends AppCompatActivity
         });
         floatingActionButton3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent f3 = new Intent(login.this, AddTaskApm.class);
+                Intent f3 = new Intent(Home.this, AddTaskApm.class);
                 startActivity(f3);
             }
         });
         floatingActionButton4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent f4 = new Intent(login.this, AddTaskMed.class);
+                Intent f4 = new Intent(Home.this, AddTaskMed.class);
                 startActivity(f4);
             }
         });
         floatingActionButton5.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent f5 = new Intent(login.this, AddTask.class);
+                Intent f5 = new Intent(Home.this, AddTask.class);
                 startActivity(f5);
             }
         });

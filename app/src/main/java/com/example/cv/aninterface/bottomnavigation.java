@@ -54,7 +54,7 @@ public class bottomnavigation {
                 Intent in;
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
-                        in = new Intent(getBaseContext(), login.class);
+                        in = new Intent(getBaseContext(), Home.class);
                         startActivity(in);
                         overridePendingTransition(0, 0);
                         break;

@@ -16,13 +16,13 @@
         <item>Mom Room</item>
         <item>Dad Room</item>
         <item>Kitchen</item>
-        <item>Living Room</item>
+        <item>None</item>
     </string-array>
     <string-array name="ObjPerson">
         <item>Lilly</item>
         <item>Richard</item>
         <item>Baby</item>
-        <item>Kendal</item>
+        <item>None</item>
     </string-array>
 
     <string name="title_home">Home</string>
@@ -35,7 +35,7 @@
     <string name="txtEmpty">List is empty</string>
     <string name="lblBtnDel">Delete Selected Items</string>
     
-    <string name="facebook_app_id">add later</string>
-    <string name="facebook_login_protocol_schema">add later</string>
+    <string name="facebook_app_id">384904728741884</string>
+    <string name="facebook_login_protocol_schema">fb384904728741884</string>
 
 </resources>
