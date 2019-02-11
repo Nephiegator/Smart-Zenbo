@@ -80,7 +80,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
                     String userName = user.getDisplayName();
                     txtEmail.setText(email);
                     //txtUser.setText(userName);
-                    Picasso.with(SignIn.this).load(user.getPhotoUrl()).into(imgProfile);
+                //    Picasso.with(SignIn.this).load(user.getPhotoUrl()).into(imgProfile);
                     loginButton.setVisibility(View.GONE);
                     //logoutButton.setVisibility(View.VISIBLE);
                 } else {
