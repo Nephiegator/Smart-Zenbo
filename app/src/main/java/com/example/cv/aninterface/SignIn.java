@@ -26,7 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
-public class SignIn extends AppCompatActivity implements View.OnClickListener {
+ public class SignIn extends AppCompatActivity {
 
     private CallbackManager callbackManager;
     private FirebaseAuth firebaseAuth;
@@ -34,7 +34,6 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
     //private TextView txtUser;
     private TextView txtEmail;
     //private ImageView imgProfile;
-    //private LoginButton logoutButton;
     private LoginButton loginButton;
 
     @Override
@@ -42,7 +41,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
         //txtUser = (TextView) findViewById(R.id.txtUser);
-        txtEmail = (TextView) findViewById(R.id.txtEmail);
+        /* txtEmail = (TextView) findViewById(R.id.txtEmail);
         //imgProfile = (ImageView) findViewById(R.id.imgProfile);
         firebaseAuth = FirebaseAuth.getInstance();
         callbackManager = CallbackManager.Factory.create();
@@ -135,7 +134,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         firebaseAuth.signOut();
-        LoginManager.getInstance().logOut();
+        LoginManager.getInstance().logOut();  */
 
     }
 }

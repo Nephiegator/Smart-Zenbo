@@ -16,13 +16,13 @@
         <item>Mom Room</item>
         <item>Dad Room</item>
         <item>Kitchen</item>
-        <item>Living Room</item>
+        <item>None</item>
     </string-array>
     <string-array name="ObjPerson">
         <item>Lilly</item>
         <item>Richard</item>
         <item>Baby</item>
-        <item>Kendal</item>
+        <item>None</item>
     </string-array>
 
     <string name="title_home">Home</string>
