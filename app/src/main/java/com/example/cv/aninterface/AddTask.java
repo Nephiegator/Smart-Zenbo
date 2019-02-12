@@ -19,9 +19,9 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
     private Spinner mySpinner1;
     private Spinner mySpinner2;
 
-    private Firebase
+  //  private Firebase
 
-    @Override
+   // @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task);
@@ -72,8 +72,8 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
         String title = task_title.getText().toString().trim();
 
-        if(validateInputs(title)) {
+        //if(validateInputs(title)) {
 
-        }
+        //}
     }
 }
