@@ -145,7 +145,7 @@ public class AddTask extends AppCompatActivity implements AdapterView.OnItemSele
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(AddTask.this, "Saved", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(AddTask.this, "Saved", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -154,8 +154,9 @@ public class AddTask extends AppCompatActivity implements AdapterView.OnItemSele
                         Log.w(TAG, "Error adding document", e);
                     }
                 });
+        finish();
     }
 
-
-
 }
+
+
