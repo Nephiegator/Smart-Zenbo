@@ -14,7 +14,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <TextView
             android:id="@+id/mLabel"
@@ -52,11 +53,15 @@
         fab:compactCalendarTextSize="20sp" />
 
     <LinearLayout
+        android:radius="45dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="420dp"
+        android:layout_marginTop="430dp"
         android:background="@color/lightblue"
-        android:orientation="vertical">
+        android:fadingEdge="none"
+        android:orientation="vertical"
+        >
+
 
         <TextView
             android:id="@+id/textView9"
@@ -66,18 +71,18 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
             android:text="TextView" />
+
     </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginTop="470dp"
-        >
+        android:layout_height="134dp"
+        android:layout_marginTop="485dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
 
         </LinearLayout>
