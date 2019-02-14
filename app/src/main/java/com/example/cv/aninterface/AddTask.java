@@ -1,33 +1,62 @@
 package com.example.cv.aninterface;
 
 import android.content.Intent;
+import android.provider.CalendarContract;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
-public class AddTask extends AppCompatActivity implements View.OnClickListener {
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+public class AddTask extends AppCompatActivity { // implements View.OnClickListener {
+
+    private static final String TAG = "AddTask";
+
+    private static final String KEY_TITLE = "title";
+    private static final String KEY_DESCRIPTION = "description";
+    private static final String KEY_LOCAL = "location";
+    private static final String KRY_PERSON = "person";
 
     private TextInputEditText task_title;
-    private TextInputEditText task_des;
+    private TextInputEditText task_desc;
     private Spinner mySpinner1;
     private Spinner mySpinner2;
 
-    private Firebase
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    @Override
+   // @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task);
 
-        Spinner mySpinner1 =  findViewById(R.id.inLocation);
-        Spinner mySpinner2 =  findViewById(R.id.ObjPerson);
+        task_title = findViewById(R.id.task_title);
+        task_desc = findViewById(R.id.task_des);
+        Spinner mySpinner1 =  (Spinner) findViewById(R.id.inLocation);
+        Spinner mySpinner2 =  (Spinner) findViewById(R.id.ObjPerson);
 
         ArrayAdapter<String> myAdapter1 = new ArrayAdapter<String>(AddTask.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.inLocation));
         myAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -41,20 +70,51 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        task_title = findViewById(R.id.task_title);
-        task_des = findViewById(R.id.task_des);
+        //findViewById(R.id.create_btn).setOnClickListener(this);
 
-        findViewById(R.id.create_btn).setOnClickListener(this);
     }
 
-    private boolean validateInputs(String title, String inLocation, String ObjPerson) {
+    public void saveTask (View v) {
+        String title = task_title.getText().toString();
+        String desc = task_desc.getText().toString();
+        String inLocation = mySpinner1.getSelectedItem().toString();
+        String ObjPerson = mySpinner2.getSelectedItem().toString();
 
-        Spinner mySpinner1 =  findViewById(R.id.inLocation);
-        Spinner mySpinner2 =  findViewById(R.id.ObjPerson);
+        Map<String, Object> reminder = new HashMap<>();
+        reminder.put(KEY_TITLE, title);
+        reminder.put(KEY_DESCRIPTION, desc);
+        reminder.put(KEY_LOCAL, inLocation);
+        reminder.put(KRY_PERSON, ObjPerson);
+
+        db.collection("Reminder").document("Reminder Task").set(reminder)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(AddTask.this, "Saved", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(AddTask.this, "Error", Toast.LENGTH_LONG).show();
+                        Log.d(TAG, e.toString());
+                    }
+                });
+    }
+/*
+    private boolean validateInputs(String title, String desc, String inLocation, String ObjPerson) {
+
+        Spinner mySpinner1 =  (Spinner) findViewById(R.id.inLocation);
+        Spinner mySpinner2 =  (Spinner) findViewById(R.id.ObjPerson);
 
         if (title.isEmpty()) {
             task_title.setError("Title required");
             task_title.requestFocus();
+            return true;
+        }
+        if (desc.isEmpty()) {
+            task_desc.setError("Title required");
+            task_desc.requestFocus();
             return true;
         }
         if (inLocation.isEmpty()) {
@@ -71,9 +131,34 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         String title = task_title.getText().toString().trim();
+        String desc = task_desc.getText().toString().trim();
+        String inLocation = mySpinner1.getSelectedItem().toString();
+        String ObjPerson = mySpinner2.getSelectedItem().toString();
 
-        if(validateInputs(title)) {
+        if(!validateInputs(title, desc, inLocation, ObjPerson)) {
+            CollectionReference dbReminder = db.collection("reminder");
 
+            dbReminder reminder = new dbReminder(
+                    title,
+                    desc,
+                    inLocation,
+                    ObjPerson
+            );
+
+            dbReminder.add(reminder)
+                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            Toast.makeText(AddTask.this, "Reminder Created" + documentReference.getId(), Toast.LENGTH_LONG).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(AddTask.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
         }
-    }
+
+    } */
 }
