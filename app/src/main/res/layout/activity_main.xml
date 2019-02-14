@@ -44,12 +44,13 @@
         android:layout_marginTop="150dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        fab:compactCalendarBackgroundColor="#303980"
+        fab:compactCalendarmarginTop="10dp"
+        fab:compactCalendarBackgroundColor="@drawable/bg_calen"
         fab:compactCalendarCurrentDayBackgroundColor="#5264C9"
         fab:compactCalendarCurrentSelectedDayBackgroundColor="#7AC0F7"
         fab:compactCalendarMultiEventIndicatorColor="#03A9F4"
         fab:compactCalendarTargetHeight="270dp"
-        fab:compactCalendarTextColor="#fff"
+        fab:compactCalendarTextColor="#000"
         fab:compactCalendarTextSize="20sp" />
 
     <LinearLayout
