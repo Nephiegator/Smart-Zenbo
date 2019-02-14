@@ -3,40 +3,58 @@ package com.example.cv.aninterface;
 import android.content.Intent;
 import android.provider.CalendarContract;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
-public class AddTask extends AppCompatActivity implements View.OnClickListener {
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+public class AddTask extends AppCompatActivity { // implements View.OnClickListener {
+
+    private static final String TAG = "AddTask";
+
+    private static final String KEY_TITLE = "title";
+    private static final String KEY_DESCRIPTION = "description";
+    private static final String KEY_LOCAL = "location";
+    private static final String KRY_PERSON = "person";
 
     private TextInputEditText task_title;
     private TextInputEditText task_desc;
     private Spinner mySpinner1;
     private Spinner mySpinner2;
-    Button create;
 
-    private FirebaseFirestore db;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task);
 
-        db = FirebaseFirestore.getInstance();
-
+        task_title = findViewById(R.id.task_title);
+        task_desc = findViewById(R.id.task_des);
         Spinner mySpinner1 =  (Spinner) findViewById(R.id.inLocation);
         Spinner mySpinner2 =  (Spinner) findViewById(R.id.ObjPerson);
 
@@ -52,12 +70,38 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        task_title = findViewById(R.id.task_title);
-        task_desc = findViewById(R.id.task_des);
+        //findViewById(R.id.create_btn).setOnClickListener(this);
 
-        findViewById(R.id.create_btn).setOnClickListener(this);
     }
 
+    public void saveTask (View v) {
+        String title = task_title.getText().toString();
+        String desc = task_desc.getText().toString();
+        String inLocation = mySpinner1.getSelectedItem().toString();
+        String ObjPerson = mySpinner2.getSelectedItem().toString();
+
+        Map<String, Object> reminder = new HashMap<>();
+        reminder.put(KEY_TITLE, title);
+        reminder.put(KEY_DESCRIPTION, desc);
+        reminder.put(KEY_LOCAL, inLocation);
+        reminder.put(KRY_PERSON, ObjPerson);
+
+        db.collection("Reminder").document("Reminder Task").set(reminder)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(AddTask.this, "Saved", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(AddTask.this, "Error", Toast.LENGTH_LONG).show();
+                        Log.d(TAG, e.toString());
+                    }
+                });
+    }
+/*
     private boolean validateInputs(String title, String desc, String inLocation, String ObjPerson) {
 
         Spinner mySpinner1 =  (Spinner) findViewById(R.id.inLocation);
@@ -94,8 +138,6 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
         if(!validateInputs(title, desc, inLocation, ObjPerson)) {
             CollectionReference dbReminder = db.collection("reminder");
 
-            //db = FirebaseFirestore.getInstance().getReference().child("inLocation").child(inLocation);
-
             dbReminder reminder = new dbReminder(
                     title,
                     desc,
@@ -117,5 +159,6 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
                 }
             });
         }
-    }
+
+    } */
 }
