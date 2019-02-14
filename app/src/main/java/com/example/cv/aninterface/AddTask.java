@@ -24,6 +24,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -31,6 +32,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -139,6 +141,7 @@ public class AddTask extends AppCompatActivity implements AdapterView.OnItemSele
         reminder.put(KEY_DESCRIPTION, desc);
         reminder.put(KEY_LOC, xx);
         reminder.put(KEY_PERSON, yy);
+        reminder.put("Date", new Timestamp(new Date()));
 
         db.collection("Reminder")
                 .add(reminder)
