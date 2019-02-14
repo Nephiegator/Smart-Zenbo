@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -33,16 +34,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddTask extends AppCompatActivity { // implements View.OnClickListener {
+public class AddTask extends AppCompatActivity implements AdapterView.OnItemSelectedListener { // implements View.OnClickListener {
 
     private static final String TAG = "AddTask";
 
-    private static final String KEY_TITLE = "title";
-    private static final String KEY_DESCRIPTION = "description";
+    private static final String KEY_TITLE = "Title";
+    private static final String KEY_DESCRIPTION = "Description";
+    private static final String KEY_LOC = "Indoor Location";
+    private static final String KEY_PERSON = "Person";
     private TextInputEditText task_title;
     private TextInputEditText task_desc;
-    private Spinner mySpinner1;
-    private Spinner mySpinner2;
+    private  String yy,xx;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -57,27 +59,26 @@ public class AddTask extends AppCompatActivity { // implements View.OnClickListe
         Spinner mySpinner2 =  (Spinner) findViewById(R.id.ObjPerson);
 
         //Spinner method to read the selected value
-        ArrayAdapter<State> spinnerArrayAdapter = new ArrayAdapter<State> (this,
-                android.R.layout.simple_spinner_item, new State[] {
-                        new State("Mom Room"),
-                        new State ("Dad Room"),
-                        new State ("Kitchen"),
-                        new State ("None")
+        ArrayAdapter<State1> spinnerArrayAdapter1 = new ArrayAdapter<State1> (this,
+                android.R.layout.simple_spinner_item, new State1[] {
+                        new State1("Mom Room"),
+                        new State1 ("Dad Room"),
+                        new State1 ("Kitchen"),
+                        new State1 ("None")
         });
-        mySpinner1.setAdapter(spinnerArrayAdapter);
-        //mySpinner1.setOnItemSelectedListener(AddTask.this);
+        mySpinner1.setAdapter(spinnerArrayAdapter1);
+        mySpinner1.setOnItemSelectedListener(this);
 
+        ArrayAdapter<State2> spinnerArrayAdapter2 = new ArrayAdapter<State2> (this,
+                android.R.layout.simple_spinner_item, new State2[] {
+                new State2("Jennie"),
+                new State2 ("Lisa"),
+                new State2 ("Jisoo"),
+                new State2 ("Rose")
+        });
+        mySpinner2.setAdapter(spinnerArrayAdapter2);
+        mySpinner2.setOnItemSelectedListener(this);
 
-
-        /*ArrayAdapter<String> myAdapter1 = new ArrayAdapter<String>(AddTask.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.inLocation));
-        myAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mySpinner1.setAdapter(myAdapter1);*/
-
-
-
-        ArrayAdapter<String> myAdapter2 = new ArrayAdapter<String>(AddTask.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.ObjPerson));
-        myAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mySpinner2.setAdapter(myAdapter2);
 
         //header Navigation Bar
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
@@ -86,13 +87,11 @@ public class AddTask extends AppCompatActivity { // implements View.OnClickListe
 
     }
 
-    public class State {
+    public class State1 {
         public String loc = "";
-        //public String name = "";
 
-        public State(String _loc){
+        public State1(String _loc){
         loc = _loc;
-        //name = _name;
         }
 
         public String toString() {
@@ -100,29 +99,34 @@ public class AddTask extends AppCompatActivity { // implements View.OnClickListe
         }
     }
 
+    public class State2 {
+        public String name = "";
 
-
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
-    {
-        // Get the currently selected State object from the spinner
-        State st = (State)mySpinner1.getSelectedItem();
-
-        // Show it via a toast
-        //toastState( "onItemSelected", st );
-    }
-
-    /*public void toastState(String loc, State st)
-    {
-        if ( st != null )
-        {
-            Gen = st.loc;
-            //Toast.makeText(getBaseContext(), Gen, Toast.LENGTH_SHORT).show();
-
+        public State2(String _name){
+            name = _name;
         }
 
-    }*/
+        public String toString() {
+            return name;
+        }
+    }
 
-    public void onNothingSelected(AdapterView<?> arg0) {
+
+
+    public void onItemSelected (AdapterView<?> parent, View view, int position, long id)
+    {
+        switch (parent.getId()) {
+            case R.id.inLocation:
+                xx = parent.getItemAtPosition(position).toString();
+                break;
+            case R.id.ObjPerson:
+                yy = parent.getItemAtPosition(position).toString();
+                break;
+        }
+    }
+
+
+    public void onNothingSelected(AdapterView<?> parent) {
         // TODO Auto-generated method stub
     }
 
@@ -130,26 +134,28 @@ public class AddTask extends AppCompatActivity { // implements View.OnClickListe
         String title = task_title.getText().toString();
         String desc = task_desc.getText().toString();
 
-
         Map<String, Object> reminder = new HashMap<>();
         reminder.put(KEY_TITLE, title);
         reminder.put(KEY_DESCRIPTION, desc);
+        reminder.put(KEY_LOC, xx);
+        reminder.put(KEY_PERSON, yy);
 
-
-        db.collection("Reminder").document("Reminder Task").set(reminder)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
+        db.collection("Reminder")
+                .add(reminder)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
-                    public void onSuccess(Void aVoid) {
+                    public void onSuccess(DocumentReference documentReference) {
                         Toast.makeText(AddTask.this, "Saved", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(AddTask.this, "Error", Toast.LENGTH_LONG).show();
-                        Log.d(TAG, e.toString());
+                        Log.w(TAG, "Error adding document", e);
                     }
                 });
     }
+
+
 
 }
