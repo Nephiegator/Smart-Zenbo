@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -38,9 +39,6 @@ public class AddTask extends AppCompatActivity { // implements View.OnClickListe
 
     private static final String KEY_TITLE = "title";
     private static final String KEY_DESCRIPTION = "description";
-    private static final String KEY_LOCAL = "location";
-    private static final String KRY_PERSON = "person";
-
     private TextInputEditText task_title;
     private TextInputEditText task_desc;
     private Spinner mySpinner1;
@@ -58,9 +56,24 @@ public class AddTask extends AppCompatActivity { // implements View.OnClickListe
         Spinner mySpinner1 =  (Spinner) findViewById(R.id.inLocation);
         Spinner mySpinner2 =  (Spinner) findViewById(R.id.ObjPerson);
 
-        ArrayAdapter<String> myAdapter1 = new ArrayAdapter<String>(AddTask.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.inLocation));
+        //Spinner method to read the selected value
+        ArrayAdapter<State> spinnerArrayAdapter = new ArrayAdapter<State> (this,
+                android.R.layout.simple_spinner_item, new State[] {
+                        new State("Mom Room"),
+                        new State ("Dad Room"),
+                        new State ("Kitchen"),
+                        new State ("None")
+        });
+        mySpinner1.setAdapter(spinnerArrayAdapter);
+        //mySpinner1.setOnItemSelectedListener(AddTask.this);
+
+
+
+        /*ArrayAdapter<String> myAdapter1 = new ArrayAdapter<String>(AddTask.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.inLocation));
         myAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mySpinner1.setAdapter(myAdapter1);
+        mySpinner1.setAdapter(myAdapter1);*/
+
+
 
         ArrayAdapter<String> myAdapter2 = new ArrayAdapter<String>(AddTask.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.ObjPerson));
         myAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -70,21 +83,58 @@ public class AddTask extends AppCompatActivity { // implements View.OnClickListe
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //findViewById(R.id.create_btn).setOnClickListener(this);
 
+    }
+
+    public class State {
+        public String loc = "";
+        //public String name = "";
+
+        public State(String _loc){
+        loc = _loc;
+        //name = _name;
+        }
+
+        public String toString() {
+            return loc;
+        }
+    }
+
+
+
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+    {
+        // Get the currently selected State object from the spinner
+        State st = (State)mySpinner1.getSelectedItem();
+
+        // Show it via a toast
+        //toastState( "onItemSelected", st );
+    }
+
+    /*public void toastState(String loc, State st)
+    {
+        if ( st != null )
+        {
+            Gen = st.loc;
+            //Toast.makeText(getBaseContext(), Gen, Toast.LENGTH_SHORT).show();
+
+        }
+
+    }*/
+
+    public void onNothingSelected(AdapterView<?> arg0) {
+        // TODO Auto-generated method stub
     }
 
     public void saveTask (View v) {
         String title = task_title.getText().toString();
         String desc = task_desc.getText().toString();
-        String inLocation = mySpinner1.getSelectedItem().toString();
-        String ObjPerson = mySpinner2.getSelectedItem().toString();
+
 
         Map<String, Object> reminder = new HashMap<>();
         reminder.put(KEY_TITLE, title);
         reminder.put(KEY_DESCRIPTION, desc);
-        reminder.put(KEY_LOCAL, inLocation);
-        reminder.put(KRY_PERSON, ObjPerson);
+
 
         db.collection("Reminder").document("Reminder Task").set(reminder)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -101,64 +151,5 @@ public class AddTask extends AppCompatActivity { // implements View.OnClickListe
                     }
                 });
     }
-/*
-    private boolean validateInputs(String title, String desc, String inLocation, String ObjPerson) {
 
-        Spinner mySpinner1 =  (Spinner) findViewById(R.id.inLocation);
-        Spinner mySpinner2 =  (Spinner) findViewById(R.id.ObjPerson);
-
-        if (title.isEmpty()) {
-            task_title.setError("Title required");
-            task_title.requestFocus();
-            return true;
-        }
-        if (desc.isEmpty()) {
-            task_desc.setError("Title required");
-            task_desc.requestFocus();
-            return true;
-        }
-        if (inLocation.isEmpty()) {
-            mySpinner1.setFocusable(true);
-            mySpinner1.setFocusableInTouchMode(true);
-        }
-        if (ObjPerson.isEmpty()) {
-            mySpinner2.setFocusable(true);
-            mySpinner2.setFocusableInTouchMode(true);
-        }
-        return false;
-    }
-
-    @Override
-    public void onClick(View v) {
-        String title = task_title.getText().toString().trim();
-        String desc = task_desc.getText().toString().trim();
-        String inLocation = mySpinner1.getSelectedItem().toString();
-        String ObjPerson = mySpinner2.getSelectedItem().toString();
-
-        if(!validateInputs(title, desc, inLocation, ObjPerson)) {
-            CollectionReference dbReminder = db.collection("reminder");
-
-            dbReminder reminder = new dbReminder(
-                    title,
-                    desc,
-                    inLocation,
-                    ObjPerson
-            );
-
-            dbReminder.add(reminder)
-                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                        @Override
-                        public void onSuccess(DocumentReference documentReference) {
-                            Toast.makeText(AddTask.this, "Reminder Created" + documentReference.getId(), Toast.LENGTH_LONG).show();
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(AddTask.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            });
-        }
-
-    } */
 }
