@@ -12,6 +12,9 @@
     <string name="add_task">New Task</string>
     <string name="plan_name">Plan\'s name</string>
     <string name="title">Title</string>
+    <string name="signup">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
     <string-array name="inLocation">
         <item>Mom Room</item>
         <item>Dad Room</item>
@@ -34,8 +37,9 @@
     <string name="lblBtnAdd">Add Item</string>
     <string name="txtEmpty">List is empty</string>
     <string name="lblBtnDel">Delete Selected Items</string>
-    
+
     <string name="facebook_app_id">384904728741884</string>
     <string name="facebook_login_protocol_schema">fb384904728741884</string>
+    <string name="title_activity_register">register</string>
 
 </resources>
