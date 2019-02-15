@@ -16,7 +16,9 @@
         <activity
             android:name=".register"
             android:label="@string/title_activity_register"
-            android:theme="@style/NoActionBar"></activity>
+            android:theme="@style/NoActionBar">
+
+        </activity>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -65,6 +67,8 @@
             android:parentActivityName=".Home"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".AddPlan" />
+
+
     </application>
 
 </manifest>
