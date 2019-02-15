@@ -15,6 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:orientation="vertical"
+        android:layout_marginTop="15dp"
+        android:layout_margin="15dp"
         >
 
         <TextView
@@ -41,7 +43,7 @@
         android:id="@+id/compactcalendar_view"
         android:layout_width="fill_parent"
         android:layout_height="270dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="165dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         fab:compactCalendarCurrentDayBackgroundColor="#5264C9"
@@ -57,10 +59,12 @@
         android:radius="45dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="430dp"
-        android:background="@color/lightblue"
+        android:layout_marginTop="445dp"
+        android:background="@drawable/head_layout"
         android:fadingEdge="none"
         android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         >
 
 
@@ -77,8 +81,10 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="134dp"
-        android:layout_marginTop="485dp">
+        android:layout_height="120dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
