@@ -1,5 +1,6 @@
 package com.example.cv.aninterface;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -25,6 +26,7 @@ public class MainListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainplan);
+
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
@@ -56,12 +58,11 @@ public class MainListActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_add:
-                Intent addplan = new Intent(MainListActivity.this, AddPlan.class);
-                startActivity(addplan);
-                break;
-        }
+
+        MenuItem z1 = (MenuItem) findViewById(R.id.action_add);
+        Intent Z1 = new Intent(MainListActivity.this, AddPlan.class);
+        startActivity(Z1);
+
         return false;
     }
 
