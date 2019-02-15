@@ -49,9 +49,11 @@
         fab:compactCalendarMultiEventIndicatorColor="#03A9F4"
         fab:compactCalendarTargetHeight="270dp"
         fab:compactCalendarTextColor="#000"
-        fab:compactCalendarTextSize="20sp" />
+        fab:compactCalendarTextSize="20sp"
+        >
 
-    <LinearLayout
+    </com.github.sundeepk.compactcalendarview.CompactCalendarView>
+<LinearLayout
         android:radius="45dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
