@@ -28,7 +28,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
- public class SignIn extends AppCompatActivity {
+public class SignIn extends AppCompatActivity {
 
     private CallbackManager callbackManager;
     private FirebaseAuth firebaseAuth, mAuth;
@@ -37,7 +37,7 @@ import com.squareup.picasso.Picasso;
     private TextView txtEmail;
     //private ImageView imgProfile;
     private LoginButton loginButton;
-    private EditText iEmail,iPassword;
+    private EditText iEmail, iPassword;
     private Button Loginbtn;
     private static final String TAG = "SignIn";
 
@@ -170,9 +170,9 @@ import com.squareup.picasso.Picasso;
             public void onClick(View view) {
                 String email = iEmail.getText().toString();
                 String pass = iPassword.getText().toString();
-                if(!email.equals("") && !pass.equals("")){
-                    mAuth.signInWithEmailAndPassword(email,pass);
-                }else{
+                if (!email.equals("") && !pass.equals("")) {
+                    mAuth.signInWithEmailAndPassword(email, pass);
+                } else {
                     toastMessage("You didn't fill in all the fields.");
                 }
             }
@@ -196,27 +196,29 @@ import com.squareup.picasso.Picasso;
         });*/
     }
 
-     @Override
-     public void onStart() {
-         super.onStart();
-         mAuth.addAuthStateListener(mAuthListener);
-     }
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
 
-     @Override
-     public void onStop() {
-         super.onStop();
-         if (mAuthListener != null) {
-             mAuth.removeAuthStateListener(mAuthListener);
-         }
-     }
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
 
-     //add a toast to show when successfully signed in
-     /**
-      * customizable toast
-      * @param message
-      */
-     private void toastMessage(String message){
-         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
-     }
- }
+    //add a toast to show when successfully signed in
+
+    /**
+     * customizable toast
+     *
+     * @param message
+     */
+    private void toastMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+}
 

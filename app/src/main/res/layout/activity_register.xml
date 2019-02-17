@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
-            android:text="Log In"
+            android:text="@string/signup"
             android:textColor="@color/white"
             android:textSize="30dp" />
 
@@ -30,10 +30,10 @@
             android:layout_marginTop="15dp">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/userlogin"
+                android:id="@+id/signup_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Username"
+                android:hint="@string/email"
                 android:textColor="@color/white" />
         </android.support.design.widget.TextInputLayout>
 
@@ -45,31 +45,23 @@
             app:boxStrokeWidth="1dp">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/password"
+                android:id="@+id/signup_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:inputType="textPassword"
                 android:textColor="@color/white" />
         </android.support.design.widget.TextInputLayout>
 
         <Button
-            android:id="@+id/login"
+            android:id="@+id/signup_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="70dp"
             android:background="@drawable/border"
-            android:text="LOGIN" />
-
-        <com.facebook.login.widget.LoginButton
-            android:id="@+id/login_fb_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="50dp" />
+            android:text="@string/signup" />
 
 
     </LinearLayout>
