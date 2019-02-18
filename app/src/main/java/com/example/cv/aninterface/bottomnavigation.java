@@ -18,8 +18,8 @@ public class bottomnavigation {
 
    private TextView mTextMessage;
 
- /*
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+
+    /*private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
@@ -60,6 +60,11 @@ public class bottomnavigation {
                         break;
                     case R.id.navigation_plan:
                         in = new Intent(getBaseContext(), AddPlan.class);
+                        startActivity(in);
+                        overridePendingTransition(0, 0);
+                        break;
+                    case R.id.navigation_history:
+                        in = new Intent(getBaseContext(), MainTask.class);
                         startActivity(in);
                         overridePendingTransition(0, 0);
                         break;

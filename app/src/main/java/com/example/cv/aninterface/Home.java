@@ -122,12 +122,12 @@ public class Home extends AppCompatActivity
                         Intent a1 = new Intent(Home.this, Home.class);
                         startActivity(a1);
                         break;
-                    case R.id.navigation_plan:
-                        Intent a2 = new Intent(Home.this, MainListActivity.class);
+                    case R.id.navigation_task:
+                        Intent a2 = new Intent(Home.this, MainTask.class);
                         startActivity(a2);
                         break;
-                    case R.id.navigation_history:
-                        Intent a3 = new Intent(Home.this, AddTask.class);
+                    case R.id.navigation_plan:
+                        Intent a3 = new Intent(Home.this, MainListActivity.class);
                         startActivity(a3);
                         break;
                 }

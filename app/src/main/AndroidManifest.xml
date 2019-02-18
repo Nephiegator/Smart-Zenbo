@@ -68,6 +68,7 @@
             android:parentActivityName=".Home"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".AddPlan" />
+        <activity android:name=".MainTask"/>
 
 
     </application>
