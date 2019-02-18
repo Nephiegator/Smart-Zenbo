@@ -65,7 +65,7 @@ public class register extends AppCompatActivity implements View.OnClickListener 
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(register.this, "Successfully registered.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(register.this, "Successfully registered", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(register.this, "Error occurred, please try again.", Toast.LENGTH_SHORT).show();
                         }
