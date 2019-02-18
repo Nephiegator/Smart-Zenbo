@@ -44,6 +44,8 @@
         android:layout_width="fill_parent"
         android:layout_height="270dp"
         android:layout_marginTop="165dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         fab:compactCalendarCurrentDayBackgroundColor="#5264C9"
