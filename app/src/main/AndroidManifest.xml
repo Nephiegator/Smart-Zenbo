@@ -52,6 +52,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignIn" />
+
         <activity
             android:name=".AddTask"
             android:label="New Task" />
