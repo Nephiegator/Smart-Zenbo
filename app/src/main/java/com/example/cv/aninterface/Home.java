@@ -26,19 +26,19 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class Home extends AppCompatActivity {
-        //implements NavigationView.OnNavigationItemSelectedListener {
+public class Home extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
 
-    //CompactCalendarView compactcalendar;
-    //private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM", Locale.getDefault());
-    //private SimpleDateFormat dateFormatYear = new SimpleDateFormat("yyyy", Locale.getDefault());
+    CompactCalendarView compactcalendar;
+    private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM", Locale.getDefault());
+    private SimpleDateFormat dateFormatYear = new SimpleDateFormat("yyyy", Locale.getDefault());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test);
+        setContentView(R.layout.activity_login);
 
-        /*Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         //test
@@ -78,7 +78,7 @@ public class Home extends AppCompatActivity {
                 yLabel.setText(dateFormatYear.format(firstDayOfNewMonth));
             }
         });
-      /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+      /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,14 +87,14 @@ public class Home extends AppCompatActivity {
             }
         }); */
 
-        /* DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);  */
+        navigationView.setNavigationItemSelectedListener(this);
 
      /*   CalendarView calendarView;
         final TextView myDate;
@@ -111,10 +111,10 @@ public class Home extends AppCompatActivity {
         });*/
 
         //Bottom Navigation Bar
-        //BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
         //bottomnavigation.disableShiftMode(bottomNavigationView);
 
-        /*bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
@@ -237,6 +237,6 @@ public class Home extends AppCompatActivity {
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-        return true;*/
+        return true;
     }
 }
