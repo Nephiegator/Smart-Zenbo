@@ -6,24 +6,31 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.Nullable;
 
 public class MainTask extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private MainAdapter adapter;
     private List<dbReminder> itemList;
+    private static final String TAG = "MainTask";
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     //private DocumentReference xx = db.collection("Reminder").document();
@@ -91,6 +98,7 @@ public class MainTask extends AppCompatActivity {
 
         return false;
     }
+
 
     /*private List<BaseItem> createItem() {
         List<BaseItem> itemList = new ArrayList<>();

@@ -63,17 +63,16 @@ public class AddTask extends AppCompatActivity implements AdapterView.OnItemSele
         //Spinner method to read the selected value
         ArrayAdapter<State1> spinnerArrayAdapter1 = new ArrayAdapter<State1> (this,
                 android.R.layout.simple_spinner_item, new State1[] {
-                        new State1("Mom Room"),
+                        new State1("None"),
                         new State1 ("Dad Room"),
                         new State1 ("Kitchen"),
-                        new State1 ("None")
         });
         mySpinner1.setAdapter(spinnerArrayAdapter1);
         mySpinner1.setOnItemSelectedListener(this);
 
         ArrayAdapter<State2> spinnerArrayAdapter2 = new ArrayAdapter<State2> (this,
                 android.R.layout.simple_spinner_item, new State2[] {
-                new State2("Jennie"),
+                new State2("None"),
                 new State2 ("Lisa"),
                 new State2 ("Jisoo"),
                 new State2 ("Rose")
@@ -136,12 +135,13 @@ public class AddTask extends AppCompatActivity implements AdapterView.OnItemSele
         String title = task_title.getText().toString();
         String desc = task_desc.getText().toString();
 
-        Map<String, Object> reminder = new HashMap<>();
+        /*Map<String, Object> reminder = new HashMap<>();
         reminder.put(KEY_TITLE, title);
         reminder.put(KEY_DESCRIPTION, desc);
         reminder.put(KEY_LOC, xx);
         reminder.put(KEY_PERSON, yy);
         reminder.put("Date", new Timestamp(new Date()));
+
 
         db.collection("Reminder")
                 .add(reminder)
@@ -157,7 +157,19 @@ public class AddTask extends AppCompatActivity implements AdapterView.OnItemSele
                         Log.w(TAG, "Error adding document", e);
                     }
                 });
-        finish();
+        finish();*/
+        if (!validateInputs(title, desc, xx, yy)) {
+
+            CollectionReference dbReminder = db.collection("Reminder");
+
+            Reminder reminder = new Reminder(
+                    title,
+                    desc,
+                    xx,
+                    yy
+            );
+
+
     }
 
 }

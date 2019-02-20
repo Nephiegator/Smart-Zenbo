@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainAdapter extends RecyclerView.Adapter<MainAdapter.BaseViewHolder> {
+public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     private List<BaseItem> itemList = new ArrayList<>();
 
@@ -46,7 +46,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.BaseViewHolder
         }
         return 0;
     }
-/*
+
     @Override
     public int getItemViewType(int position) {
         return itemList.get(position).getType();
@@ -56,9 +56,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.BaseViewHolder
         this.itemList = itemList;
 
         notifyDataSetChanged();
-    }*/
+    }
 
-    class BaseViewHolder extends RecyclerView.ViewHolder    {
+    /*class BaseViewHolder extends RecyclerView.ViewHolder    {
         TextView txtViewTaskTitle, txtViewTaskDesc, txtViewTaskLoc, txtViewTaskPers;
 
         public BaseViewHolder(View itemView) {
@@ -69,6 +69,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.BaseViewHolder
             txtViewTaskLoc = itemView.findViewById(R.id.textView_loc_task);
             txtViewTaskPers = itemView.findViewById(R.id.textView_per_task);
         }
-    }
-    
+    }*/
+
 }
