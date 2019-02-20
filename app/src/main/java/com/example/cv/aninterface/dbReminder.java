@@ -18,6 +18,7 @@ public class dbReminder {
     }
 
     public dbReminder() {
+        //empty constructor needed
 
     }
 

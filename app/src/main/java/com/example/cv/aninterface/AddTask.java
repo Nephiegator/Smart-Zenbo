@@ -89,9 +89,6 @@ public class AddTask extends AppCompatActivity implements AdapterView.OnItemSele
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-
-
-
     }
 
     @Override
@@ -160,7 +157,7 @@ public class AddTask extends AppCompatActivity implements AdapterView.OnItemSele
         String title = task_title.getText().toString();
         String desc = task_desc.getText().toString();
 
-        /*Map<String, Object> reminder = new HashMap<>();
+        Map<String, Object> reminder = new HashMap<>();
         reminder.put(KEY_TITLE, title);
         reminder.put(KEY_DESCRIPTION, desc);
         reminder.put(KEY_LOC, xx);
@@ -182,8 +179,8 @@ public class AddTask extends AppCompatActivity implements AdapterView.OnItemSele
                         Log.w(TAG, "Error adding document", e);
                     }
                 });
-        finish();*/
-        if (!validateInputs(title, desc, xx, yy)) {
+        finish();
+        /*if (!validateInputs(title, desc, xx, yy)) {
 
             CollectionReference dbReminder = db.collection("Reminder");
 
@@ -192,7 +189,7 @@ public class AddTask extends AppCompatActivity implements AdapterView.OnItemSele
                     desc,
                     xx,
                     yy
-            );
+            );*/
 
 
     }

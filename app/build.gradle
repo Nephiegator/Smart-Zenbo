@@ -47,6 +47,11 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
     implementation 'com.android.support:cardview-v7:28.0.0'
     api files('../ZenboSDK/ZenboSDK.jar')
+    implementation 'com.firebaseui:firebase-ui-database:4.3.1'
+    implementation 'com.firebaseui:firebase-ui-firestore:4.3.1'
+    implementation 'com.firebaseui:firebase-ui-auth:4.3.1'
+    implementation 'com.firebaseui:firebase-ui-auth-github:4.3.1'
+    implementation 'com.firebaseui:firebase-ui-storage:4.3.1'
 }
 
 
