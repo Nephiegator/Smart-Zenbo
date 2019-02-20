@@ -7,50 +7,56 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainTask extends AppCompatActivity {
 
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference dd = db.collection("Reminder");
-
+    private RecyclerView recyclerView;
     private TaskAdapter adapter;
+    private List<dbReminder> remtasklist;
+
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maintask);
 
-        setUpRecyclerView();
-    }
-
-    private void setUpRecyclerView() {
-        Query query = dd.orderBy("Date", Query.Direction.DESCENDING);
-
-        FirestoreRecyclerOptions<dbReminder> options = new FirestoreRecyclerOptions.Builder<dbReminder>()
-                .setQuery(query, dbReminder.class)
-                .build();
-
-        adapter =new TaskAdapter(options);
-
-        RecyclerView recyclerView = findViewById(R.id.recyclerViewTask);
+        recyclerView = findViewById(R.id.recyclerViewTask);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        remtasklist = new ArrayList<>();
+        adapter = new TaskAdapter(this, remtasklist);
+
         recyclerView.setAdapter(adapter);
+
+        db = FirebaseFirestore.getInstance();
+        db.collection("Reminder").get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if (!queryDocumentSnapshots.isEmpty()) {
+                            List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+
+                            for (DocumentSnapshot d : list) {
+                                dbReminder p = d.toObject(dbReminder.class);
+                                remtasklist.add(p);
+                            }
+                            adapter.notifyDataSetChanged();
+                        }
+                    }
+                });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        adapter.startListening();
-    }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        adapter.stopListening();
-    }
 }
