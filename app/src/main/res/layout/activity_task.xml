@@ -10,46 +10,51 @@
     >
 
     <!-- //////////////// ToolBar //////////////////// -->
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppBarOverlay">
+    <!-- <android.support.design.widget.AppBarLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:theme="@style/AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            app:popupTheme="@style/PopupOverlay" />
+         <android.support.v7.widget.Toolbar
+             android:id="@+id/toolbar"
+             android:layout_width="match_parent"
+             android:layout_height="?attr/actionBarSize"
+             android:background="@color/colorPrimary"
+             app:popupTheme="@style/PopupOverlay" />
 
-    </android.support.design.widget.AppBarLayout>
+     </android.support.design.widget.AppBarLayout>-->
+    <include
+        android:id="@+id/appbar"
+        layout="@layout/addplan_app_bar">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    </include>
 
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="68dp"
-        android:background="@drawable/box"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+     <LinearLayout
+         android:id="@+id/linearLayout"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="25dp"
-            android:text="@string/add_task"
-            android:textSize="20sp" />
+         android:layout_marginTop="80dp"
+         android:layout_marginBottom="68dp"
+         android:background="@drawable/box"
+         android:orientation="vertical"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.0"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+         app:layout_constraintVertical_bias="1.0">
 
-        <!-- //////////////// Title //////////////////// -->
+         <TextView
+             android:id="@+id/textView2"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginStart="15dp"
+             android:layout_marginTop="25dp"
+             android:text="@string/add_task"
+             android:textSize="20sp" />
+
+         <!-- //////////////// Title //////////////////// -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -172,7 +177,7 @@
             android:layout_marginEnd="10dp"
             android:background="@drawable/input_line" />
 
-        <Button
+       <!-- <Button
             android:id="@+id/create_btn"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
@@ -182,7 +187,8 @@
             android:layout_marginRight="30dp"
             android:textSize="15dp"
             android:background="@drawable/border"
-            android:onClick="saveTask"/>
+            android:onClick="saveTask"/> -->
+
     </LinearLayout>
 
 
