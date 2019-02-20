@@ -10,6 +10,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +23,10 @@ public class MainTask extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private MainAdapter adapter;
+    private List<dbReminder> itemList;
+
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    //private DocumentReference xx = db.collection("Reminder").document();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +36,9 @@ public class MainTask extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
+        itemList = new ArrayList<>();
         adapter = new MainAdapter();
-        adapter.setItemList(createItem());
+        //adapter.setItemList(createItem());
         recyclerView.setAdapter(adapter);
 
         //header Navigation Bar
@@ -42,6 +53,26 @@ public class MainTask extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),Home.class));
             }
         });
+
+        //display database
+        db.collection("Reminder").get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if (!queryDocumentSnapshots.isEmpty()) {
+
+                            List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+
+                            for(DocumentSnapshot d : list) {
+                                dbReminder p = d.toObject(dbReminder.class);
+                                itemList.add(p);
+                            }
+
+                            adapter.notifyDataSetChanged();
+
+                        }
+                    }
+                });
 
     }
 
@@ -61,7 +92,7 @@ public class MainTask extends AppCompatActivity {
         return false;
     }
 
-    private List<BaseItem> createItem() {
+    /*private List<BaseItem> createItem() {
         List<BaseItem> itemList = new ArrayList<>();
         itemList.add(new CardViewItem()
                 .setText("Hello World"));
@@ -72,5 +103,7 @@ public class MainTask extends AppCompatActivity {
 
         return itemList;
 
-    }
+    }*/
+
+
 }
