@@ -68,8 +68,13 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
                 });
 
 
+
         /*BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        BottomNavigationView bottomNavigationView2 = findViewById(R.id.navigation);
+        bottomNavigationView2.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
@@ -78,7 +83,6 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
                         startActivity(a1);
                         break;
                     case R.id.navigation_task:
-
 
                         break;
                     case R.id.navigation_plan:
