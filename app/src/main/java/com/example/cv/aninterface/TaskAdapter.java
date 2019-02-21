@@ -1,5 +1,6 @@
 package com.example.cv.aninterface;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,37 +12,56 @@ import android.widget.TextView;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
-public class TaskAdapter extends FirestoreRecyclerAdapter<dbReminder, TaskAdapter.TaskHolder>{
+import java.util.List;
 
-    public TaskAdapter(@NonNull FirestoreRecyclerOptions<dbReminder> options) {
-        super(options);
+import bolts.Task;
+
+public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.remtaskViewHolder> {
+
+    private Context mCtx;
+    private List<dbReminder> remtasklist;
+
+    public TaskAdapter (Context mCtx, List<dbReminder> remtasklist) {
+        this.mCtx = mCtx;
+        this.remtasklist = remtasklist;
     }
 
-    @Override
-    protected void onBindViewHolder(@NonNull TaskHolder holder, int position, @NonNull dbReminder model) {
-        holder.txt_tile.setText(model.getTitle());
-        holder.txt_desc.setText(model.getDesc());
-    }
 
     @NonNull
     @Override
-    public TaskHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_itemtask, parent, false);
-        return null;
+    public remtaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new remtaskViewHolder(
+                LayoutInflater.from(mCtx).inflate(R.layout.list_itemtask,parent, false)
+        );
     }
 
-    class TaskHolder extends RecyclerView.ViewHolder{
-        TextView txt_tile;
-        TextView txt_desc;
-        Spinner txt_room;
-        Spinner txt_pers;
+    @Override
+    public void onBindViewHolder(@NonNull remtaskViewHolder holder, int position) {
+        dbReminder reminder = remtasklist.get(position);
 
-        public TaskHolder(@NonNull View itemView) {
+        holder.textViewTitle.setText(reminder.getTitle());
+        holder.textViewDecs.setText(reminder.getDesc());
+        holder.textViewLoc.setText(reminder.getInLocation());
+        holder.textViewPer.setText(reminder.getObjPerson());
+    }
+
+    @Override
+    public int getItemCount() {
+        return remtasklist.size();
+    }
+
+    class remtaskViewHolder extends RecyclerView.ViewHolder {
+        TextView textViewTitle, textViewDecs, textViewLoc, textViewPer;
+
+        public remtaskViewHolder(View itemView) {
             super(itemView);
-            txt_tile = itemView.findViewById(R.id.textView_per_task);
-            txt_desc = itemView.findViewById(R.id.textView_per_task);
 
+            textViewTitle = itemView.findViewById(R.id.textView_title_task);
+            textViewDecs = itemView.findViewById(R.id.textView_desc_task);
+            textViewLoc = itemView.findViewById(R.id.textView_loc_task);
+            textViewPer = itemView.findViewById(R.id.textView_per_task);
         }
     }
+
 
 }
