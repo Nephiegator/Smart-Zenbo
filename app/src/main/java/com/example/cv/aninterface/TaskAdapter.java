@@ -1,6 +1,7 @@
 package com.example.cv.aninterface;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -36,7 +37,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.remtaskViewHol
         holder.textViewTitle.setText(reminder.getTitle());
         holder.textViewDecs.setText("   "+reminder.getDesc());
         holder.textViewLoc.setText("At room: " + reminder.getInLocation());
-        holder.textViewPer.setText("To" + reminder.getObjPerson());
+        holder.textViewPer.setText("To: " + reminder.getObjPerson());
     }
 
     @Override
@@ -44,7 +45,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.remtaskViewHol
         return remtasklist.size();
     }
 
-    class remtaskViewHolder extends RecyclerView.ViewHolder {
+    class remtaskViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView textViewTitle, textViewDecs, textViewLoc, textViewPer;
 
         public remtaskViewHolder(View itemView) {
@@ -54,6 +55,16 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.remtaskViewHol
             textViewDecs = itemView.findViewById(R.id.textView_desc_task);
             textViewLoc = itemView.findViewById(R.id.textView_loc_task);
             textViewPer = itemView.findViewById(R.id.textView_per_task);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            dbReminder reminder = remtasklist.get(getAdapterPosition());
+            Intent intent = new Intent(mCtx, UpdateTask.class);
+            intent.putExtra("Reminder", reminder);
+            mCtx.startActivity(intent);
         }
     }
 

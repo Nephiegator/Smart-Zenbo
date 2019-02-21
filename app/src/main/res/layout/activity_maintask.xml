@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/coral"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <!-- <android.support.design.widget.AppBarLayout
@@ -31,9 +31,8 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerViewTask"
             android:layout_width="match_parent"
-
             android:layout_height="match_parent"
-            tools:listitem="@layout/list_itemtask" />
+            tools:listitem="@layout/list_itemtask" >
 
 
         </android.support.v7.widget.RecyclerView>

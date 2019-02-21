@@ -1,94 +1,76 @@
 package com.example.cv.aninterface;
 
-import android.content.Intent;
-import android.provider.CalendarContract;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.support.v7.widget.Toolbar;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
-public class AddTask extends AppCompatActivity implements View.OnClickListener {
+public class UpdateTask extends AppCompatActivity implements View.OnClickListener {
 
     private TextInputEditText txt_title;
     private TextInputEditText txt_description;
 
-
     private FirebaseFirestore db;
-    private  String yy,xx;
+
     private dbReminder tt;
-
-
+    private  String yy,xx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_task);
+        setContentView(R.layout.activity_updatetask);
 
+
+        tt = (dbReminder) getIntent().getSerializableExtra("Reminder");
         db = FirebaseFirestore.getInstance();
 
         txt_title = findViewById(R.id.task_title);
         txt_description = findViewById(R.id.task_des);
 
-        Button Create = (Button) findViewById(R.id.create_btn);
-        Create.setOnClickListener(this);
+        txt_title.setText(tt.getTitle());
+        txt_description.setText(tt.getDesc());
+
+        Button update = (Button) findViewById(R.id.update_btn);
+        update.setOnClickListener(this);
 
         Spinner splocation =  (Spinner) findViewById(R.id.inLocation);
         Spinner spperson =  (Spinner) findViewById(R.id.ObjPerson);
 
         //Spinner method to read the selected value
-        ArrayAdapter<State1> spinnerArrayAdapter1 = new ArrayAdapter<State1> (this,
-                android.R.layout.simple_spinner_item, new State1[] {
-                new State1("None"),
-                new State1 ("Dad Room"),
-                new State1 ("Kitchen"),
+        ArrayAdapter<UpdateTask.State1> spinnerArrayAdapter1 = new ArrayAdapter<UpdateTask.State1> (this,
+                android.R.layout.simple_spinner_item, new UpdateTask.State1[] {
+                new UpdateTask.State1("None"),
+                new UpdateTask.State1("Dad Room"),
+                new UpdateTask.State1("Kitchen"),
         });
         splocation.setAdapter(spinnerArrayAdapter1);
-        splocation.setOnItemSelectedListener(new MyOnItemSelectedListener());
+        splocation.setOnItemSelectedListener(new UpdateTask.MyOnItemSelectedListener());
 
-        ArrayAdapter<State2> spinnerArrayAdapter2 = new ArrayAdapter<State2> (this,
-                android.R.layout.simple_spinner_item, new State2[] {
-                new State2("None"),
-                new State2 ("Lisa"),
-                new State2 ("Jisoo"),
-                new State2 ("Rose")
+        ArrayAdapter<UpdateTask.State2> spinnerArrayAdapter2 = new ArrayAdapter<UpdateTask.State2> (this,
+                android.R.layout.simple_spinner_item, new UpdateTask.State2[] {
+                new UpdateTask.State2("None"),
+                new UpdateTask.State2("Lisa"),
+                new UpdateTask.State2("Jisoo"),
+                new UpdateTask.State2("Rose")
         });
         spperson.setAdapter(spinnerArrayAdapter2);
-        spperson.setOnItemSelectedListener(new MyOnItemSelectedListener());
+        spperson.setOnItemSelectedListener(new UpdateTask.MyOnItemSelectedListener());
+
     }
 
-    private boolean validateInputs(String title, String description, String location, String person){
+    private boolean hasvalidateInputs(String title, String description, String location, String person){
         if (title.isEmpty()){
             txt_title.setError("Title Required");
             txt_title.requestFocus();
@@ -156,19 +138,6 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
 
         }
     }
-   /* public void onItemSelected (AdapterView<?> parent, View view, int position, long id)
-    {
-        switch (parent.getId()) {
-            case R.id.inLocation:
-                xx = parent.getItemAtPosition(position).toString();
-                break;
-            case R.id.ObjPerson:
-                yy = parent.getItemAtPosition(position).toString();
-                break;
-        }
-    }*/
-
-
 
     @Override
     public void onClick(View v){
@@ -178,30 +147,24 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
         String location = xx;
         String person = yy;
 
-        if (!validateInputs(title,description,location,person)){
+        if (!hasvalidateInputs(title,description,location,person)){
 
-            final CollectionReference dbReminder = db.collection("Reminder");
+
 
             final dbReminder reminder = new dbReminder(
                     title, description, location, person
             );
 
-            dbReminder.add(reminder)
-                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+            db.collection("Reminder").document(tt.getId())
+                    .set(reminder)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
-                        public void onSuccess(DocumentReference documentReference) {
-                            Toast.makeText(AddTask.this, "Added Successfully", Toast.LENGTH_SHORT).show();
-                            reminder.setId(tt.getId());
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(AddTask.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(UpdateTask.this, "Updated", Toast.LENGTH_LONG).show();
                         }
                     });
+
         } finish();
     }
-
 
 }

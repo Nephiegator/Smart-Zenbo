@@ -68,7 +68,7 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
                 });
 
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
+        /*BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -88,7 +88,7 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
                 }
                 return false;
             }
-        });
+        }); */
     }
 
 
