@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainTask extends AppCompatActivity {
+public class MainTask extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private RecyclerView recyclerView;
     private TaskAdapter adapter;
@@ -60,7 +60,34 @@ public class MainTask extends AppCompatActivity {
                         }
                     }
                 });
+
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.navigation_home:
+                        Intent a1 = new Intent(MainTask.this, Home.class);
+                        startActivity(a1);
+                        break;
+                    case R.id.navigation_task:
+
+
+                        break;
+                    case R.id.navigation_plan:
+                        Intent a3 = new Intent(MainTask.this, MainListActivity.class);
+                        startActivity(a3);
+                        break;
+                }
+                return false;
+            }
+        });
     }
 
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        return false;
+    }
 }

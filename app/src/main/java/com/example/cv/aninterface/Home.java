@@ -119,8 +119,7 @@ public class Home extends AppCompatActivity
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.navigation_home:
-                        Intent a1 = new Intent(Home.this, Home.class);
-                        startActivity(a1);
+
                         break;
                     case R.id.navigation_task:
                         Intent a2 = new Intent(Home.this, MainTask.class);
