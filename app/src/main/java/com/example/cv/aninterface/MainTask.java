@@ -3,6 +3,7 @@ package com.example.cv.aninterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -32,8 +33,13 @@ public class MainTask extends AppCompatActivity {
         setContentView(R.layout.activity_maintask);
 
         recyclerView = findViewById(R.id.recyclerViewTask);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        // linear layout
+        //recyclerView.setHasFixedSize(true);
+        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // grid layout
+        int numberOfColumns = 2;
+        recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
 
         remtasklist = new ArrayList<>();
         adapter = new TaskAdapter(this, remtasklist);

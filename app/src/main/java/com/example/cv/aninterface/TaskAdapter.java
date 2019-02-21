@@ -6,15 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
-
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-
 import java.util.List;
 
-import bolts.Task;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.remtaskViewHolder> {
 
@@ -40,9 +34,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.remtaskViewHol
         dbReminder reminder = remtasklist.get(position);
 
         holder.textViewTitle.setText(reminder.getTitle());
-        holder.textViewDecs.setText(reminder.getDesc());
-        holder.textViewLoc.setText(reminder.getInLocation());
-        holder.textViewPer.setText(reminder.getObjPerson());
+        holder.textViewDecs.setText("   "+reminder.getDesc());
+        holder.textViewLoc.setText("At room: " + reminder.getInLocation());
+        holder.textViewPer.setText("To" + reminder.getObjPerson());
     }
 
     @Override

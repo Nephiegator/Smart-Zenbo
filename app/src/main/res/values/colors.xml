@@ -6,13 +6,13 @@
     <color name="lightblue">#536BDC</color>
 
     <color name="white">#FFFFFF</color>
-
-
-
     <color name="bluesky">#9bd6da</color>
 
     <color name="one">#ebc6ed</color>
     <color name="two">#9abfe4</color>
     <color name="three">#faf4be</color>
+
+    <color name="mustas">#FFC857</color>
+    <color name="hotcoral">#DB5461</color>
 
 </resources>
