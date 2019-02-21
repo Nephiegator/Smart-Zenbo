@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import java.lang.reflect.Field;
 
-public class bottomnavigation {
+public class bottomnavigation extends AppCompatActivity{
 
    private TextView mTextMessage;
 
@@ -29,16 +29,16 @@ public class bottomnavigation {
                 case R.id.navigation_home:
                     mTextMessage.setText(R.string.title_home);
                     return true;
+                case R.id.navigation_task:
+                    mTextMessage.setText(R.string.title_task);
+                    return true;
                 case R.id.navigation_plan:
                     mTextMessage.setText(R.string.title_plan);
-                    return true;
-                case R.id.navigation_history:
-                    mTextMessage.setText(R.string.title_history);
                     return true;
             }
             return false;
         }
-    };
+    };*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,46 +58,46 @@ public class bottomnavigation {
                         startActivity(in);
                         overridePendingTransition(0, 0);
                         break;
-                    case R.id.navigation_plan:
-                        in = new Intent(getBaseContext(), AddPlan.class);
+                    case R.id.navigation_task:
+                        in = new Intent(getBaseContext(), MainTask.class);
                         startActivity(in);
                         overridePendingTransition(0, 0);
                         break;
-                    case R.id.navigation_history:
-                        in = new Intent(getBaseContext(), MainTask.class);
+                    case R.id.navigation_plan:
+                        in = new Intent(getBaseContext(), MainListActivity.class);
                         startActivity(in);
                         overridePendingTransition(0, 0);
                         break;
                     default:
                         break;
-                }
+                } return false;
             }
 
         });
 
 
-    } */
+    }
 
-    public static void disableShiftMode(BottomNavigationView view) {
+    /*public static void disableShiftMode(BottomNavigationView view) {
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) view.getChildAt(0);
         try {
             Field shiftingMode = menuView.getClass().getDeclaredField("mShiftingMode");
             shiftingMode.setAccessible(true);
             shiftingMode.setBoolean(menuView, false);
             shiftingMode.setAccessible(false);
-            /* for (int i = 0; i < menuView.getChildCount(); i++) {
+            /* - for (int i = 0; i < menuView.getChildCount(); i++) {
                 BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
                 //noinspection RestrictedApi
                 item.setShiftingMode(false);
                 // set once again checked value, so view will be updated
                 //noinspection RestrictedApi
                 item.setChecked(item.getItemData().isChecked());
-            } */
+            } -not use
         } catch (NoSuchFieldException e) {
             Log.e("BNVHelper", "Unable to get shift mode field", e);
         } catch (IllegalAccessException e) {
             Log.e("BNVHelper", "Unable to change value of shift mode", e);
         }
-    }
+    }*/
 
 }

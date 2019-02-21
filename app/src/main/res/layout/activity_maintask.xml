@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
 
             android:layout_height="match_parent"
-            tools:listitem="@layout/list_itemtask" />
+            tools:listitem="@layout/list_itemtask" >
 
 
         </android.support.v7.widget.RecyclerView>
@@ -41,9 +41,10 @@
     </ScrollView>
 
     <include
-        android:id="@+id/navigation"
-        layout="@layout/bottomnavigation">
-
-    </include>
+        android:id="@+id/include"
+        layout="@layout/bottomnavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>
