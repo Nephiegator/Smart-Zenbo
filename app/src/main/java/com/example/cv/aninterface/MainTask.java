@@ -60,6 +60,7 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
 
                             for (DocumentSnapshot d : list) {
                                 dbReminder p = d.toObject(dbReminder.class);
+                                p.setId(d.getId());
                                 remtasklist.add(p);
                             }
                             adapter.notifyDataSetChanged();

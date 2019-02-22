@@ -61,9 +61,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.remtaskViewHol
 
         @Override
         public void onClick(View v) {
-            dbReminder reminder = remtasklist.get(getAdapterPosition());
+            dbReminder tt = remtasklist.get(getAdapterPosition());
             Intent intent = new Intent(mCtx, UpdateTask.class);
-            intent.putExtra("Reminder", reminder);
+            intent.putExtra("Reminder", tt);
             mCtx.startActivity(intent);
         }
     }

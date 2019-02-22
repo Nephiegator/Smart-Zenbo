@@ -1,8 +1,11 @@
 package com.example.cv.aninterface;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,8 +14,10 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -42,8 +47,10 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         txt_title.setText(tt.getTitle());
         txt_description.setText(tt.getDesc());
 
-        Button update = (Button) findViewById(R.id.update_btn);
-        update.setOnClickListener(this);
+
+        findViewById(R.id.update_btn).setOnClickListener(this);
+        findViewById(R.id.delete_btn).setOnClickListener(this);
+
 
         Spinner splocation =  (Spinner) findViewById(R.id.inLocation);
         Spinner spperson =  (Spinner) findViewById(R.id.ObjPerson);
@@ -139,8 +146,21 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         }
     }
 
-    @Override
-    public void onClick(View v){
+    private void deleteTask() {
+        db.collection("Reminder").document(tt.getId()).delete()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(UpdateTask.this, "Deleted", Toast.LENGTH_LONG).show();
+                            finish();
+                            startActivity(new Intent(UpdateTask.this, MainTask.class));
+                        }
+                    }
+                });
+    }
+
+    public void updateTask() {
 
         String title = txt_title.getText().toString().trim();
         String description = txt_description.getText().toString().trim();
@@ -151,7 +171,7 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
 
 
 
-            final dbReminder reminder = new dbReminder(
+            dbReminder reminder = new dbReminder(
                     title, description, location, person
             );
 
@@ -163,8 +183,39 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
                             Toast.makeText(UpdateTask.this, "Updated", Toast.LENGTH_LONG).show();
                         }
                     });
+        }
+    }
 
-        } finish();
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.update_btn:
+                updateTask();
+                break;
+            case R.id.delete_btn:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Are your sure to delete it?");
+                builder.setMessage("Deletion of permanent...");
+
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        deleteTask();
+                    }
+                });
+
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                AlertDialog ad = builder.create();
+                ad.show();
+
+                break;
+        }
     }
 
 }

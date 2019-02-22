@@ -37,6 +37,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AddTask extends AppCompatActivity implements View.OnClickListener {
@@ -48,6 +49,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
     private FirebaseFirestore db;
     private  String yy,xx;
     private dbReminder tt;
+    private List<dbReminder> reminderList;
 
 
 
@@ -180,18 +182,18 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
 
         if (!validateInputs(title,description,location,person)){
 
-            final CollectionReference dbReminder = db.collection("Reminder");
+            CollectionReference dbReminder = db.collection("Reminder");
 
-            final dbReminder reminder = new dbReminder(
+            dbReminder reminder = new dbReminder(
                     title, description, location, person
             );
+
 
             dbReminder.add(reminder)
                     .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
                             Toast.makeText(AddTask.this, "Added Successfully", Toast.LENGTH_SHORT).show();
-                            reminder.setId(tt.getId());
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
