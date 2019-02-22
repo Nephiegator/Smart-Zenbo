@@ -30,7 +30,7 @@
 
     <string name="title_home">Home</string>
     <string name="title_plan">Plan</string>
-    <string name="title_history">History</string>
+    <string name="title_task">Task</string>
 
     <string name="hello">Hello World, MainActivity!</string>
     <string name="hintTxtItem">Enter an item here ...</string>

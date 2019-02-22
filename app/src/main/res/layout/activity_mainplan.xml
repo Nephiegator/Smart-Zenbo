@@ -13,11 +13,11 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include
+    <!-- <include
         android:id="@+id/appbar"
         layout="@layout/addplan_app_bar">
 
-    </include>
+    </include> -->
 
     <include
        android:id="@+id/navigation"

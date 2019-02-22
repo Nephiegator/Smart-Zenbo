@@ -6,10 +6,13 @@
 
     <item
         android:id="@+id/action_add"
-        android:icon="@drawable/add"
+        android:enabled="true"
+        android:icon="@drawable/whitetick"
         android:orderInCategory="201"
         android:title="@string/add_plan"
-        app:showAsAction="ifRoom" />
+        android:visible="true"
+        app:showAsAction="always"
+        />
 
 
 </menu>

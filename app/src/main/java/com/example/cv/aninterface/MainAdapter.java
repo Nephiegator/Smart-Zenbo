@@ -1,9 +1,12 @@
 package com.example.cv.aninterface;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.content.Context;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,12 +30,13 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(BaseViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BaseViewHolder holder, int position) {
         BaseItem i = itemList.get(position);
         if (holder instanceof CardViewHolder) {
             CardViewItem cardViewItem = (CardViewItem) i;
             ((CardViewHolder) holder).setText(cardViewItem.getText());
         }
+
     }
 
     @Override
@@ -53,4 +57,18 @@ public class MainAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
         notifyDataSetChanged();
     }
+
+    /*class BaseViewHolder extends RecyclerView.ViewHolder    {
+        TextView txtViewTaskTitle, txtViewTaskDesc, txtViewTaskLoc, txtViewTaskPers;
+
+        public BaseViewHolder(View itemView) {
+            super(itemView);
+
+            txtViewTaskTitle = itemView.findViewById(R.id.textView_title_task);
+            txtViewTaskDesc = itemView.findViewById(R.id.textView_desc_task);
+            txtViewTaskLoc = itemView.findViewById(R.id.textView_loc_task);
+            txtViewTaskPers = itemView.findViewById(R.id.textView_per_task);
+        }
+    }*/
+
 }

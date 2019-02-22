@@ -78,7 +78,7 @@ public class Home extends AppCompatActivity
                 yLabel.setText(dateFormatYear.format(firstDayOfNewMonth));
             }
         });
-      /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+      /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,15 +119,14 @@ public class Home extends AppCompatActivity
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.navigation_home:
-                        Intent a1 = new Intent(Home.this, Home.class);
-                        startActivity(a1);
+
                         break;
-                    case R.id.navigation_plan:
-                        Intent a2 = new Intent(Home.this, MainListActivity.class);
+                    case R.id.navigation_task:
+                        Intent a2 = new Intent(Home.this, MainTask.class);
                         startActivity(a2);
                         break;
-                    case R.id.navigation_history:
-                        Intent a3 = new Intent(Home.this, AddTask.class);
+                    case R.id.navigation_plan:
+                        Intent a3 = new Intent(Home.this, MainListActivity.class);
                         startActivity(a3);
                         break;
                 }

@@ -17,12 +17,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    configurations {
+        all*.exclude group: 'com.google.code.gson'
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:support-v4:26.0.0'
     implementation 'com.google.firebase:firebase-database:16.0.6'
     implementation 'com.google.firebase:firebase-auth:16.1.0'
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
@@ -42,4 +45,12 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.facebook.android:facebook-android-sdk:4.28.0'
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    api files('../ZenboSDK/ZenboSDK.jar')
+    implementation 'com.firebaseui:firebase-ui-database:4.3.1'
+    implementation 'com.firebaseui:firebase-ui-firestore:4.3.1'
+    implementation 'com.firebaseui:firebase-ui-auth-github:4.3.1'
+    implementation 'com.firebaseui:firebase-ui-storage:4.3.1'
 }
+
+

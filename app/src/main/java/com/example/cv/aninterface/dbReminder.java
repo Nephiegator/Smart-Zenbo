@@ -1,9 +1,14 @@
 package com.example.cv.aninterface;
 
+import com.google.firebase.firestore.Exclude;
 import com.google.firebase.firestore.IgnoreExtraProperties;
 
+import java.io.Serializable;
+
 @IgnoreExtraProperties
-public class dbReminder {
+public class dbReminder implements Serializable {
+
+    @Exclude private String id;
 
     private String title;
     private String desc;
@@ -18,7 +23,16 @@ public class dbReminder {
     }
 
     public dbReminder() {
+        //empty constructor needed
 
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTitle() {

@@ -52,6 +52,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignIn" />
+
         <activity
             android:name=".AddTask"
             android:label="New Task" />
@@ -67,6 +68,8 @@
             android:parentActivityName=".Home"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".AddPlan" />
+        <activity android:name=".MainTask"/>
+        <activity android:name=".UpdateTask"/>
 
 
     </application>
