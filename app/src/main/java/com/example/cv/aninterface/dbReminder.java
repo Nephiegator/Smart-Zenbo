@@ -23,6 +23,11 @@ public class dbReminder implements Serializable {
         this.ObjPerson = objPerson;
     }
 
+    public dbReminder() {
+        //empty constructor needed
+
+    }
+
 
     public String getId() {
         return id;
@@ -64,12 +69,4 @@ public class dbReminder implements Serializable {
         ObjPerson = objPerson;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) return false;
-
-        dbReminder reminderCompare = (dbReminder) obj;
-        return reminderCompare.getTitle().equals(this.getTitle());
-
-    }
 }
