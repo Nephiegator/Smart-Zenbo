@@ -47,9 +47,10 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
 
 
     private FirebaseFirestore db;
-    private String yy, xx;
+    private  String yy,xx;
     private dbReminder tt;
     private List<dbReminder> reminderList;
+
 
 
     @Override
@@ -65,48 +66,48 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
         Button Create = (Button) findViewById(R.id.create_btn);
         Create.setOnClickListener(this);
 
-        Spinner splocation = (Spinner) findViewById(R.id.inLocation);
-        Spinner spperson = (Spinner) findViewById(R.id.ObjPerson);
+        Spinner splocation =  (Spinner) findViewById(R.id.inLocation);
+        Spinner spperson =  (Spinner) findViewById(R.id.ObjPerson);
 
         //Spinner method to read the selected value
-        ArrayAdapter<State1> spinnerArrayAdapter1 = new ArrayAdapter<State1>(this,
-                android.R.layout.simple_spinner_item, new State1[]{
+        ArrayAdapter<State1> spinnerArrayAdapter1 = new ArrayAdapter<State1> (this,
+                android.R.layout.simple_spinner_item, new State1[] {
                 new State1("None"),
-                new State1("Dad Room"),
-                new State1("Kitchen"),
+                new State1 ("Dad Room"),
+                new State1 ("Kitchen"),
         });
         splocation.setAdapter(spinnerArrayAdapter1);
         splocation.setOnItemSelectedListener(new MyOnItemSelectedListener());
 
-        ArrayAdapter<State2> spinnerArrayAdapter2 = new ArrayAdapter<State2>(this,
-                android.R.layout.simple_spinner_item, new State2[]{
+        ArrayAdapter<State2> spinnerArrayAdapter2 = new ArrayAdapter<State2> (this,
+                android.R.layout.simple_spinner_item, new State2[] {
                 new State2("None"),
-                new State2("Lisa"),
-                new State2("Jisoo"),
-                new State2("Rose")
+                new State2 ("Lisa"),
+                new State2 ("Jisoo"),
+                new State2 ("Rose")
         });
         spperson.setAdapter(spinnerArrayAdapter2);
         spperson.setOnItemSelectedListener(new MyOnItemSelectedListener());
     }
 
-    private boolean validateInputs(String title, String description, String location, String person) {
-        if (title.isEmpty()) {
+    private boolean validateInputs(String title, String description, String location, String person){
+        if (title.isEmpty()){
             txt_title.setError("Title Required");
             txt_title.requestFocus();
             return true;
         }
 
-        if (description.isEmpty()) {
+        if (description.isEmpty()){
             txt_description.setError("Description Required");
             txt_description.requestFocus();
             return true;
         }
-        if (location.isEmpty()) {
+        if (location.isEmpty()){
 
 
             return false;
         }
-        if (person.isEmpty()) {
+        if (person.isEmpty()){
             return false;
         }
 
@@ -117,7 +118,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
     public class State1 {
         public String loc = "";
 
-        public State1(String _loc) {
+        public State1(String _loc){
             loc = _loc;
         }
 
@@ -129,7 +130,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
     public class State2 {
         public String name = "";
 
-        public State2(String _name) {
+        public State2(String _name){
             name = _name;
         }
 
@@ -170,15 +171,16 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
     }*/
 
 
+
     @Override
-    public void onClick(View v) {
+    public void onClick(View v){
 
         String title = txt_title.getText().toString().trim();
         String description = txt_description.getText().toString().trim();
         String location = xx;
         String person = yy;
 
-        if (!validateInputs(title, description, location, person)) {
+        if (!validateInputs(title,description,location,person)){
 
             CollectionReference dbReminder = db.collection("Reminder");
 
@@ -200,8 +202,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
                             Toast.makeText(AddTask.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
-        }
-        finish();
+        } finish();
     }
 
 
