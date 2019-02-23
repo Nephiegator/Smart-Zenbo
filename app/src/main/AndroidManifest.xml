@@ -14,7 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".TaskSelect"></activity>
         <activity android:name=".alarm" />
         <activity
             android:name=".register"
@@ -51,6 +50,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
         </activity>
         <activity android:name=".SignIn" />
         <activity
@@ -68,8 +69,18 @@
             android:parentActivityName=".Home"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".AddPlan" />
-        <activity android:name=".MainTask" />
+        <activity android:name=".MainTask" >
+
+        </activity>
+
         <activity android:name=".UpdateTask" />
+        <activity android:name=".TaskSelect">
+
+        </activity>
+        <activity android:name=".zenboPlan"/>
+        <activity android:name=".zenboHistory"/>
+
+
     </application>
 
 </manifest>

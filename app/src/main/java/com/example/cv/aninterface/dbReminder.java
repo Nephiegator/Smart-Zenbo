@@ -8,7 +8,8 @@ import java.io.Serializable;
 @IgnoreExtraProperties
 public class dbReminder implements Serializable {
 
-    @Exclude private String id;
+    @Exclude
+    private String id;
 
     private String title;
     private String desc;
@@ -22,10 +23,6 @@ public class dbReminder implements Serializable {
         this.ObjPerson = objPerson;
     }
 
-    public dbReminder() {
-        //empty constructor needed
-
-    }
 
     public String getId() {
         return id;
@@ -65,5 +62,14 @@ public class dbReminder implements Serializable {
 
     public void setObjPerson(String objPerson) {
         ObjPerson = objPerson;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) return false;
+
+        dbReminder reminderCompare = (dbReminder) obj;
+        return reminderCompare.getTitle().equals(this.getTitle());
+
     }
 }

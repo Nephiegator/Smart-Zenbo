@@ -56,11 +56,7 @@
             android:textSize="15sp"
             tools:text="text" />
 
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/checkbox" />
+
 
     </LinearLayout>
 
