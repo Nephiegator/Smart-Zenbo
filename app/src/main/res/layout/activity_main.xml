@@ -101,67 +101,97 @@
         </LinearLayout>
     </ScrollView>
 
+    <!--<include
+        android:id="@+id/navigation"
+        layout="@layout/bottomnavigation"/>
+
     <include
-        android:id="@+id/include"
-        layout="@layout/bottomnavigation"
+       android:id="@+id/include"
+       layout="@layout/bottomnavigation"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_alignParentBottom="true"/>
+
+
+   <android.support.design.widget.BottomNavigationView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_alignParentBottom="true"
+           app:itemIconTint="@color/bottomnav_item"
+           app:itemTextColor="@color/bottomnav_item"
+           android:background="@color/colorPrimary"
+           app:menu="@menu/navigation"/> -->
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"/>
-
-
-    <com.github.clans.fab.FloatingActionMenu
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:background="?android:attr/windowBackground"
+        android:backgroundTint="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:itemIconTint="@color/bottomnav_item"
+        app:itemTextColor="@color/bottomnav_item"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="11dp"
-        android:layout_marginRight="9dp"
-        android:layout_marginBottom="61dp"
-        fab:menu_animationDelayPerItem="55"
-        fab:menu_backgroundColor="@android:color/transparent"
-        fab:menu_buttonSpacing="0dp"
-        fab:menu_colorNormal="@color/colorPrimary"
-        fab:menu_colorPressed="#414886"
-        fab:menu_colorRipple="#3F51B5"
-        fab:menu_fab_size="normal"
-        fab:menu_icon="@drawable/fab_add"
-        fab:menu_labels_colorNormal="#333"
-        fab:menu_labels_colorPressed="#444"
-        fab:menu_labels_colorRipple="#66efecec"
-        fab:menu_labels_cornerRadius="3dp"
-        fab:menu_labels_ellipsize="none"
-        fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
-        fab:menu_labels_margin="0dp"
-        fab:menu_labels_maxLines="-1"
-        fab:menu_labels_padding="8dp"
-        fab:menu_labels_position="left"
-        fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
-        fab:menu_labels_showShadow="true"
-        fab:menu_labels_singleLine="false"
-        fab:menu_labels_textColor="#f2f1f1"
-        fab:menu_labels_textSize="15sp"
-        fab:menu_openDirection="up">
+        app:menu="@menu/navigation" />
 
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/floating_btn_1"
+
+
+        <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_storm"
-            fab:fab_label="Weather Report"
-            fab:fab_size="mini"
-            app:fab_colorNormal="#fff"
-            app:fab_colorPressed="#3E97F3"/>
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="11dp"
+            android:layout_marginRight="9dp"
+            android:layout_marginBottom="61dp"
+            fab:menu_animationDelayPerItem="55"
+            fab:menu_backgroundColor="@android:color/transparent"
+            fab:menu_buttonSpacing="0dp"
+            fab:menu_colorNormal="@color/colorPrimary"
+            fab:menu_colorPressed="#414886"
+            fab:menu_colorRipple="#3F51B5"
+            fab:menu_fab_size="normal"
+            fab:menu_icon="@drawable/fab_add"
+            fab:menu_labels_colorNormal="#333"
+            fab:menu_labels_colorPressed="#444"
+            fab:menu_labels_colorRipple="#66efecec"
+            fab:menu_labels_cornerRadius="3dp"
+            fab:menu_labels_ellipsize="none"
+            fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
+            fab:menu_labels_margin="0dp"
+            fab:menu_labels_maxLines="-1"
+            fab:menu_labels_padding="8dp"
+            fab:menu_labels_position="left"
+            fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
+            fab:menu_labels_showShadow="true"
+            fab:menu_labels_singleLine="false"
+            fab:menu_labels_textColor="#f2f1f1"
+            fab:menu_labels_textSize="15sp"
+            fab:menu_openDirection="up">
 
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/floating_btn_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_newspaper"
-            fab:fab_label="News Report"
-            fab:fab_size="mini"
-            app:fab_colorNormal="@color/white"
-            app:fab_colorPressed="#3E97F3"/>
+            <!-- <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/floating_btn_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_storm"
+                fab:fab_label="Weather Report"
+                fab:fab_size="mini"
+                app:fab_colorNormal="#fff"
+                app:fab_colorPressed="#3E97F3"/>
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/floating_btn_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_newspaper"
+                fab:fab_label="News Report"
+                fab:fab_size="mini"
+                app:fab_colorNormal="@color/white"
+                app:fab_colorPressed="#3E97F3"/> -->
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/floating_btn_3"
