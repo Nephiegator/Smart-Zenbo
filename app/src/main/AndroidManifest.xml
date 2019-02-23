@@ -4,6 +4,7 @@
     package="com.example.cv.aninterface">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -13,12 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".TaskSelect"></activity>
+        <activity android:name=".alarm" />
         <activity
             android:name=".register"
             android:label="@string/title_activity_register"
-            android:theme="@style/NoActionBar">
-
-        </activity>
+            android:theme="@style/NoActionBar" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -52,7 +53,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignIn" />
-
         <activity
             android:name=".AddTask"
             android:label="New Task" />
@@ -68,10 +68,8 @@
             android:parentActivityName=".Home"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".AddPlan" />
-        <activity android:name=".MainTask"/>
-        <activity android:name=".UpdateTask"/>
-
-
+        <activity android:name=".MainTask" />
+        <activity android:name=".UpdateTask" />
     </application>
 
 </manifest>
