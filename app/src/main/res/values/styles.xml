@@ -16,7 +16,7 @@
 
     <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="InputText" parent="TextAppearance.Design.Counter">
+    <style name="InputText" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
