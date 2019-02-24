@@ -23,49 +23,6 @@ public class TaskAdapterSelected extends RecyclerView.Adapter<TaskAdapterSelecte
             this.remtasklist = remtasklist;
         }
 
-
-        @NonNull
-        @Override
-        public remtaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return new remtaskViewHolder(
-                    LayoutInflater.from(mCtx).inflate(R.layout.list_itemtask_select,parent, false)
-            );
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull remtaskViewHolder holder, int position) {
-
-            remtasklist = new ArrayList<>();
-            dbReminder reminder = remtasklist.get(position);
-
-            holder.textViewTitle.setText(reminder.getTitle());
-            holder.textViewDecs.setText("   "+reminder.getDesc());
-            holder.textViewLoc.setText("At room: " + reminder.getInLocation());
-            holder.textViewPer.setText("To: " + reminder.getObjPerson());
-
-            holder.setItemClickListener(new remtaskViewHolder.ItemClickListener(){
-                @Override
-                public void onItemClick(View v, int pos) {
-                    CheckBox myCheckBox= (CheckBox) v;
-                    dbReminder currentReminder = remtasklist.get(pos);
-
-                    if(myCheckBox.isChecked()) {
-                        currentReminder.setSelected(true);
-                        //currentReminder.
-                    }
-                    else if(!myCheckBox.isChecked()) {
-                        currentReminder.setSelected(false);
-                        //currentReminder.remove(currentReminder);
-                    }
-                }
-            });
-        }
-
-        @Override
-        public int getItemCount() {
-            return remtasklist.size();
-        }
-
         class remtaskViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
             TextView textViewTitle, textViewDecs, textViewLoc, textViewPer;
@@ -88,8 +45,6 @@ public class TaskAdapterSelected extends RecyclerView.Adapter<TaskAdapterSelecte
             public void setItemClickListener(ItemClickListener ic) {
                 this.itemClickListener = ic;
             }
-
-
             @Override
             public void onClick(View v) {
                 this.itemClickListener.onItemClick(v,getLayoutPosition());
@@ -98,9 +53,51 @@ public class TaskAdapterSelected extends RecyclerView.Adapter<TaskAdapterSelecte
                 intent.putExtra("Reminder", tt);
                 mCtx.startActivity(intent);
             }
+            interface ItemClickListener {
+                void onItemClick (View v, int pos);
+            }
         }
 
 
+    @NonNull
+    @Override
+    public remtaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new remtaskViewHolder(
+                LayoutInflater.from(mCtx).inflate(R.layout.list_itemtask_select,parent, false)
+        );
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull remtaskViewHolder holder, int position) {
+
+        remtasklist = new ArrayList<>();
+        dbReminder reminder = remtasklist.get(position);
+
+        holder.textViewTitle.setText(reminder.getTitle());
+        holder.textViewDecs.setText("   "+reminder.getDesc());
+        holder.textViewLoc.setText("At room: " + reminder.getInLocation());
+        holder.textViewPer.setText("To: " + reminder.getObjPerson());
+
+        holder.setItemClickListener(new remtaskViewHolder.ItemClickListener() {
+            @Override
+            public void onItemClick(View v, int pos) {
+                CheckBox myCheckBox= (CheckBox) v;
+                dbReminder currentReminder = remtasklist.get(pos);
+
+                if(myCheckBox.isChecked()) {
+                    currentReminder.setSelected(true);
+                    //currentReminder.
+                }
+                else if(!myCheckBox.isChecked()) {
+                    currentReminder.setSelected(false);
+                    //currentReminder.remove(currentReminder);
+                }
+            }
+        });
+    }
+    @Override
+    public int getItemCount() {
+        return remtasklist.size();
     }
 
 }
