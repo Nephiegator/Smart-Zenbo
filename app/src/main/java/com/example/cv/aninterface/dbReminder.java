@@ -15,6 +15,7 @@ public class dbReminder implements Serializable {
     private String desc;
     private String inLocation;
     private String ObjPerson;
+    private boolean isSelected;
 
     public dbReminder(String title, String desc, String inLocation, String objPerson) {
         this.title = title;
@@ -69,4 +70,11 @@ public class dbReminder implements Serializable {
         ObjPerson = objPerson;
     }
 
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
 }

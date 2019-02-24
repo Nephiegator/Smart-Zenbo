@@ -16,7 +16,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="179dp"
         android:background="@color/philippine_yellow"
         android:orientation="vertical"
         android:padding="5dp">
@@ -56,6 +56,11 @@
             android:textSize="15sp"
             tools:text="text" />
 
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CheckBox" />
 
 
     </LinearLayout>
