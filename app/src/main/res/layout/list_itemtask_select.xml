@@ -22,7 +22,7 @@
         android:padding="5dp">
 
         <TextView
-            android:id="@+id/title_task_select"
+            android:id="@+id/textView_title_task"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
@@ -31,7 +31,7 @@
             tools:text="text" />
 
         <TextView
-            android:id="@+id/desc_task_select"
+            android:id="@+id/textView_desc_task"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
@@ -39,7 +39,7 @@
             tools:text="text" />
 
         <TextView
-            android:id="@+id/loc_task_select"
+            android:id="@+id/textView_loc_task"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
@@ -48,7 +48,7 @@
             tools:text="text" />
 
         <TextView
-            android:id="@+id/per_task_select"
+            android:id="@+id/textView_per_task"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
