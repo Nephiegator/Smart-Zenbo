@@ -23,10 +23,12 @@ public class TaskAdapterSelected extends RecyclerView.Adapter<TaskAdapterSelecte
             this.remtasklist = remtasklist;
         }
 
-        class remtaskViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        static  class remtaskViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
             TextView textViewTitle, textViewDecs, textViewLoc, textViewPer;
             CheckBox myCheckBox;
+            Context mCtx;  //copy from above
+            List<dbReminder> remtasklist;  //copy from above
 
             ItemClickListener itemClickListener;
 
@@ -36,7 +38,7 @@ public class TaskAdapterSelected extends RecyclerView.Adapter<TaskAdapterSelecte
                 textViewTitle = itemView.findViewById(R.id.textView_title_task);
                 textViewDecs = itemView.findViewById(R.id.textView_desc_task);
                 textViewLoc = itemView.findViewById(R.id.textView_loc_task);
-                textViewPer = itemView.findViewById(R.id.textView_per_task;
+                textViewPer = itemView.findViewById(R.id.textView_per_task);
                 myCheckBox = itemView.findViewById(R.id.checkBox);
 
                 itemView.setOnClickListener(this);
