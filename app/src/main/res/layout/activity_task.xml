@@ -168,9 +168,36 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp" />
+
+
         </LinearLayout>
 
-        <ImageView
+         <LinearLayout
+             android:layout_width="174dp"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal">
+
+
+             <Button
+                 android:id="@+id/time_set_btn"
+                 android:layout_width="56dp"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="left"
+                 android:layout_marginTop="15dp"
+                 android:layout_marginRight="30dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/border"
+                 android:text="@string/set_time" />
+
+             <TextView
+                 android:id="@+id/time_text"
+                 android:layout_width="0dp"
+                 android:layout_height="wrap_content"
+                 android:layout_weight="1"
+                 android:text="@string/time" />
+         </LinearLayout>
+
+         <ImageView
             android:layout_width="match_parent"
             android:layout_height="5dp"
             android:layout_marginStart="55dp"
@@ -189,6 +216,7 @@
              android:textSize="15dp" />
 
     </LinearLayout>
+
 
 
 
