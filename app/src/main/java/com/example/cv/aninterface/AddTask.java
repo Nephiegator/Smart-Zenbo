@@ -1,11 +1,14 @@
 package com.example.cv.aninterface;
 
+import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.provider.CalendarContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TextInputEditText;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +23,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
 
@@ -35,6 +39,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -44,6 +49,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
 
     private TextInputEditText txt_title;
     private TextInputEditText txt_description;
+    private TextView timeText;
 
 
     private FirebaseFirestore db;
@@ -52,18 +58,24 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
     private List<dbReminder> reminderList;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task);
 
+       // timePicker = findViewById(R.id.alarmTimePicker)
+
         db = FirebaseFirestore.getInstance();
 
         txt_title = findViewById(R.id.task_title);
         txt_description = findViewById(R.id.task_des);
+        timeText = findViewById(R.id.time_text);
 
         Button Create = (Button) findViewById(R.id.create_btn);
         Create.setOnClickListener(this);
+
+        findViewById(R.id.time_set_btn).setOnClickListener(this);
 
         Spinner splocation = (Spinner) findViewById(R.id.inLocation);
         Spinner spperson = (Spinner) findViewById(R.id.ObjPerson);
@@ -168,11 +180,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
                 break;
         }
     }*/
-
-
-    @Override
-    public void onClick(View v) {
-
+    public void createTask(){
         String title = txt_title.getText().toString().trim();
         String description = txt_description.getText().toString().trim();
         String location = xx;
@@ -201,8 +209,50 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
                         }
                     });
         }
-        finish();
+
     }
+
+    public void timeSet(){
+        final Calendar c = Calendar.getInstance();
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        int minute = c.get(Calendar.MINUTE);
+
+      final TimePickerDialog timePickerDialog = new TimePickerDialog(AddTask.this,
+                new TimePickerDialog.OnTimeSetListener() {
+
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay,
+                                          int minute) {
+
+                        timeText.setText(hourOfDay + ":" + minute);
+
+                    }
+                }, hour, minute, true);
+        timePickerDialog.show();
+
+    }
+
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.create_btn:
+                createTask();
+                finish();
+                break;
+            case R.id.time_set_btn:
+                timeSet();
+
+
+
+                break;
+        }
+
+
+    }
+
+
 
 
 }
