@@ -220,7 +220,7 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
                 ad.show(); */
                 deleteTask();
                 break;
-        }finish();
+        }
     }
 
 }

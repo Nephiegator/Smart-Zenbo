@@ -1,6 +1,7 @@
 package com.example.cv.aninterface;
 
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
@@ -8,12 +9,23 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class AddTaskMed extends AppCompatActivity {
+
+    private TextInputEditText txt_title;
+    private TextInputEditText txt_description;
+
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addtaskmed);
+        db = FirebaseFirestore.getInstance();
+
+        txt_title = findViewById(R.id.task_title);
+        txt_description = findViewById(R.id.task_des);
 
         //Spinner (Drop Down List
         Spinner mySpinner1 = (Spinner) findViewById(R.id.inLocation);
@@ -47,6 +59,55 @@ public class AddTaskMed extends AppCompatActivity {
 
             }
         });
+    }
+
+    private boolean validateInputs(String title, String description, String location, String person){
+        if (title.isEmpty()){
+            txt_title.setError("Title Required");
+            txt_title.requestFocus();
+            return true;
+        }
+
+        if (description.isEmpty()){
+            txt_description.setError("Description Required");
+            txt_description.requestFocus();
+            return true;
+        }
+        if (location.isEmpty()){
+
+
+            return false;
+        }
+        if (person.isEmpty()){
+            return false;
+        }
+
+
+        return false;
+    }
+
+    public class State1 {
+        public String loc = "";
+
+        public State1(String _loc){
+            loc = _loc;
+        }
+
+        public String toString() {
+            return loc;
+        }
+    }
+
+    public class State2 {
+        public String name = "";
+
+        public State2(String _name){
+            name = _name;
+        }
+
+        public String toString() {
+            return name;
+        }
     }
 
 }
