@@ -8,19 +8,23 @@
     android:background="@color/mediume_persian"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+
     <!-- <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppBarOverlay">
     </android.support.design.widget.AppBarLayout>  -->
 
-    <include
-        android:id="@+id/appbar"
-        layout="@layout/addplan_app_bar">
-    </include>
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:id="@+id/maintask_toolbar"
+        android:theme="@style/AppBarTextColor">
+    </android.support.v7.widget.Toolbar>
 
-
-    <ScrollView
+        <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
@@ -39,11 +43,21 @@
 
     </ScrollView>
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/bottomnavigation"
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"/>
+        android:background="?android:attr/windowBackground"
+        android:backgroundTint="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:itemIconTint="@color/bottomnav_item"
+        app:itemTextColor="@color/bottomnav_item"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/navigation" />
+
+
 
 </RelativeLayout>

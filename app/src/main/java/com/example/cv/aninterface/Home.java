@@ -32,6 +32,7 @@ public class Home extends AppCompatActivity
     CompactCalendarView compactcalendar;
     private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM", Locale.getDefault());
     private SimpleDateFormat dateFormatYear = new SimpleDateFormat("yyyy", Locale.getDefault());
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,14 +79,6 @@ public class Home extends AppCompatActivity
                 yLabel.setText(dateFormatYear.format(firstDayOfNewMonth));
             }
         });
-      /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        }); */
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -96,24 +89,9 @@ public class Home extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-     /*   CalendarView calendarView;
-        final TextView myDate;
-
-        calendarView = (CalendarView) findViewById(R.id.calendarView);
-         myDate = (TextView) findViewById(R.id.myDate);
-
-        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                String date = (month + 1) + "/" + dayOfMonth + "/" + year;
-                myDate.setText(date);
-            }
-        });*/
 
         //Bottom Navigation Bar
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
-        //bottomnavigation.disableShiftMode(bottomNavigationView);
-
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -134,21 +112,21 @@ public class Home extends AppCompatActivity
             }
         });
 
-
+        //bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
         FloatingActionMenu materialDesignFAM;
         FloatingActionButton floatingActionButton1, floatingActionButton2, floatingActionButton3,
                 floatingActionButton4, floatingActionButton5;
 
         materialDesignFAM = findViewById(R.id.fab);
-        floatingActionButton1 = findViewById(R.id.floating_btn_1);
-        floatingActionButton2 = findViewById(R.id.floating_btn_2);
+        //floatingActionButton1 = findViewById(R.id.floating_btn_1);
+        //floatingActionButton2 = findViewById(R.id.floating_btn_2);
         floatingActionButton3 = findViewById(R.id.floating_btn_3);
         floatingActionButton4 = findViewById(R.id.floating_btn_4);
         floatingActionButton5 = findViewById(R.id.floating_btn_5);
 
 
-        floatingActionButton1.setOnClickListener(new View.OnClickListener() {
+        /*floatingActionButton1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //TODO something when floating action menu first item clicked
             }
@@ -158,7 +136,7 @@ public class Home extends AppCompatActivity
                 //TODO something when floating action menu second item clicked
 
             }
-        });
+        });*/
         floatingActionButton3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent f3 = new Intent(Home.this, AddTaskApm.class);
@@ -180,6 +158,12 @@ public class Home extends AppCompatActivity
 
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        return false;
+    }
+
 
     @Override
     public void onBackPressed() {
@@ -195,7 +179,7 @@ public class Home extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.login, menu);
+        //getMenuInflater().inflate(R.menu.login, menu);
         return true;
     }
 
@@ -206,36 +190,13 @@ public class Home extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
-
+/*
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
+    }*/
 }

@@ -97,10 +97,10 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         if (person.isEmpty()){
             return false;
         }
-        if (time.isEmpty())
+        /*if (time.isEmpty())
         {
             return false;
-        }
+        }*/
 
 
         return false;

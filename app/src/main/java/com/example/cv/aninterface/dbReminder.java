@@ -34,10 +34,7 @@ public class dbReminder implements Serializable {
 
     }
 
-    public dbReminder() {
-        //empty constructor needed
 
-    }
 
     public String getId() {
         return id;
