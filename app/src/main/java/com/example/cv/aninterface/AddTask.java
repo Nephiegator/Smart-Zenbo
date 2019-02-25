@@ -1,49 +1,31 @@
 package com.example.cv.aninterface;
 
 import android.app.TimePickerDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.provider.CalendarContract;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TextInputEditText;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-import android.support.v7.widget.Toolbar;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class AddTask extends AppCompatActivity implements View.OnClickListener {
 
@@ -54,7 +36,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseFirestore db;
     private String yy, xx;
-    private dbReminder tt;
+    private String time;
     private List<dbReminder> reminderList;
 
 
@@ -101,7 +83,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
         spperson.setOnItemSelectedListener(new MyOnItemSelectedListener());
     }
 
-    private boolean validateInputs(String title, String description, String location, String person) {
+    private boolean validateInputs(String title, String description, String location, String person, String time) {
         if (title.isEmpty()) {
             txt_title.setError("Title Required");
             txt_title.requestFocus();
@@ -119,6 +101,9 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
             return false;
         }
         if (person.isEmpty()) {
+            return false;
+        }
+        if (time.isEmpty()){
             return false;
         }
 
@@ -169,6 +154,8 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
 
         }
     }
+
+
    /* public void onItemSelected (AdapterView<?> parent, View view, int position, long id)
     {
         switch (parent.getId()) {
@@ -180,18 +167,44 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
                 break;
         }
     }*/
+
+    public void timeSet(){
+        final Calendar c = Calendar.getInstance();
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        int minute = c.get(Calendar.MINUTE);
+
+        final TimePickerDialog timePickerDialog = new TimePickerDialog(AddTask.this,
+                new TimePickerDialog.OnTimeSetListener() {
+
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay,
+                                          int minute) {
+
+                        timeText.setText(hourOfDay + ":" + minute);
+                        time = hourOfDay+ " : " + minute;
+                        Toast.makeText(AddTask.this, "time check" + time, Toast.LENGTH_SHORT).show();
+
+                    }
+                }, hour, minute, true);
+        timePickerDialog.show();
+
+
+    }
+
     public void createTask(){
         String title = txt_title.getText().toString().trim();
         String description = txt_description.getText().toString().trim();
         String location = xx;
         String person = yy;
+        String time = timeText.getText().toString().trim();
 
-        if (!validateInputs(title, description, location, person)) {
+
+        if (!validateInputs(title, description, location, person, time)) {
 
             CollectionReference dbReminder = db.collection("Reminder");
 
             dbReminder reminder = new dbReminder(
-                    title, description, location, person
+                    title, description, location, person, time
             );
 
 
@@ -209,26 +222,6 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
                         }
                     });
         }
-
-    }
-
-    public void timeSet(){
-        final Calendar c = Calendar.getInstance();
-        int hour = c.get(Calendar.HOUR_OF_DAY);
-        int minute = c.get(Calendar.MINUTE);
-
-      final TimePickerDialog timePickerDialog = new TimePickerDialog(AddTask.this,
-                new TimePickerDialog.OnTimeSetListener() {
-
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay,
-                                          int minute) {
-
-                        timeText.setText(hourOfDay + ":" + minute);
-
-                    }
-                }, hour, minute, true);
-        timePickerDialog.show();
 
     }
 

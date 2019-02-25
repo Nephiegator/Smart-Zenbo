@@ -1,9 +1,12 @@
 package com.example.cv.aninterface;
 
+import android.widget.TextView;
+
 import com.google.firebase.firestore.Exclude;
 import com.google.firebase.firestore.IgnoreExtraProperties;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @IgnoreExtraProperties
 public class dbReminder implements Serializable {
@@ -15,13 +18,16 @@ public class dbReminder implements Serializable {
     private String desc;
     private String inLocation;
     private String ObjPerson;
+    private String time;
     private boolean isSelected;
 
-    public dbReminder(String title, String desc, String inLocation, String objPerson) {
+
+    public dbReminder(String title, String desc, String inLocation, String objPerson, String time) {
         this.title = title;
         this.desc = desc;
         this.inLocation = inLocation;
         this.ObjPerson = objPerson;
+        this.time = time;
     }
 
     public dbReminder() {
@@ -76,5 +82,13 @@ public class dbReminder implements Serializable {
 
     public void setSelected(boolean selected) {
         isSelected = selected;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }
