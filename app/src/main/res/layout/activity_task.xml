@@ -82,11 +82,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
                     android:hint="  Title"
-<<<<<<< HEAD
                     android:inputType="text" />
-=======
-                    android:inputType="text"/>
->>>>>>> parent of bacfdfd... update
+
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
