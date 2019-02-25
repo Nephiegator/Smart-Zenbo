@@ -1,40 +1,30 @@
 package com.example.cv.aninterface;
 
-import android.widget.TextView;
-
 import com.google.firebase.firestore.Exclude;
-import com.google.firebase.firestore.IgnoreExtraProperties;
 
 import java.io.Serializable;
-import java.util.Date;
 
-@IgnoreExtraProperties
-public class dbReminder implements Serializable {
+public class dbTaskApm implements Serializable {
 
-    @Exclude private String id;
+    @Exclude
+    private String id;
 
     private String title;
     private String desc;
     private String inLocation;
     private String ObjPerson;
-    private String time;
-    private boolean isSelected;
 
-
-    public dbReminder(String title, String desc, String inLocation, String objPerson, String time) {
+    public dbTaskApm(String title, String desc, String inLocation, String objPerson) {
         this.title = title;
         this.desc = desc;
         this.inLocation = inLocation;
         this.ObjPerson = objPerson;
-        this.time = time;
     }
 
-    public dbReminder() {
+    public dbTaskApm() {
         //empty constructor needed
 
     }
-
-
 
     public String getId() {
         return id;
@@ -76,19 +66,4 @@ public class dbReminder implements Serializable {
         ObjPerson = objPerson;
     }
 
-    public boolean isSelected() {
-        return isSelected;
-    }
-
-    public void setSelected(boolean selected) {
-        isSelected = selected;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
 }

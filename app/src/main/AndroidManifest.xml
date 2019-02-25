@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".TaskSelect"></activity>
         <activity android:name=".alarm" />
         <activity
             android:name=".register"
@@ -50,8 +51,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
         <activity android:name=".SignIn" />
         <activity

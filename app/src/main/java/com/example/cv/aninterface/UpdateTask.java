@@ -30,7 +30,7 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
     private FirebaseFirestore db;
 
     private dbReminder tt;
-    private  String yy,xx;
+    private  String yy,xx,ttime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +77,7 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
 
     }
 
-    private boolean hasvalidateInputs(String title, String description, String location, String person){
+    private boolean hasvalidateInputs(String title, String description, String location, String person, String time){
         if (title.isEmpty()){
             txt_title.setError("Title Required");
             txt_title.requestFocus();
@@ -97,6 +97,10 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         if (person.isEmpty()){
             return false;
         }
+        /*if (time.isEmpty())
+        {
+            return false;
+        }*/
 
 
         return false;
@@ -166,13 +170,14 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         String description = txt_description.getText().toString().trim();
         String location = xx;
         String person = yy;
+        String time = ttime;
 
-        if (!hasvalidateInputs(title,description,location,person)){
+        if (!hasvalidateInputs(title,description,location,person,time)){
 
 
 
             dbReminder reminder = new dbReminder(
-                    title, description, location, person
+                    title, description, location, person, time
             );
 
             db.collection("Reminder").document(tt.getId())
@@ -193,7 +198,7 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
                 updateTask();
                 break;
             case R.id.delete_btn:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                /*AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("Are your sure to delete it?");
                 builder.setMessage("Deletion of permanent...");
 
@@ -212,10 +217,10 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
                 });
 
                 AlertDialog ad = builder.create();
-                ad.show();
-
+                ad.show(); */
+                deleteTask();
                 break;
-        }finish();
+        }
     }
 
 }
