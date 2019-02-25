@@ -20,6 +20,7 @@
     </include>-->
 
     <android.support.v7.widget.Toolbar
+        android:id="@+id/task_select_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
@@ -36,12 +37,10 @@
         android:orientation="vertical">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerViewTask"
+            android:id="@+id/recyclerViewTaskSelect"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/list_itemtask_select" >
-
-
         </android.support.v7.widget.RecyclerView>
 
     </ScrollView>

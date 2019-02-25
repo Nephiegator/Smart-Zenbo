@@ -33,4 +33,9 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="SampleTheme" parent="Theme.AppCompat">
+        <item name="color">@color/hotcoral</item>
+        <item name="android:textColorSecondary">@color/mustas</item>
+    </style>
+
 </resources>
