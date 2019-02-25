@@ -97,17 +97,17 @@ public class MainTask extends AppCompatActivity implements BottomNavigationView.
         String msg = " ";
         switch (item.getItemId()) {
             case R.id.addplan:
-                msg = "Add";
-                break;
-                /*AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                //msg = "Add";
+                //break;
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("Make New Plan");
                 builder.setMessage("Are you sure to make new plan list");
 
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent a3 = new Intent(MainTask.this, Home.class);
-                        startActivity(a3);
+                        Intent a = new Intent(MainTask.this, TaskSelect.class);
+                        startActivity(a);
                     }
                 });
 
@@ -119,8 +119,8 @@ public class MainTask extends AppCompatActivity implements BottomNavigationView.
                 });
 
                 AlertDialog ad = builder.create();
-                ad.show();*/
-
+                ad.show();
+                break;
             case R.id.refresh:
                 super.onRestart();
                 Intent i = new Intent (MainTask.this, MainTask.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
