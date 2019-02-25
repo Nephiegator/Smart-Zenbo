@@ -96,7 +96,7 @@ public class TaskSelect extends AppCompatActivity implements NavigationView.OnNa
         getMenuInflater().inflate(R.menu.selecttask_menu, menu);
         return true;
     }
-    
+
     public  void Checked() {
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,7 +113,7 @@ public class TaskSelect extends AppCompatActivity implements NavigationView.OnNa
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.select_task:
-
+                Checked();
                 break;
         }
         return false;
