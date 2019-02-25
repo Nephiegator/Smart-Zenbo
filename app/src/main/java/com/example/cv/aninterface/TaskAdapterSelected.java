@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TaskAdapterSelected extends RecyclerView.Adapter<TaskAdapterSelected.remtaskselViewHolder> {
@@ -105,6 +104,7 @@ public class TaskAdapterSelected extends RecyclerView.Adapter<TaskAdapterSelecte
             public void setItemClickListener(ItemClickListener ic) {
                 this.itemClickListener = ic;
             }
+
             @Override
             public void onClick(View v) {
                 this.itemClickListener.onItemClick(v,getLayoutPosition());

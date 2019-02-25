@@ -38,8 +38,6 @@ public class TaskSelect extends AppCompatActivity implements NavigationView.OnNa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_select);
 
-        db = FirebaseFirestore.getInstance();
-
         toolbar =(Toolbar) findViewById(R.id.task_select_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(" Select Tasks");
@@ -58,31 +56,28 @@ public class TaskSelect extends AppCompatActivity implements NavigationView.OnNa
         adapter = new TaskAdapterSelected (this, remtasklist);
 
         recyclerView2.setAdapter(adapter);
+        adapter = new TaskAdapterSelected(this, remtasklist);
 
-        /*BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        recyclerView2.setAdapter(adapter);
 
-        BottomNavigationView bottomNavigationView2 = findViewById(R.id.navigation);
-        bottomNavigationView2.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        //Database
+        db = FirebaseFirestore.getInstance();
+        db.collection("Reminder").get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if (!queryDocumentSnapshots.isEmpty()) {
+                            List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
 
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.navigation_home:
-                        Intent a1 = new Intent(MainTask.this, Home.class);
-                        startActivity(a1);
-                        break;
-                    case R.id.navigation_task:
-
-                        break;
-                    case R.id.navigation_plan:
-                        Intent a3 = new Intent(MainTask.this, MainListActivity.class);
-                        startActivity(a3);
-                        break;
-                }
-                return false;
-            }
-        }); */
+                            for (DocumentSnapshot d : list) {
+                                dbReminder p = d.toObject(dbReminder.class);
+                                p.setId(d.getId());
+                                remtasklist.add(p);
+                            }
+                            adapter.notifyDataSetChanged();
+                        }
+                    }
+                });
     }
 
 
@@ -113,7 +108,7 @@ public class TaskSelect extends AppCompatActivity implements NavigationView.OnNa
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.select_task:
-                Checked();
+                //Checked();
                 break;
         }
         return false;
