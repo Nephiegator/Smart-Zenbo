@@ -62,7 +62,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.remtaskViewHol
             textViewLoc = itemView.findViewById(R.id.textView_loc_task);
             textViewPer = itemView.findViewById(R.id.textView_per_task);
 
-
             itemView.setOnClickListener(this);
 
         }

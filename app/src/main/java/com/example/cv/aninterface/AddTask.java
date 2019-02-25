@@ -72,7 +72,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
         ArrayAdapter<State1> spinnerArrayAdapter1 = new ArrayAdapter<State1>(this,
                 android.R.layout.simple_spinner_item, new State1[]{
                 new State1("None"),
-                new State1("Dad Room"),
+                new State1("Living room"),
                 new State1("Kitchen"),
         });
         splocation.setAdapter(spinnerArrayAdapter1);
@@ -81,9 +81,9 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
         ArrayAdapter<State2> spinnerArrayAdapter2 = new ArrayAdapter<State2>(this,
                 android.R.layout.simple_spinner_item, new State2[]{
                 new State2("None"),
-                new State2("Lisa"),
-                new State2("Jisoo"),
-                new State2("Rose")
+                new State2("Johny"),
+                new State2("Irene"),
+                new State2("Wendy")
         });
         spperson.setAdapter(spinnerArrayAdapter2);
         spperson.setOnItemSelectedListener(new MyOnItemSelectedListener());
