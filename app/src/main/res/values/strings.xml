@@ -42,5 +42,7 @@
     <string name="facebook_login_protocol_schema">fb384904728741884</string>
     <string name="title_activity_register">register</string>
     <string name="checkbox">CheckBox</string>
+    <string name="set_time">Set Time</string>
+    <string name="time">Time</string>
 
 </resources>
