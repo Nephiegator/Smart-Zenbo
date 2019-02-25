@@ -31,6 +31,7 @@
                 app:srcCompat="@drawable/user" />
 
             <TextView
+                android:fontFamily="@fonts/eligiblesansregular"
                 android:id="@+id/textView35"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"
@@ -49,6 +50,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:fontFamily="@fonts/eligiblesansregular"
                     android:id="@+id/textView26"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -69,21 +71,25 @@
                 android:layout_marginRight="20dp">
 
                 <TextView
+                    android:fontFamily="@fonts/eligiblesansregular"
                     android:id="@+id/textView31"
+                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="Email: " />
 
                 <TextView
+                    android:fontFamily="@fonts/eligiblesansregular"
                     android:id="@+id/textView32"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="Phone: " />
             </LinearLayout>
 
             <TextView
+                android:fontFamily="@fonts/eligiblesansregular"
                 android:id="@+id/textView33"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="20dp"
@@ -93,6 +99,7 @@
                 android:text="TextView" />
 
             <TextView
+                android:fontFamily="@fonts/eligiblesansregular"
                 android:id="@+id/textView34"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
