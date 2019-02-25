@@ -198,7 +198,7 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
                 updateTask();
                 break;
             case R.id.delete_btn:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                /*AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("Are your sure to delete it?");
                 builder.setMessage("Deletion of permanent...");
 
@@ -217,8 +217,8 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
                 });
 
                 AlertDialog ad = builder.create();
-                ad.show();
-
+                ad.show(); */
+                deleteTask();
                 break;
         }finish();
     }
