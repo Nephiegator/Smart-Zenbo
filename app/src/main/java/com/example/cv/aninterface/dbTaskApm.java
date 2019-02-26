@@ -4,7 +4,7 @@ import com.google.firebase.firestore.Exclude;
 
 import java.io.Serializable;
 
-public class dbTaskApm implements Serializable {
+public class dbTaskApm extends dbReminder implements Serializable {
 
     @Exclude
     private String id;

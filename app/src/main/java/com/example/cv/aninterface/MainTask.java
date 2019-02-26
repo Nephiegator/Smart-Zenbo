@@ -28,6 +28,7 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
     private RecyclerView recyclerView;
     private TaskAdapter adapter;
     private List<dbReminder> remtasklist;
+    private List<dbReminder> apptasklist;
 
     private FirebaseFirestore db;
 
@@ -44,6 +45,9 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
         // grid layout
         int numberOfColumns = 2;
         recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
+
+        apptasklist = new ArrayList<>();
+        adapter = new TaskAdapter(this, apptasklist);
 
         remtasklist = new ArrayList<>();
         adapter = new TaskAdapter(this, remtasklist);
@@ -62,6 +66,23 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
                                 dbReminder p = d.toObject(dbReminder.class);
                                 p.setId(d.getId());
                                 remtasklist.add(p);
+                            }
+                            adapter.notifyDataSetChanged();
+                        }
+                    }
+                });
+
+        db.collection("Appointment").get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if (!queryDocumentSnapshots.isEmpty()) {
+                            List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+
+                            for (DocumentSnapshot d : list) {
+                                dbTaskApm q = d.toObject(dbTaskApm.class);
+                                q.setId(d.getId());
+                                apptasklist.add(q);
                             }
                             adapter.notifyDataSetChanged();
                         }
