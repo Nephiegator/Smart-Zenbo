@@ -1,5 +1,6 @@
 package com.example.cv.aninterface;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -109,6 +110,8 @@ public class TaskSelect extends AppCompatActivity implements NavigationView.OnNa
         switch (item.getItemId()) {
             case R.id.select_task:
                 //Checked();
+                Intent i = new Intent (TaskSelect.this, MainTask.class);
+                startActivity(i);
                 break;
         }
         return false;
