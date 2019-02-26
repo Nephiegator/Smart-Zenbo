@@ -46,13 +46,16 @@
             android:label="@string/title_activity_login"
             android:launchMode="singleTop"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+
+        <activity android:name=".SignIn">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignIn" />
+
         <activity
             android:name=".AddTask"
             android:label="New Task" />
@@ -68,15 +71,11 @@
             android:parentActivityName=".Home"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".AddPlan" />
-        <activity android:name=".MainTask" >
+        <activity android:name=".MainTask" />
 
-        </activity>
-        <activity android:name=".TaskSelect">
 
-        </activity>
         <activity android:name=".UpdateTask" />
-        <activity android:name=".zenboPlan"/>
-        <activity android:name=".zenboHistory"/>
+
 
 
     </application>

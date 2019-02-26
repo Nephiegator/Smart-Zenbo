@@ -156,6 +156,9 @@ public class SignIn extends AppCompatActivity {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                     toastMessage("Successfully signed in with: " + user.getEmail());
+                    onLoginSuccess();
+                    Intent myIntent = new Intent(SignIn.this,Home.class);
+                    SignIn.this.startActivity(myIntent);
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -208,6 +211,17 @@ public class SignIn extends AppCompatActivity {
         if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        // disable going back to the MainActivity
+        moveTaskToBack(true);
+    }
+
+    public void onLoginSuccess() {
+        Loginbtn.setEnabled(true);
+        finish();
     }
 
     //add a toast to show when successfully signed in
