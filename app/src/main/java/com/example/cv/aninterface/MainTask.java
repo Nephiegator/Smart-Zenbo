@@ -63,6 +63,7 @@ public class MainTask extends AppCompatActivity implements BottomNavigationView.
 
         recyclerView.setAdapter(adapter);
 
+
         db = FirebaseFirestore.getInstance();
         db.collection("Reminder").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {

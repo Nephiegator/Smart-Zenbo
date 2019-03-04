@@ -66,7 +66,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
         ArrayAdapter<State1> spinnerArrayAdapter1 = new ArrayAdapter<State1> (this,
                 android.R.layout.simple_spinner_item, new State1[] {
                 new State1("None"),
-                new State1("Living room"),
+                new State1("Bedroom"),
                 new State1("Kitchen"),
         });
         splocation.setAdapter(spinnerArrayAdapter1);
@@ -75,7 +75,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
         ArrayAdapter<State2> spinnerArrayAdapter2 = new ArrayAdapter<State2> (this,
                 android.R.layout.simple_spinner_item, new State2[] {
                 new State2("None"),
-                new State2("Johny"),
+                new State2("Johnny"),
                 new State2("Irene"),
                 new State2("Wendy")
         });
@@ -204,7 +204,8 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
             CollectionReference dbReminder = db.collection("Reminder");
 
             dbReminder reminder = new dbReminder(
-                    title, description, location, person, time
+                    title, description, location, person,
+                    time
             );
 
 

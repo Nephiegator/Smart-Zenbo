@@ -174,8 +174,6 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
 
         if (!hasvalidateInputs(title,description,location,person,time)){
 
-
-
             dbReminder reminder = new dbReminder(
                     title, description, location, person, time
             );
