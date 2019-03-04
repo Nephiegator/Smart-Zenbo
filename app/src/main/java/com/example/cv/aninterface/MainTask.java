@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -25,6 +27,7 @@ import java.util.List;
 
 public class MainTask extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
+    Toolbar toolbar;
     private RecyclerView recyclerView;
     private TaskAdapter adapter;
     private List<dbReminder> remtasklist;
@@ -42,6 +45,11 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
         //recyclerView.setHasFixedSize(true);
         //recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        toolbar =(Toolbar) findViewById(R.id.maintask_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(" Tasks");
+        toolbar.setTitleTextColor(0xFFFFFFFF);
+
         // grid layout
         int numberOfColumns = 2;
         recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
@@ -53,6 +61,7 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
         adapter = new TaskAdapter(this, remtasklist);
 
         recyclerView.setAdapter(adapter);
+
 
         db = FirebaseFirestore.getInstance();
         db.collection("Reminder").get()
@@ -91,11 +100,10 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
 
 
 
-        /*BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-        BottomNavigationView bottomNavigationView2 = findViewById(R.id.navigation);
-        bottomNavigationView2.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
 
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -114,7 +122,12 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
                 }
                 return false;
             }
-        }); */
+        });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.maintask_menu, menu);
+        return true;
     }
 
 
