@@ -1,10 +1,12 @@
 package com.example.cv.aninterface;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -105,6 +107,7 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
 
 
 
+
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
@@ -133,6 +136,44 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        return false;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        String msg = " ";
+        switch (item.getItemId()) {
+            case R.id.addplan:
+                //msg = "Add";
+                //break;
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Make New Plan");
+                builder.setMessage("Are you sure to make new plan list");
+
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent a = new Intent(MainTask.this, TaskSelect.class);
+                        startActivity(a);
+                    }
+                });
+
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                AlertDialog ad = builder.create();
+                ad.show();
+                break;
+            case R.id.refresh:
+                super.onRestart();
+                Intent i = new Intent (MainTask.this, MainTask.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(i);
+                break;
+        }
         return false;
     }
 }
