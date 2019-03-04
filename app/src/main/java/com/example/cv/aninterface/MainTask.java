@@ -29,7 +29,7 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
 
     Toolbar toolbar;
     private RecyclerView recyclerView;
-    private TaskAdapter adapter;
+    private TaskAdapter adapter1, adapter2;
     private List<dbReminder> remtasklist;
     private List<dbReminder> apptasklist;
 
@@ -55,12 +55,13 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
         recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
 
         apptasklist = new ArrayList<>();
-        adapter = new TaskAdapter(this, apptasklist);
+        adapter1 = new TaskAdapter(this, apptasklist);
 
         remtasklist = new ArrayList<>();
-        adapter = new TaskAdapter(this, remtasklist);
+        adapter2 = new TaskAdapter(this, remtasklist);
 
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter1);
+        recyclerView.setAdapter(adapter2);
 
 
         db = FirebaseFirestore.getInstance();
@@ -76,7 +77,7 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
                                 p.setId(d.getId());
                                 remtasklist.add(p);
                             }
-                            adapter.notifyDataSetChanged();
+                            adapter1.notifyDataSetChanged();
                         }
                     }
                 });
@@ -93,7 +94,7 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
                                 q.setId(d.getId());
                                 apptasklist.add(q);
                             }
-                            adapter.notifyDataSetChanged();
+                            adapter2.notifyDataSetChanged();
                         }
                     }
                 });
@@ -102,9 +103,6 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-
-
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
