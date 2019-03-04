@@ -38,4 +38,16 @@
         <item name="android:textColorSecondary">@color/mustas</item>
     </style>
 
+    <style name="MyAppThemeFour" parent="Theme.AppCompat.Light">
+        <item name="android:timePickerDialogTheme">@style/MyTimePickerDialogStyle</item>
+    </style>
+
+    <style name="MyTimePickerDialogStyle" parent="@style/ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="showTitle">false</item>
+        <item name="colorControlActivated">#232A5F</item>
+        <item name="colorAccent">#232A5F</item>
+        <item name="android:textColorPrimary">#ffffff</item>
+        <item name="android:textColorSecondary">@color/mustas</item>
+    </style>
+
 </resources>

@@ -179,10 +179,17 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay,
                                           int minute) {
-
-                        timeText.setText(hourOfDay + ":" + minute);
-                        time = hourOfDay+ " : " + minute;
-                        Toast.makeText(AddTask.this, "time check" + time, Toast.LENGTH_SHORT).show();
+                        if(hourOfDay<10 && minute<10){
+                            timeText.setText("0"+hourOfDay+":"+"0"+minute);
+                        }else if(hourOfDay>10 && minute<10){
+                            timeText.setText(hourOfDay+":"+"0"+minute);
+                        }else if(hourOfDay<10 && minute>10) {
+                            timeText.setText("0"+hourOfDay + ":" +minute);
+                        }else timeText.setText(hourOfDay + ":" + minute);
+                        time = hourOfDay+":"+minute;
+                       // timeText.setText(hourOfDay + ":" + minute);
+                        //time = hourOfDay+ " : " + minute;
+                        Toast.makeText(AddTask.this, "time check " + time, Toast.LENGTH_SHORT).show();
 
                     }
                 }, hour, minute, true);

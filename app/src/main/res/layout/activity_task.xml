@@ -172,22 +172,39 @@
 
         </LinearLayout>
 
-         <LinearLayout
-             android:layout_width="174dp"
-             android:layout_height="wrap_content"
-             android:orientation="horizontal">
+         <ImageView
+             android:layout_width="match_parent"
+             android:layout_height="5dp"
+             android:layout_marginStart="55dp"
+             android:layout_marginEnd="10dp"
+             android:background="@drawable/input_line" />
 
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             android:layout_marginTop="15dp"
+             android:layout_gravity="center">
+
+             <ImageView
+                 android:layout_width="23dp"
+                 android:layout_height="23dp"
+                 android:layout_marginLeft="15dp"
+                 android:layout_marginTop="15dp"
+                 android:src="@drawable/ic_time"
+                 android:tint="#969696" />
 
              <Button
                  android:id="@+id/time_set_btn"
-                 android:layout_width="56dp"
+                 android:layout_width="40dp"
                  android:layout_height="wrap_content"
                  android:layout_gravity="left"
                  android:layout_marginTop="15dp"
-                 android:layout_marginRight="30dp"
+                 android:layout_marginStart="20dp"
                  android:layout_weight="1"
                  android:background="@drawable/border"
-                 android:text="@string/set_time" />
+                 android:text="@string/set_time"
+                />
 
              <TextView
                  android:id="@+id/time_text"
@@ -195,27 +212,24 @@
                  android:layout_height="wrap_content"
                  android:layout_weight="1"
                  android:textSize="16dp"
+                 android:layout_marginTop="15dp"
+                 android:layout_marginStart="20dp"
                  android:textStyle="bold"
                   />
          </LinearLayout>
 
-         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:layout_marginStart="55dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/input_line" />
+
 
          <Button
              android:id="@+id/create_btn"
-             android:layout_width="80dp"
+             android:layout_width="350dp"
              android:layout_height="wrap_content"
-             android:layout_gravity="right"
+             android:layout_gravity="center"
              android:layout_marginTop="15dp"
-             android:layout_marginRight="30dp"
-             android:background="@drawable/border"
+             android:background="@color/mediume_persian"
+             android:textColor="@color/white"
              android:text="CREATE"
-             android:textSize="15dp" />
+             android:textSize="16dp" />
 
     </LinearLayout>
 
