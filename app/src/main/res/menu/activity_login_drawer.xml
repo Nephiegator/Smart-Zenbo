@@ -5,20 +5,20 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_profile"
             android:icon="@drawable/user_dis"
             android:title="Profile"
             android:iconTint="@color/lightblue"/>
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_task"
             android:icon="@drawable/file"
             android:title="Task" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_plan"
             android:icon="@drawable/inbox"
             android:title="Plan" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_history"
             android:icon="@drawable/counterclockwise"
             android:title="History" />
     </group>
@@ -26,7 +26,7 @@
     <item android:title="Setting">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_setting"
                 android:icon="@drawable/settingsgears"
                 android:title="Setting" />
 
