@@ -51,5 +51,4 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-firestore:4.3.1'
     implementation 'com.firebaseui:firebase-ui-auth-github:4.3.1'
     implementation 'com.firebaseui:firebase-ui-storage:4.3.1'
-    implementation 'com.afollestad:drag-select-recyclerview:2.3.0'
 }

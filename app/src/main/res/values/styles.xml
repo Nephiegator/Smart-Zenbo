@@ -50,4 +50,22 @@
         <item name="android:textColorSecondary">@color/mustas</item>
     </style>
 
+    
+    <style name="CalenderViewCustom" parent="Theme.AppCompat">
+        <item name="colorAccent">#5B94C5</item>
+        <item name="colorPrimary">@color/mustas</item>
+        <item name="android:textColorPrimary">@color/Black</item>
+    </style>
+
+    <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/Black</item>
+    </style>
+
+    <style name="CalenderViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+
+
+
 </resources>

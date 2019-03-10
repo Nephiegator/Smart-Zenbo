@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.github.clans.fab.FloatingActionButton;
@@ -29,20 +30,35 @@ import java.util.Locale;
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    CompactCalendarView compactcalendar;
-    private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM", Locale.getDefault());
-    private SimpleDateFormat dateFormatYear = new SimpleDateFormat("yyyy", Locale.getDefault());
+    //CompactCalendarView compactcalendar;
+    //private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM", Locale.getDefault());
+    //private SimpleDateFormat dateFormatYear = new SimpleDateFormat("yyyy", Locale.getDefault());
     BottomNavigationView bottomNavigationView;
+    CalendarView calendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //Tool Bar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //test
+        calendar = (CalendarView) findViewById(R.id.calendarView);
+
+        //Initialize calendar with date
+        Calendar currentCalendar = Calendar.getInstance(Locale.getDefault());
+
+        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayofMonth) {
+
+            }
+        });
+
+/* old
         final TextView yLabel = findViewById(R.id.yLabel);
         final TextView mLabel = findViewById(R.id.mLabel);
 
@@ -79,7 +95,9 @@ public class Home extends AppCompatActivity
                 yLabel.setText(dateFormatYear.format(firstDayOfNewMonth));
             }
         });
+        */
 
+        //Hamburger Bar
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

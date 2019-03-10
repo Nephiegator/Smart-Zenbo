@@ -220,6 +220,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
                             Toast.makeText(AddTask.this, "Added Successfully", Toast.LENGTH_SHORT).show();
+
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
