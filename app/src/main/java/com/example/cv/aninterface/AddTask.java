@@ -211,8 +211,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
             CollectionReference dbReminder = db.collection("Reminder");
 
             dbReminder reminder = new dbReminder(
-                    title, description, location, person,
-                    time
+                    title, description, location, person, time
             );
 
 
