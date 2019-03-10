@@ -61,7 +61,7 @@
         <item name="android:textColor">@color/Black</item>
     </style>
 
-    <style name="CalenderViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Medium">
+    <style name="CalenderViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">
         <item name="android:textColor">@color/grey</item>
     </style>
 
