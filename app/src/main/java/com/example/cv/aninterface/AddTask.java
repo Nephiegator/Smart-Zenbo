@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -33,7 +34,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
     private TextInputEditText txt_description;
     private TextView timeText;
 
-
+    private String TAG = "AddTask";
     private FirebaseFirestore db;
     private String yy, xx;
     private String time;
@@ -229,6 +230,27 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener {
                             Toast.makeText(AddTask.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
+
+            /*DocumentReference rmdDocumentRef = db.collection("Tasks").document("Reminder");
+
+            dbReminder reminder = new dbReminder(
+                    title, description, location, person, time
+            );
+
+            rmdDocumentRef.add(reminder)
+                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(AddTask.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });*/
         }
 
     }
