@@ -1,8 +1,7 @@
 package com.example.cv.aninterface;
 
-import android.content.Context;
+
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -16,8 +15,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CalendarView;
-import android.widget.TextView;
-import android.widget.Toast;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
@@ -178,7 +175,25 @@ public class Home extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
+        item.setChecked(true);
+        switch (item.getItemId()) {
+            case R.id.nav_profile:
+                Intent nav1 = new Intent(Home.this, Profile.class);
+                startActivity(nav1);
+                break;
+            case R.id.nav_task:
+                Intent nav2 = new Intent(Home.this, MainTask.class);
+                startActivity(nav2);
+                break;
+            case R.id.nav_plan:
+                Intent nav3 = new Intent(Home.this, MainListActivity.class);
+                startActivity(nav3);
+                break;
+            case R.id.nav_setting:
+                Intent nav4 = new Intent(Home.this, Setting.class);
+                startActivity(nav4);
+                break;
+        }
         return false;
     }
 
