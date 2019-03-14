@@ -29,14 +29,14 @@
             android:layout_marginStart="3dp"
             android:textSize="22dp"
             tools:text="text"
-            android:fontFamily="@font/eligiblesansregular"/>
+            android:fontFamily="@font/cloudlight"/>
 
         <TextView
             android:id="@+id/textView_desc_task"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15dp"
-            android:fontFamily="@font/eligiblesansregular"
+            android:fontFamily="@font/cloudlight"
             tools:text="text" />
 
         <TextView
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
             android:textSize="17dp"
-            android:fontFamily="@font/eligiblesansregular"
+            android:fontFamily="@font/cloudlight"
             tools:text="text" />
 
         <TextView
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
             android:textSize="17dp"
-            android:fontFamily="@font/eligiblesansregular"
+            android:fontFamily="@font/cloudlight"
             tools:text="text" />
 
     </LinearLayout>

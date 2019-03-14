@@ -16,6 +16,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:fontFamily="@font/eligiblesansbold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -30,11 +31,14 @@
             android:layout_marginTop="15dp">
 
             <android.support.design.widget.TextInputEditText
+                android:fontFamily="@font/eligiblesansregular"
                 android:id="@+id/userlogin"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Username"
-                android:textColor="@color/white" />
+                android:layout_height="45dp"
+                android:background="@drawable/roundbox_white"
+                android:hint="    Username"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -47,19 +51,24 @@
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Password"
+                android:layout_height="45dp"
+                android:background="@drawable/roundbox_white"
+                android:fontFamily="@font/eligiblesansregular"
+                android:hint="    Password"
                 android:inputType="textPassword"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="16dp" />
         </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/login"
+            android:fontFamily="@font/eligiblesansbold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="70dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="30dp"
             android:layout_marginRight="70dp"
+            android:backgroundTint="@color/two"
             android:background="@drawable/border"
             android:text="LOGIN" />
 
