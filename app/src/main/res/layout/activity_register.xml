@@ -16,6 +16,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:fontFamily="@font/eligiblesansbold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -24,16 +25,52 @@
             android:textColor="@color/white"
             android:textSize="30dp" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="170dp"
+                android:layout_height="match_parent">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/signup_fname"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/roundbox_white"
+                    android:hint="hint" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/signup_lname"
+                    android:layout_width="170dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/roundbox_white"
+                    android:hint="hint" />
+            </android.support.design.widget.TextInputLayout>
+
+
+        </LinearLayout>
+
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp">
 
             <android.support.design.widget.TextInputEditText
+                android:fontFamily="@font/eligiblesansregular"
+                android:textSize="16dp"
                 android:id="@+id/signup_email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/email"
+                android:layout_height="45dp"
+                android:background="@drawable/roundbox_white"
+                android:hint="    Email"
                 android:textColor="@color/white" />
         </android.support.design.widget.TextInputLayout>
 
@@ -47,8 +84,9 @@
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/signup_password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/password"
+                android:layout_height="45dp"
+                android:background="@drawable/roundbox_white"
+                android:hint="    Password"
                 android:inputType="textPassword"
                 android:textColor="@color/white" />
         </android.support.design.widget.TextInputLayout>
