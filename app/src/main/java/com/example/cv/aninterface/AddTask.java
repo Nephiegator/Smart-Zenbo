@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 
 import java.text.DateFormat;
@@ -34,6 +35,8 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
     private TextInputEditText txt_title;
     private TextInputEditText txt_description;
     private TextView timeTextView;
+    //private TextView txt_hour;
+    //private TextView txt_minute;
 
     private String TAG = "AddTask";
     private FirebaseFirestore db;
@@ -55,7 +58,9 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
 
         txt_title = findViewById(R.id.task_title);
         txt_description = findViewById(R.id.task_des);
-        timeTextView = findViewById(R.id.time_text);
+        timeTextView = findViewById(R.id.time_textview);
+        //txt_hour = findViewById(R.id.TextView_hour);
+        //txt_minute = findViewById(R.id.TextView_minute);
 
         Button Create = (Button) findViewById(R.id.create_btn);
         Create.setOnClickListener(this);
@@ -91,6 +96,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
         });
         spperson.setAdapter(spinnerArrayAdapter2);
         spperson.setOnItemSelectedListener(new MyOnItemSelectedListener());
+
     }
 
     private boolean validateInputs(String title, String description, String location, String person, String time) {
@@ -211,7 +217,6 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 
-
         Calendar c = Calendar.getInstance();
         c.set(Calendar.HOUR_OF_DAY, hourOfDay);
         c.set(Calendar.MINUTE, minute);
@@ -222,8 +227,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
     }
 
     private void updateTimeText(Calendar c) {
-        String timeText = "";
-        timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
+        String timeText = "" + DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
 
         timeTextView.setText(timeText);
     }
@@ -236,12 +240,18 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
         String time = timeTextView.getText().toString().trim();
 
 
+
         if (!validateInputs(title, description, location, person, time)) {
 
             CollectionReference dbReminder = db.collection("Reminder");
 
             dbReminder reminder = new dbReminder(
-                    title, description, location, person, time
+                    title,
+                    description,
+                    location,
+                    person,
+                    time
+
             );
 
 
@@ -283,7 +293,6 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
         }
 
     }
-
 
 
     @Override

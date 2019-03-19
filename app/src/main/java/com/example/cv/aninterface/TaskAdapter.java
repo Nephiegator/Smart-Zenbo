@@ -17,6 +17,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.remtaskViewHol
     private Context mCtx;
     private List<dbReminder> remtasklist;
 
+
     public TaskAdapter (Context mCtx, List<dbReminder> remtasklist) {
         this.mCtx = mCtx;
         this.remtasklist = remtasklist;
