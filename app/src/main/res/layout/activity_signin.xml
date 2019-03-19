@@ -38,7 +38,6 @@
                 android:background="@drawable/roundbox_white"
                 android:fontFamily="@font/eligiblesansregular"
                 android:hint="    Username"
-                android:textColor="@color/white"
                 android:textSize="16dp" />
         </android.support.design.widget.TextInputLayout>
 
@@ -57,7 +56,6 @@
                 android:fontFamily="@font/eligiblesansregular"
                 android:hint="    Password"
                 android:inputType="textPassword"
-                android:textColor="@color/white"
                 android:textSize="16dp" />
         </android.support.design.widget.TextInputLayout>
 

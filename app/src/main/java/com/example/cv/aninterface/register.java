@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,6 +26,7 @@ public class register extends AppCompatActivity implements View.OnClickListener 
     private Button buttonSignup;
     private EditText emailSignup;
     private EditText passwordSignup;
+    private TextView textViewSignup;
 
 
     @Override
@@ -41,7 +43,7 @@ public class register extends AppCompatActivity implements View.OnClickListener 
         firebaseAuth = FirebaseAuth.getInstance();
 
         buttonSignup.setOnClickListener(this);
-
+        textViewSignup.setOnClickListener(this);
 
     }
 
@@ -75,7 +77,13 @@ public class register extends AppCompatActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View view) {
-        registerUser();
+        if (view == buttonSignup)
+        {
+            registerUser();
+        }
+        if (view == textViewSignup) {
+            // will open login activity here
+        }
     }
 
 }
