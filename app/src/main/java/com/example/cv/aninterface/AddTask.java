@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 
 import java.text.DateFormat;
@@ -95,6 +96,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
         });
         spperson.setAdapter(spinnerArrayAdapter2);
         spperson.setOnItemSelectedListener(new MyOnItemSelectedListener());
+
     }
 
     private boolean validateInputs(String title, String description, String location, String person, String time) {
@@ -215,7 +217,6 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 
-
         Calendar c = Calendar.getInstance();
         c.set(Calendar.HOUR_OF_DAY, hourOfDay);
         c.set(Calendar.MINUTE, minute);
@@ -237,7 +238,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
         String location = xx;
         String person = yy;
         String time = timeTextView.getText().toString().trim();
-        //String hourOfDay =
+
 
 
         if (!validateInputs(title, description, location, person, time)) {
@@ -292,7 +293,6 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
         }
 
     }
-
 
 
     @Override

@@ -101,8 +101,6 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
                     }
                 });*/
 
-
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -130,7 +128,6 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
         getMenuInflater().inflate(R.menu.maintask_menu, menu);
         return true;
     }
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
