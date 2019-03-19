@@ -34,6 +34,8 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
     private TextInputEditText txt_title;
     private TextInputEditText txt_description;
     private TextView timeTextView;
+    //private TextView txt_hour;
+    //private TextView txt_minute;
 
     private String TAG = "AddTask";
     private FirebaseFirestore db;
@@ -55,7 +57,9 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
 
         txt_title = findViewById(R.id.task_title);
         txt_description = findViewById(R.id.task_des);
-        timeTextView = findViewById(R.id.time_text);
+        timeTextView = findViewById(R.id.time_textview);
+        //txt_hour = findViewById(R.id.TextView_hour);
+        //txt_minute = findViewById(R.id.TextView_minute);
 
         Button Create = (Button) findViewById(R.id.create_btn);
         Create.setOnClickListener(this);
@@ -222,8 +226,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
     }
 
     private void updateTimeText(Calendar c) {
-        String timeText = "";
-        timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
+        String timeText = "" + DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
 
         timeTextView.setText(timeText);
     }
@@ -234,6 +237,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
         String location = xx;
         String person = yy;
         String time = timeTextView.getText().toString().trim();
+        //String hourOfDay =
 
 
         if (!validateInputs(title, description, location, person, time)) {
@@ -241,7 +245,12 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
             CollectionReference dbReminder = db.collection("Reminder");
 
             dbReminder reminder = new dbReminder(
-                    title, description, location, person, time
+                    title,
+                    description,
+                    location,
+                    person,
+                    time
+
             );
 
 

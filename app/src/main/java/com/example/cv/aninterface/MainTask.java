@@ -33,7 +33,7 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
     private RecyclerView recyclerView;
     private TaskAdapter adapter1, adapter2;
     private List<dbReminder> remtasklist;
-    private List<dbReminder> apptasklist;
+    //private List<dbReminder> apptasklist;
 
     private FirebaseFirestore db;
 
@@ -56,14 +56,14 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
         int numberOfColumns = 2;
         recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
 
-        apptasklist = new ArrayList<>();
-        adapter1 = new TaskAdapter(this, apptasklist);
+        //apptasklist = new ArrayList<>();
+        //adapter2 = new TaskAdapter(this, apptasklist);
 
         remtasklist = new ArrayList<>();
-        adapter2 = new TaskAdapter(this, remtasklist);
+        adapter1 = new TaskAdapter(this, remtasklist);
 
         recyclerView.setAdapter(adapter1);
-        recyclerView.setAdapter(adapter2);
+        //recyclerView.setAdapter(adapter2);
 
 
         db = FirebaseFirestore.getInstance();
@@ -83,7 +83,7 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
                         }
                     }
                 });
-
+        /*
         db.collection("Appointment").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -99,7 +99,7 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
                             adapter2.notifyDataSetChanged();
                         }
                     }
-                });
+                });*/
 
 
 

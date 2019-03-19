@@ -17,8 +17,10 @@ public class dbReminder implements Serializable {
     private String desc;
     private String inLocation;
     private String ObjPerson;
-    private String time;
+    //private int hourOfDay;
+    //private int minute;
     private boolean isSelected;
+    private String time;
 
 
     public dbReminder(String title, String desc, String inLocation, String objPerson, String time) {
@@ -26,6 +28,8 @@ public class dbReminder implements Serializable {
         this.desc = desc;
         this.inLocation = inLocation;
         this.ObjPerson = objPerson;
+        //.hourOfDay = hourOfDay;
+        //this.minute = minute;
         this.time = time;
     }
 
@@ -91,4 +95,21 @@ public class dbReminder implements Serializable {
     public void setTime(String time) {
         this.time = time;
     }
+
+    /*
+    public int getHourOfDay() {
+        return hourOfDay;
+    }
+
+    public void setHourOfDay(int hourOfDay) {
+        this.hourOfDay = hourOfDay;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
+
+    public void setMinute(int minute) {
+        this.minute = minute;
+    }*/
 }
