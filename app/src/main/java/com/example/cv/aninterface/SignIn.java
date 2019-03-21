@@ -39,12 +39,15 @@ public class SignIn extends AppCompatActivity {
     private LoginButton loginButton;
     private EditText iEmail, iPassword;
     private Button Loginbtn;
+    private EditText editTextPassword;
+    private EditText editTextEmail;
     private static final String TAG = "SignIn";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
+
         //txtUser = (TextView) findViewById(R.id.txtUser);
         /* txtEmail = (TextView) findViewById(R.id.txtEmail);
         //imgProfile = (ImageView) findViewById(R.id.imgProfile);

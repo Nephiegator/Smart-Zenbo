@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../ZenboSDK/ZenboSDK.iml" filepath="$PROJECT_DIR$/../ZenboSDK/ZenboSDK.iml" />
       <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/../interface.iml" filepath="$PROJECT_DIR$/../interface.iml" />
     </modules>
