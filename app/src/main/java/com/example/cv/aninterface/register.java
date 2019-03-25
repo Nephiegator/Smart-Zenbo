@@ -26,6 +26,8 @@ public class register extends AppCompatActivity implements View.OnClickListener 
     private Button buttonSignup;
     private EditText emailSignup;
     private EditText passwordSignup;
+    private EditText FNameSignup;
+    private EditText LNameSignup;
     private TextView textViewSignup;
 
 
@@ -39,6 +41,8 @@ public class register extends AppCompatActivity implements View.OnClickListener 
         buttonSignup = (Button) findViewById(R.id.signup_btn);
         emailSignup = (EditText) findViewById(R.id.signup_email);
         passwordSignup = (EditText) findViewById(R.id.signup_password);
+        FNameSignup = (EditText) findViewById(R.id.signup_fname);
+        LNameSignup = (EditText) findViewById(R.id.signup_lname);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -51,6 +55,8 @@ public class register extends AppCompatActivity implements View.OnClickListener 
 
         String email = emailSignup.getText().toString().trim();
         String pass = passwordSignup.getText().toString().trim();
+        String fname = FNameSignup.getText().toString().trim();
+        String lname = LNameSignup.getText().toString().trim();
 
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(this, "Please enter your email", Toast.LENGTH_LONG).show();
@@ -59,6 +65,16 @@ public class register extends AppCompatActivity implements View.OnClickListener 
 
         if (TextUtils.isEmpty(pass)) {
             Toast.makeText(this, "Please enter your password", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (TextUtils.isEmpty(fname)) {
+            Toast.makeText(this, "Please enter your First Name", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (TextUtils.isEmpty(lname)) {
+            Toast.makeText(this, "Please enter your First Name", Toast.LENGTH_SHORT).show();
             return;
         }
 
