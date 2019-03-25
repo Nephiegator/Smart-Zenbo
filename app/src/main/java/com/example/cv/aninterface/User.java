@@ -9,4 +9,20 @@ public class User {
         this.fname = fname;
         this.lname = lname;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public String getFname() {
+        return fname;
+    }
+
+    public String getLname() {
+        return lname;
+    }
 }
