@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -25,10 +26,10 @@ public class register extends AppCompatActivity implements View.OnClickListener 
 
     private FirebaseAuth firebaseAuth;
     private Button buttonSignup;
-    private EditText emailSignup;
-    private EditText passwordSignup;
-    private EditText FNameSignup;
-    private EditText LNameSignup;
+    private TextInputEditText emailSignup;
+    private TextInputEditText passwordSignup;
+    private TextInputEditText FNameSignup;
+    private TextInputEditText LNameSignup;
     private TextView textViewSignup;
 
     @Override
@@ -44,10 +45,10 @@ public class register extends AppCompatActivity implements View.OnClickListener 
         setSupportActionBar(toolbar);
 
         buttonSignup = (Button) findViewById(R.id.signup_btn);
-        emailSignup = (EditText) findViewById(R.id.signup_email);
-        passwordSignup = (EditText) findViewById(R.id.signup_password);
-        FNameSignup = (EditText) findViewById(R.id.signup_fname);
-        LNameSignup = (EditText) findViewById(R.id.signup_lname);
+        emailSignup = findViewById(R.id.signup_email);
+        passwordSignup = findViewById(R.id.signup_password);
+        FNameSignup =  findViewById(R.id.signup_fname);
+        LNameSignup =  findViewById(R.id.signup_lname);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
