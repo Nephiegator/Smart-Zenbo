@@ -19,6 +19,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class register extends AppCompatActivity implements View.OnClickListener {
 
@@ -30,10 +31,14 @@ public class register extends AppCompatActivity implements View.OnClickListener 
     private EditText LNameSignup;
     private TextView textViewSignup;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if(firebaseAuth.getCurrentUser() != null){
+
+        }
+
         setContentView(R.layout.activity_register);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -53,10 +58,10 @@ public class register extends AppCompatActivity implements View.OnClickListener 
 
     private void registerUser() {
 
-        String email = emailSignup.getText().toString().trim();
-        String pass = passwordSignup.getText().toString().trim();
-        String fname = FNameSignup.getText().toString().trim();
-        String lname = LNameSignup.getText().toString().trim();
+        final String email = emailSignup.getText().toString().trim();
+        final String pass = passwordSignup.getText().toString().trim();
+        final String fname = FNameSignup.getText().toString().trim();
+        final String lname = LNameSignup.getText().toString().trim();
 
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(this, "Please enter your email", Toast.LENGTH_LONG).show();
@@ -79,10 +84,28 @@ public class register extends AppCompatActivity implements View.OnClickListener 
         }
 
         firebaseAuth.createUserWithEmailAndPassword(email, pass)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+
+                            User user = new User(
+                                    email,
+                                    pass,
+                                    fname,
+                                    lname
+                            );
+
+                            FirebaseDatabase.getInstance().getReference("Users")
+                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()){
+                                        Toast.makeText(register.this, "Successfully registered.", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+
                             Toast.makeText(register.this, "Successfully registered.", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(register.this, "Error occurred, please try again.", Toast.LENGTH_SHORT).show();
