@@ -10,6 +10,8 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,11 +19,15 @@ import android.view.View;
 import android.widget.CalendarView;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
-import com.github.sundeepk.compactcalendarview.CompactCalendarView;
-import com.github.sundeepk.compactcalendarview.domain.Event;
-import java.text.SimpleDateFormat;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class Home extends AppCompatActivity
@@ -32,6 +38,10 @@ public class Home extends AppCompatActivity
     //private SimpleDateFormat dateFormatYear = new SimpleDateFormat("yyyy", Locale.getDefault());
     BottomNavigationView bottomNavigationView;
     CalendarView calendar;
+    private FirebaseFirestore db;
+    private List<dbReminder> comingtasklist;
+    private UpcomingAdapter adapter1;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +65,33 @@ public class Home extends AppCompatActivity
             }
         });
 
+        //upcoming tasks
+        recyclerView = findViewById(R.id.recyclerComingTask);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        comingtasklist = new ArrayList<>();
+        adapter1 = new UpcomingAdapter(this, comingtasklist);
+        //adapter1 = new TaskAdapter(this, comingtasklist);
+        recyclerView.setAdapter(adapter1);
+
+        db = FirebaseFirestore.getInstance();
+        db.collection("Reminder").get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if (!queryDocumentSnapshots.isEmpty()) {
+                            List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+
+                            for (DocumentSnapshot d : list) {
+                                dbReminder p = d.toObject(dbReminder.class);
+                                p.setId(d.getId());
+                                comingtasklist.add(p);
+                            }
+                            adapter1.notifyDataSetChanged();
+                        }
+                    }
+                });
 /* old
         final TextView yLabel = findViewById(R.id.yLabel);
         final TextView mLabel = findViewById(R.id.mLabel);

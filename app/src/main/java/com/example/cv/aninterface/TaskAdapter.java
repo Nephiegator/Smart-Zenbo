@@ -41,6 +41,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.remtaskViewHol
         holder.textViewDecs.setText("   "+reminder.getDesc());
         holder.textViewLoc.setText("At room: " + reminder.getInLocation());
         holder.textViewPer.setText("To: " + reminder.getObjPerson());
+        holder.textViewTime.setText("Time: " + reminder.getTime());
 
     }
 
@@ -50,7 +51,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.remtaskViewHol
     }
 
     class remtaskViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        TextView textViewTitle, textViewDecs, textViewLoc, textViewPer;
+        TextView textViewTitle, textViewDecs, textViewLoc, textViewPer, textViewTime;
 
 
         public remtaskViewHolder(View itemView) {
@@ -60,6 +61,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.remtaskViewHol
             textViewDecs = itemView.findViewById(R.id.textView_desc_task);
             textViewLoc = itemView.findViewById(R.id.textView_loc_task);
             textViewPer = itemView.findViewById(R.id.textView_per_task);
+            textViewTime = itemView.findViewById(R.id.textView_time_task);
 
             itemView.setOnClickListener(this);
 

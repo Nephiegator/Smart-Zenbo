@@ -39,6 +39,7 @@
 
     </LinearLayout>
 
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -50,9 +51,27 @@
         android:textColor="@color/white"
         android:layout_marginTop="15dp"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="15dp"/>
+        android:layout_marginEnd="20dp"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerComingTask"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/home_list_item">
+
+    </android.support.v7.widget.RecyclerView>
+    </ScrollView>
 
 </LinearLayout>
+
 
     <!-- //////// old design /////////////
     <LinearLayout
@@ -106,22 +125,7 @@
     </com.github.sundeepk.compactcalendarview.CompactCalendarView>
         -->
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_marginTop="500dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:fontFamily="@font/eligiblesansregular">
-
-
-        </LinearLayout>
-    </ScrollView>
 
     <!--<include
         android:id="@+id/navigation"
