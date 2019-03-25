@@ -32,18 +32,11 @@ public class register extends AppCompatActivity implements View.OnClickListener 
     private TextInputEditText FNameSignup;
     private TextInputEditText LNameSignup;
     private TextView textViewSignup;
-    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-
-        db = FirebaseFirestore.getInstance();
-
-        if(firebaseAuth.getCurrentUser() != null){
-
-        }
-
         setContentView(R.layout.activity_register);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -57,7 +50,6 @@ public class register extends AppCompatActivity implements View.OnClickListener 
         firebaseAuth = FirebaseAuth.getInstance();
 
         buttonSignup.setOnClickListener(this);
-        textViewSignup.setOnClickListener(this);
 
     }
 
@@ -100,7 +92,7 @@ public class register extends AppCompatActivity implements View.OnClickListener 
                                     lname
                             );
 
-                            FirebaseDatabase.getInstance().getReference("Users")
+                            FirebaseDatabase.getInstance().getReference("User")
                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                             .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
