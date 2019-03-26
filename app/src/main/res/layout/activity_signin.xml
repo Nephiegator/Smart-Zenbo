@@ -69,7 +69,7 @@
             android:background="@drawable/border"
             android:backgroundTint="@color/two"
             android:fontFamily="@font/eligiblesansbold"
-            android:text="SIGN UP" />
+            android:text="SIGN IN" />
 
         <com.facebook.login.widget.LoginButton
             android:id="@+id/login_fb_btn"

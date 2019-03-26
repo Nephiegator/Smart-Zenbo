@@ -162,11 +162,11 @@ public class SignIn extends AppCompatActivity {
                     onLoginSuccess();
                     Intent myIntent = new Intent(SignIn.this,Home.class);
                     SignIn.this.startActivity(myIntent);
-                } else {
+                } /*else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                     toastMessage("Successfully signed out.");
-                }
+                }*/
                 // ...
             }
         };

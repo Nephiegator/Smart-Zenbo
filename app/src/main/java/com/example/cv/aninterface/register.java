@@ -1,5 +1,6 @@
 package com.example.cv.aninterface;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.support.annotation.NonNull;
@@ -32,6 +33,7 @@ public class register extends AppCompatActivity implements View.OnClickListener 
     private TextInputEditText FNameSignup;
     private TextInputEditText LNameSignup;
     private TextView textViewSignup;
+    private TextView textViewLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ public class register extends AppCompatActivity implements View.OnClickListener 
         FNameSignup =  findViewById(R.id.signup_fname);
         LNameSignup =  findViewById(R.id.signup_lname);
 
+        textViewLogin = findViewById(R.id.textViewLogin);
         firebaseAuth = FirebaseAuth.getInstance();
 
         buttonSignup.setOnClickListener(this);
@@ -116,10 +119,20 @@ public class register extends AppCompatActivity implements View.OnClickListener 
         if (view == buttonSignup)
         {
             registerUser();
+            Intent a3 = new Intent(register.this, Home.class);
+            startActivity(a3);
+        }
+        if (view == textViewLogin) {
+            // will open login activity here
+            /*Intent login = new Intent(register.this, SignIn.class);
+            startActivity(login);*/
+            startActivity(new Intent(this, SignIn.class));
         }
         if (view == textViewSignup) {
             // will open login activity here
+
         }
+
     }
 
 }

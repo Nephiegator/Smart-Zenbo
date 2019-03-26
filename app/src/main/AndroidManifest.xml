@@ -22,11 +22,13 @@
             android:name=".register"
             android:label="@string/title_activity_register"
             android:theme="@style/NoActionBar">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
         </activity>
 
         <meta-data
@@ -56,9 +58,12 @@
             android:label="@string/title_activity_login"
             android:launchMode="singleTop"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+
         </activity>
 
         <activity android:name=".SignIn">
+
 
         </activity>
 
