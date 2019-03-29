@@ -34,6 +34,8 @@ public class register extends AppCompatActivity implements View.OnClickListener 
     private TextInputEditText LNameSignup;
     private TextView textViewSignup;
     private TextView textViewLogin;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,8 @@ public class register extends AppCompatActivity implements View.OnClickListener 
         firebaseAuth = FirebaseAuth.getInstance();
 
         buttonSignup.setOnClickListener(this);
+
+        mAuth = FirebaseAuth.getInstance();
 
     }
 

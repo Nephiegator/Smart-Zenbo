@@ -20,6 +20,7 @@ import android.widget.CalendarView;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -42,6 +43,8 @@ public class Home extends AppCompatActivity
     private List<dbReminder> comingtasklist;
     private UpcomingAdapter adapter1;
     private RecyclerView recyclerView;
+    FirebaseAuth mAuth;
+    FirebaseAuth.AuthStateListener mAuthListner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +67,8 @@ public class Home extends AppCompatActivity
 
             }
         });
+
+        mAuth = FirebaseAuth.getInstance();
 
         //upcoming tasks
         recyclerView = findViewById(R.id.recyclerComingTask);
@@ -92,6 +97,8 @@ public class Home extends AppCompatActivity
                         }
                     }
                 });
+
+
 /* old
         final TextView yLabel = findViewById(R.id.yLabel);
         final TextView mLabel = findViewById(R.id.mLabel);
@@ -130,6 +137,16 @@ public class Home extends AppCompatActivity
             }
         });
         */
+        mAuthListner = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if (firebaseAuth.getCurrentUser()==null)
+                {
+                    startActivity(new Intent(Home.this, SignIn.class));
+                }
+            }
+        };
+        mAuth.addAuthStateListener(mAuthListner);
 
         //Hamburger Bar
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -269,4 +286,10 @@ public class Home extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }*/
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListner);
+    }
+
 }
