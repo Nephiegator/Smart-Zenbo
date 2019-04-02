@@ -22,6 +22,10 @@ public class User {
         return fname;
     }
 
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
     public String getLname() {
         return lname;
     }

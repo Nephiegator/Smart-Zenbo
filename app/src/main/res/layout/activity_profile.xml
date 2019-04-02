@@ -51,7 +51,7 @@
 
                 <TextView
                     android:fontFamily="@fonts/eligiblesansregular"
-                    android:id="@+id/textView26"
+                    android:id="@+id/textViewUserName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
