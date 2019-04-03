@@ -21,6 +21,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -45,7 +46,7 @@ public class register extends AppCompatActivity implements View.OnClickListener 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        buttonSignup = (Button) findViewById(R.id.signup_btn);
+        buttonSignup = findViewById(R.id.signup_btn);
         emailSignup = findViewById(R.id.signup_email);
         passwordSignup = findViewById(R.id.signup_password);
         FNameSignup =  findViewById(R.id.signup_fname);

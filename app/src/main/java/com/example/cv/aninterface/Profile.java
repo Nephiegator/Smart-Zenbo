@@ -1,8 +1,11 @@
 package com.example.cv.aninterface;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -11,6 +14,9 @@ import com.google.firebase.auth.UserInfo;
 
 public class Profile extends AppCompatActivity {
 
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener firebaseAuthListener;
+
     private TextView textView_username;
 
     @Override
@@ -18,10 +24,19 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        mAuth = FirebaseAuth.getInstance();
 
+        firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                Intent intent = new Intent(Profile.this, Home.class);
+                startActivity(intent);
+                finish();
+                return;
+            }
+        };
 
         textView_username = findViewById(R.id.textViewUserName);
-
 
         getUserProfile();
 
@@ -47,6 +62,7 @@ public class Profile extends AppCompatActivity {
 
             String email = user.getEmail();
             Uri photoUrl = user.getPhotoUrl();
+            textView_username.setText(email);
 
             // Check if user's email is verified
             boolean emailVerified = user.isEmailVerified();
