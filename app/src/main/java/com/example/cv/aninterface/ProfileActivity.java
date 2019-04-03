@@ -1,5 +1,6 @@
 package com.example.cv.aninterface;
 
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -14,6 +15,15 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private TextView email_profile;
 
     private DatabaseReference databaseReference;
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_profile);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        //https://www.youtube.com/watch?v=NjTs4lMkRM4
+    }
 
     @Override
     public void onClick(View v) {
