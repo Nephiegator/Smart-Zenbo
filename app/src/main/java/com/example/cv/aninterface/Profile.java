@@ -27,6 +27,16 @@ public class Profile extends AppCompatActivity {
 
     }
 
+    public void checkCurrentUser() {
+        // [START check_current_user]
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // User is signed in
+        } else {
+            // No user is signed in
+        }
+        // [END check_current_user]
+    }
 
     public void getUserProfile() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
