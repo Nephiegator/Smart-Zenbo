@@ -1,13 +1,11 @@
 package com.example.cv.aninterface;
 
 public class User {
-    public String email, pass, fname, lname;
+    public String email, pass;
 
-    public User(String email, String pass, String fname, String lname) {
+    public User(String email, String pass) {
         this.email = email;
         this.pass = pass;
-        this.fname = fname;
-        this.lname = lname;
     }
 
     public String getEmail() {
@@ -18,15 +16,4 @@ public class User {
         return pass;
     }
 
-    public String getFname() {
-        return fname;
-    }
-
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
-
-    public String getLname() {
-        return lname;
-    }
 }

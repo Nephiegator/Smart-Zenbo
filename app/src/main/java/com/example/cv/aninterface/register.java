@@ -31,9 +31,6 @@ public class register extends AppCompatActivity implements View.OnClickListener 
     private Button buttonSignup;
     private TextInputEditText emailSignup;
     private TextInputEditText passwordSignup;
-    private TextInputEditText FNameSignup;
-    private TextInputEditText LNameSignup;
-    private TextView textViewSignup;
     private TextView textViewLogin;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseAuth mAuth;
@@ -49,8 +46,6 @@ public class register extends AppCompatActivity implements View.OnClickListener 
         buttonSignup = findViewById(R.id.signup_btn);
         emailSignup = findViewById(R.id.signup_email);
         passwordSignup = findViewById(R.id.signup_password);
-        FNameSignup =  findViewById(R.id.signup_fname);
-        LNameSignup =  findViewById(R.id.signup_lname);
 
         textViewLogin = findViewById(R.id.textViewLogin);
         firebaseAuth = FirebaseAuth.getInstance();
@@ -65,8 +60,6 @@ public class register extends AppCompatActivity implements View.OnClickListener 
 
         final String email = emailSignup.getText().toString().trim();
         final String pass = passwordSignup.getText().toString().trim();
-        final String fname = FNameSignup.getText().toString().trim();
-        final String lname = LNameSignup.getText().toString().trim();
 
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(this, "Please enter your email", Toast.LENGTH_LONG).show();
@@ -78,16 +71,6 @@ public class register extends AppCompatActivity implements View.OnClickListener 
             return;
         }
 
-        if (TextUtils.isEmpty(fname)) {
-            Toast.makeText(this, "Please enter your First Name", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if (TextUtils.isEmpty(lname)) {
-            Toast.makeText(this, "Please enter your First Name", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
         firebaseAuth.createUserWithEmailAndPassword(email, pass)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -95,9 +78,7 @@ public class register extends AppCompatActivity implements View.OnClickListener 
 
                             User user = new User(
                                     email,
-                                    pass,
-                                    fname,
-                                    lname
+                                    pass
                             );
 
                             FirebaseDatabase.getInstance().getReference("User")
@@ -132,10 +113,6 @@ public class register extends AppCompatActivity implements View.OnClickListener 
             /*Intent login = new Intent(register.this, SignIn.class);
             startActivity(login);*/
             startActivity(new Intent(this, SignIn.class));
-        }
-        if (view == textViewSignup) {
-            // will open login activity here
-
         }
 
     }
