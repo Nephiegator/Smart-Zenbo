@@ -124,7 +124,7 @@ public class register extends AppCompatActivity implements View.OnClickListener 
         if (view == buttonSignup)
         {
             registerUser();
-            Intent a3 = new Intent(register.this, Home.class);
+            Intent a3 = new Intent(register.this, ProfileActivity.class);
             startActivity(a3);
         }
         if (view == textViewLogin) {

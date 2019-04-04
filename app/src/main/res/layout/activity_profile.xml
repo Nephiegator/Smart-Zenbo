@@ -70,49 +70,49 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp">
 
-                <TextView
-                    android:fontFamily="@fonts/eligiblesansregular"
-                    android:id="@+id/email_profile"
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/fname_profile"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Email: " />
-
-                <TextView
                     android:fontFamily="@fonts/eligiblesansregular"
-                    android:id="@+id/phone_profile"
+                    android:text="First Name" />
+
+                <android.support.design.widget.TextInputEditText
+                    android:fontFamily="@fonts/eligiblesansregular"
+                    android:id="@+id/lname_profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Phone: " />
+                    android:text="Last Name" />
             </LinearLayout>
 
-            <TextView
+            <android.support.design.widget.TextInputEditText
                 android:fontFamily="@fonts/eligiblesansregular"
-                android:id="@+id/text1_profile"
+                android:id="@+id/email_profile"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="Email:" />
 
-            <TextView
+            <android.support.design.widget.TextInputEditText
                 android:fontFamily="@fonts/eligiblesansregular"
-                android:id="@+id/text2_profile"
+                android:id="@+id/phone_profile"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:text="TextView" />
+                android:text="Phone:" />
 
             <Button
-                android:id="@+id/button_profile"
+                android:id="@+id/save_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:text="Save" />
 
 
         </LinearLayout>

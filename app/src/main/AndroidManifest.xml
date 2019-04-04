@@ -71,6 +71,9 @@
             android:name=".AddTask"
             android:label="New Task" />
         <activity
+            android:name=".ProfileActivity"
+            android:label="Save Information" />
+        <activity
             android:name=".AddTaskMed"
             android:label="Take A Pill" />
         <activity
