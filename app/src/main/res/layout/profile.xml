@@ -72,7 +72,7 @@
 
                 <TextView
                     android:fontFamily="@fonts/eligiblesansregular"
-                    android:id="@+id/textView31"
+                    android:id="@+id/view_fname"
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
 
                 <TextView
                     android:fontFamily="@fonts/eligiblesansregular"
-                    android:id="@+id/textView32"
+                    android:id="@+id/view_lname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -90,23 +90,23 @@
 
             <TextView
                 android:fontFamily="@fonts/eligiblesansregular"
-                android:id="@+id/textView33"
+                android:id="@+id/view_email"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="Email: " />
 
             <TextView
                 android:fontFamily="@fonts/eligiblesansregular"
-                android:id="@+id/textView34"
+                android:id="@+id/view_phone"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:text="TextView" />
+                android:text="Phone: " />
 
 
         </LinearLayout>

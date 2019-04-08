@@ -1,22 +1,29 @@
 package com.example.cv.aninterface;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Profile extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
 
-    private TextView textView_username;
+    private ArrayList<String> xx;
+    private TextView view_email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,33 +42,26 @@ public class Profile extends AppCompatActivity {
             }
         };
 
-        textView_username = findViewById(R.id.textViewUserName);
+        view_email = findViewById(R.id.view_email);
 
         getUserProfile();
 
     }
 
-    public void checkCurrentUser() {
-        // [START check_current_user]
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            // User is signed in
-        } else {
-            // No user is signed in
-        }
-        // [END check_current_user]
-    }
 
     public void getUserProfile() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             // Name, email address, and profile photo Url
-            textView_username.setText(user.getDisplayName());
+//            dbUserInformation dbProfile = xx;
+//            view_email.setText(dbProfile.getemail());
+
+            dbUserInformation xx = new dbUserInformation();
+            System.out.println(xx.getemail());
 
 
-            String email = user.getEmail();
-            Uri photoUrl = user.getPhotoUrl();
-            textView_username.setText(email);
+
+
 
             // Check if user's email is verified
             boolean emailVerified = user.isEmailVerified();
@@ -69,7 +69,6 @@ public class Profile extends AppCompatActivity {
             // The user's ID, unique to the Firebase project. Do NOT use this value to
             // authenticate with your backend server, if you have one. Use
             // FirebaseUser.getIdToken() instead.
-            String uid = user.getUid();
         }
         // [END get_user_profile]
     }

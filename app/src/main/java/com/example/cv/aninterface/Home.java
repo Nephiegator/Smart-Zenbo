@@ -243,8 +243,10 @@ public class Home extends AppCompatActivity
                 Intent nav3 = new Intent(Home.this, MainListActivity.class);
                 startActivity(nav3);
                 break;
-            case R.id.nav_setting:
-                Intent nav4 = new Intent(Home.this, Setting.class);
+            case R.id.nav_logout:
+                mAuth.signOut();
+                finish();
+                Intent nav4 = new Intent(Home.this, SignIn.class);
                 startActivity(nav4);
                 break;
         }
