@@ -3,6 +3,8 @@ package com.example.cv.aninterface;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -11,10 +13,15 @@ import android.widget.Toast;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class AddTaskMed extends AppCompatActivity {
+public class AddTaskMed extends AppCompatActivity  {
 
     private TextInputEditText txt_title;
     private TextInputEditText txt_description;
+    RadioGroup r1, r2;
+    RadioButton bf, at;
+    private String sBefore, sAfter;
+    private String one_tab, two_tab, thee_tab;
+    private String yy, xx;
 
     private FirebaseFirestore db;
 
@@ -27,38 +34,35 @@ public class AddTaskMed extends AppCompatActivity {
         txt_title = findViewById(R.id.task_title);
         txt_description = findViewById(R.id.task_des);
 
-        //Spinner (Drop Down List
-        Spinner mySpinner1 = (Spinner) findViewById(R.id.inLocation);
-        Spinner mySpinner2 = (Spinner) findViewById(R.id.ObjPerson);
-
-        ArrayAdapter<String> myAdapter1 = new ArrayAdapter<String>(AddTaskMed.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.inLocation));
-        myAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mySpinner1.setAdapter(myAdapter1);
-
-        ArrayAdapter<String> myAdapter2 = new ArrayAdapter<String>(AddTaskMed.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.ObjPerson));
-        myAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mySpinner2.setAdapter(myAdapter2);
-
         //header Navigation Bar
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //Radio button
-        RadioGroup radio_g1 = (RadioGroup) findViewById(R.id.radio_g1);
-        radio_g1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
 
-            }
+        Spinner splocation = (Spinner) findViewById(R.id.inLocation);
+        Spinner spperson = (Spinner) findViewById(R.id.ObjPerson);
+
+        //Spinner method to read the selected value
+        ArrayAdapter<AddTaskMed.State1> spinnerArrayAdapter1 = new ArrayAdapter<AddTaskMed.State1> (this,
+                android.R.layout.simple_spinner_item, new AddTaskMed.State1[] {
+                new AddTaskMed.State1("None"),
+                new AddTaskMed.State1("Bedroom"),
+                new AddTaskMed.State1("Kitchen"),
         });
+        splocation.setAdapter(spinnerArrayAdapter1);
+        splocation.setOnItemSelectedListener(new AddTaskMed.MyOnItemSelectedListener());
 
-        RadioGroup radio_g2 = (RadioGroup) findViewById(R.id.radio_g2);
-        radio_g2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-            }
+        ArrayAdapter<AddTaskMed.State2> spinnerArrayAdapter2 = new ArrayAdapter<AddTaskMed.State2> (this,
+                android.R.layout.simple_spinner_item, new AddTaskMed.State2[] {
+                new AddTaskMed.State2("None"),
+                new AddTaskMed.State2("Johnny"),
+                new AddTaskMed.State2("Irene"),
+                new AddTaskMed.State2("Wendy")
         });
+        spperson.setAdapter(spinnerArrayAdapter2);
+        spperson.setOnItemSelectedListener(new AddTaskMed.MyOnItemSelectedListener());
+
+
     }
 
     private boolean validateInputs(String title, String description, String location, String person){
@@ -108,6 +112,34 @@ public class AddTaskMed extends AppCompatActivity {
         public String toString() {
             return name;
         }
+    }
+
+    public class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListener {
+
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            switch (parent.getId()) {
+                case R.id.inLocation:
+                    xx = parent.getItemAtPosition(position).toString();
+                    break;
+                case R.id.ObjPerson:
+                    yy = parent.getItemAtPosition(position).toString();
+                    break;
+            }
+
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    }
+
+    public void creatTask() {
+        String title = txt_title.getText().toString().trim();
+        String description = txt_description.getText().toString().trim();
+        String location = xx;
+        String person = yy;
+        String period = sBefore;
     }
 
 }

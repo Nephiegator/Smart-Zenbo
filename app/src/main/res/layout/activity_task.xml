@@ -186,36 +186,30 @@
              android:layout_marginTop="15dp"
              android:layout_gravity="center">
 
-             <ImageView
-                 android:layout_width="23dp"
-                 android:layout_height="23dp"
-                 android:layout_marginLeft="15dp"
-                 android:layout_marginTop="15dp"
-                 android:src="@drawable/ic_time"
-                 android:tint="#969696" />
 
              <Button
                  android:id="@+id/time_set_btn"
-                 android:layout_width="40dp"
+                 android:layout_width="7dp"
                  android:layout_height="wrap_content"
                  android:layout_gravity="left"
-                 android:layout_marginTop="15dp"
                  android:layout_marginStart="20dp"
+                 android:layout_marginLeft="15dp"
+                 android:layout_marginTop="15dp"
                  android:layout_weight="1"
                  android:background="@drawable/border"
-                 android:text="@string/set_time"
-                />
+                 android:text="@string/set_time" />
+
+
 
              <TextView
                  android:id="@+id/time_textview"
                  android:layout_width="0dp"
                  android:layout_height="wrap_content"
-                 android:layout_weight="1"
-                 android:textSize="16dp"
                  android:layout_marginTop="15dp"
                  android:layout_marginStart="20dp"
-                 android:textStyle="bold"
-                 />
+                 android:layout_weight="1"
+                 android:textSize="16dp"
+                 android:textStyle="bold" />
 
              <!--
              <TextView
