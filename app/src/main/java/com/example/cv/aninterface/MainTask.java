@@ -33,7 +33,6 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
     private RecyclerView recyclerView;
     private TaskAdapter adapter1, adapter2;
     private List<dbReminder> remtasklist;
-    //private List<dbReminder> apptasklist;
 
     private FirebaseFirestore db;
 

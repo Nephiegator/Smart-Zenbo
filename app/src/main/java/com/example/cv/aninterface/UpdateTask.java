@@ -90,8 +90,6 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
             return true;
         }
         if (location.isEmpty()){
-
-
             return false;
         }
         if (person.isEmpty()){
