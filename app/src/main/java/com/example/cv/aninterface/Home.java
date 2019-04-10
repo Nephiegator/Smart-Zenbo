@@ -98,7 +98,7 @@ public class Home extends AppCompatActivity
                     }
                 });
 
-        
+
         mAuthListner = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {

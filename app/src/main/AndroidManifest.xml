@@ -74,12 +74,6 @@
             android:name=".ProfileActivity"
             android:label="Save Information" />
         <activity
-            android:name=".AddTaskMed"
-            android:label="Take A Pill" />
-        <activity
-            android:name=".AddTaskApm"
-            android:label="New Appointment" />
-        <activity
             android:name=".MainListActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".Home"
