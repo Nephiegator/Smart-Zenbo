@@ -176,7 +176,9 @@ public class Home extends AppCompatActivity
                 startActivity(nav3);
                 break;
             case R.id.nav_logout:
+
                 mAuth.signOut();
+
                 finish();
                 Intent nav4 = new Intent(Home.this, SignIn.class);
                 startActivity(nav4);
