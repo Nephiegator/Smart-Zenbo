@@ -48,6 +48,7 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         txt_description.setText(tt.getDesc());
 
 
+
         findViewById(R.id.update_btn).setOnClickListener(this);
         findViewById(R.id.delete_btn).setOnClickListener(this);
 
@@ -95,10 +96,6 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         if (person.isEmpty()){
             return false;
         }
-        /*if (time.isEmpty())
-        {
-            return false;
-        }*/
 
 
         return false;
