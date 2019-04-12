@@ -39,7 +39,9 @@ public class Home extends AppCompatActivity
     //private SimpleDateFormat dateFormatYear = new SimpleDateFormat("yyyy", Locale.getDefault());
     BottomNavigationView bottomNavigationView;
     CalendarView calendar;
-    private FirebaseFirestore db;
+
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     private List<dbReminder> comingtasklist;
     private UpcomingAdapter adapter1;
     private RecyclerView recyclerView;
@@ -80,7 +82,9 @@ public class Home extends AppCompatActivity
         //adapter1 = new TaskAdapter(this, comingtasklist);
         recyclerView.setAdapter(adapter1);
 
-        db = FirebaseFirestore.getInstance();
+//        db = FirebaseFirestore.getInstance();
+
+
         db.collection("Reminder").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override

@@ -112,8 +112,6 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
             return true;
         }
         if (location.isEmpty()){
-
-
             return false;
         }
         if (person.isEmpty()){
@@ -251,7 +249,6 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
                     location,
                     person,
                     time
-
             );
 
 
@@ -260,7 +257,6 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
                             Toast.makeText(AddTask.this, "Added Successfully", Toast.LENGTH_SHORT).show();
-
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
