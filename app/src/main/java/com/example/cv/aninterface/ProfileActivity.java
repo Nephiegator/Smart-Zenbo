@@ -61,24 +61,24 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     private boolean validateInputs(String fname, String lname, String email, String phone) {
         if (fname.isEmpty()) {
-            fname_profile.setError("Title Required");
+            fname_profile.setError("First name Required");
             fname_profile.requestFocus();
             return true;
         }
 
         if (lname.isEmpty()) {
-            lname_profile.setError("Description Required");
+            lname_profile.setError("Last name Required");
             lname_profile.requestFocus();
             return true;
         }
         if (email.isEmpty()) {
-            email_profile.setError("Title Required");
+            email_profile.setError("Email Required");
             email_profile.requestFocus();
             return true;
         }
 
         if (phone.isEmpty()) {
-            phone_profile.setError("Description Required");
+            phone_profile.setError("Phone number Required");
             phone_profile.requestFocus();
             return true;
         }
