@@ -41,6 +41,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
     private Button Loginbtn;
     private Button login;
     private TextView textViewSignUp;
+    private TextView textViewForgot;
     private static final String TAG = "SignIn";
 
     private TextInputEditText emailLogin;
@@ -151,6 +152,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
         LoginManager.getInstance().logOut();  */
 
         findViewById(R.id.textViewSignUp).setOnClickListener(this);
+        findViewById(R.id.textViewForgot).setOnClickListener(this);
         findViewById(R.id.login).setOnClickListener(this);
 
         emailLogin = findViewById(R.id.userlogin);
@@ -271,6 +273,9 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
                 userLogin();
                 startActivity(new Intent(this, register.class));
                 break;
+
+            case R.id.textViewForgot:
+                startActivity(new Intent(this, reset.class));
         }
     }
 }
