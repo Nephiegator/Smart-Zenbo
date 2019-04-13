@@ -50,7 +50,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         fname_profile = findViewById(R.id.fname_profile);
         lname_profile = findViewById(R.id.lname_profile);
-        email_profile = findViewById(R.id.email_profile);
+//        email_profile = findViewById(R.id.email_profile);
         phone_profile = findViewById(R.id.phone_profile);
         save_profile = findViewById(R.id.save_profile);
 
@@ -71,11 +71,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             lname_profile.requestFocus();
             return true;
         }
-        if (email.isEmpty()) {
-            email_profile.setError("Email Required");
-            email_profile.requestFocus();
-            return true;
-        }
+//        if (email.isEmpty()) {
+//            email_profile.setError("Email Required");
+//            email_profile.requestFocus();
+//            return true;
+//        }
 
         if (phone.isEmpty()) {
             phone_profile.setError("Phone number Required");
@@ -89,7 +89,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private void saveUserInformation() {
         String fname = fname_profile.getText().toString().trim();
         String lname = lname_profile.getText().toString().trim();
-        String email = email_profile.getText().toString().trim();
+        //String email = email_profile.getText().toString().trim();
+        String email = firebaseAuth.getCurrentUser().getEmail();
         String phone = phone_profile.getText().toString().trim();
 
         if (!validateInputs(fname, lname, email, phone)) {

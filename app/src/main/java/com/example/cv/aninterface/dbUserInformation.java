@@ -1,6 +1,13 @@
 package com.example.cv.aninterface;
 
-public class dbUserInformation {
+import com.google.firebase.firestore.Exclude;
+
+import java.io.Serializable;
+
+public class dbUserInformation implements Serializable {
+
+    @Exclude
+    private String id;
     public String fname;
     public String lname;
     public String email;
@@ -16,13 +23,18 @@ public class dbUserInformation {
         this.phone = phone;
     }
 
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getfname() { return fname; }
 
     public void setfname(String fname) { this.fname = fname; }
 
     public String getlname() { return lname; }
 
-    public void setlname(String lname) { this.fname = lname; }
+    public void setlname(String lname) { this.lname = lname; }
 
     public String getemail() { return email; }
 

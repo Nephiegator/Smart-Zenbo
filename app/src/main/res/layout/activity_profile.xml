@@ -77,7 +77,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:fontFamily="@fonts/eligiblesansregular"
-                    android:text="First Name" />
+                    android:hint="First Name" />
 
                 <android.support.design.widget.TextInputEditText
                     android:fontFamily="@fonts/eligiblesansregular"
@@ -85,28 +85,29 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Last Name" />
+                    android:hint="Last Name" />
             </LinearLayout>
 
-            <android.support.design.widget.TextInputEditText
-                android:fontFamily="@fonts/eligiblesansregular"
-                android:id="@+id/email_profile"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Email:" />
+            <!--<android.support.design.widget.TextInputEditText-->
+                <!--android:fontFamily="@fonts/eligiblesansregular"-->
+                <!--android:id="@+id/email_profile"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--android:layout_marginRight="20dp"-->
+                <!--android:layout_marginLeft="20dp"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:hint="Email:" />-->
 
             <android.support.design.widget.TextInputEditText
-                android:fontFamily="@fonts/eligiblesansregular"
                 android:id="@+id/phone_profile"
-                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="20dp"
-                android:text="Phone:" />
+                android:fontFamily="@fonts/eligiblesansregular"
+                android:hint="Phone:"
+                android:inputType="number" />
 
             <Button
                 android:id="@+id/save_profile"

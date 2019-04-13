@@ -98,6 +98,7 @@ public class register extends AppCompatActivity implements View.OnClickListener 
                         }
                     }
                 });
+
     }
 
     @Override

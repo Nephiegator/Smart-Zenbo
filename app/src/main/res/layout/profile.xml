@@ -56,7 +56,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:text="TextView"
+                    tools:text="text"
                     android:textColor="@color/com_facebook_button_login_silver_background_color"
                     android:textSize="20dp" />
 
@@ -76,14 +76,16 @@
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    tools:text="text"/>
 
                 <TextView
                     android:fontFamily="@fonts/eligiblesansregular"
                     android:id="@+id/view_lname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    tools:text="text"/>
             </LinearLayout>
 
             <TextView
@@ -94,7 +96,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Email: " />
+                tools:text="text" />
 
             <TextView
                 android:fontFamily="@fonts/eligiblesansregular"
@@ -104,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:text="Phone: " />
+                tools:text="text" />
 
 
         </LinearLayout>
