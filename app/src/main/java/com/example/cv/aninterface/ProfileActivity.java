@@ -26,8 +26,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     private TextInputEditText fname_profile;
     private TextInputEditText lname_profile;
-    private TextInputEditText email_profile;
     private TextInputEditText phone_profile;
+    private EditText bdate_profile;
+    private TextInputEditText username_profile;
     private Button save_profile;
     private FirebaseFirestore db;
 
@@ -50,16 +51,17 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         fname_profile = findViewById(R.id.fname_profile);
         lname_profile = findViewById(R.id.lname_profile);
-//        email_profile = findViewById(R.id.email_profile);
         phone_profile = findViewById(R.id.phone_profile);
         save_profile = findViewById(R.id.save_profile);
+        username_profile = findViewById(R.id.username_profile);
+        bdate_profile = findViewById(R.id.bdate_profile);
 
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
         save_profile.setOnClickListener(this);
     }
 
-    private boolean validateInputs(String fname, String lname, String email, String phone) {
+    private boolean validateInputs(String fname, String lname, String email, String phone, String username, String bdate) {
         if (fname.isEmpty()) {
             fname_profile.setError("First name Required");
             fname_profile.requestFocus();
@@ -71,11 +73,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             lname_profile.requestFocus();
             return true;
         }
-//        if (email.isEmpty()) {
-//            email_profile.setError("Email Required");
-//            email_profile.requestFocus();
-//            return true;
-//        }
 
         if (phone.isEmpty()) {
             phone_profile.setError("Phone number Required");
@@ -83,17 +80,35 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             return true;
         }
 
+        if (phone.isEmpty()) {
+            phone_profile.setError("Phone number Required");
+            phone_profile.requestFocus();
+            return true;
+        }
+
+        if (username.isEmpty()) {
+            username_profile.setError("Username Required");
+            username_profile.requestFocus();
+        }
+
+        if (bdate.isEmpty()) {
+            bdate_profile.setError("Username Required");
+            bdate_profile.requestFocus();
+        }
+
+
         return false;
     }
 
     private void saveUserInformation() {
         String fname = fname_profile.getText().toString().trim();
         String lname = lname_profile.getText().toString().trim();
-        //String email = email_profile.getText().toString().trim();
         String email = firebaseAuth.getCurrentUser().getEmail();
         String phone = phone_profile.getText().toString().trim();
+        String username = username_profile.getText().toString().trim();
+        String bdate = bdate_profile.getText().toString().trim();
 
-        if (!validateInputs(fname, lname, email, phone)) {
+        if (!validateInputs(fname, lname, email, phone, username, bdate)) {
 
             CollectionReference dbUserInformation = db.collection("Profile");
 
@@ -101,7 +116,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     fname,
                     lname,
                     email,
-                    phone
+                    phone,
+                    username,
+                    bdate
 
             );
 

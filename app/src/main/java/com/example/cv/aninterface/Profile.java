@@ -86,9 +86,11 @@ public class Profile extends AppCompatActivity {
     private TextView view_lname;
     private TextView view_email;
     private TextView view_phone;
-    private String mail, name1, name2, phonenum;
+    private TextView view_username;
+    private TextView view_bdate;
+    private TextView edit_profile;
+    private String mail, name1, name2, phonenum, username, bdate;
     private List<dbUserInformation> profileList;
-    private Context mCtx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,16 +100,27 @@ public class Profile extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
         FirebaseUser user = firebaseAuth.getCurrentUser();
-//        String currentuser = firebaseAuth.getCurrentUser().getUid();
         String currentusermail = firebaseAuth.getCurrentUser().getEmail();
-
 
         view_fname = findViewById(R.id.view_fname);
         view_lname = findViewById(R.id.view_lname);
         view_email = findViewById(R.id.view_email);
         view_phone = findViewById(R.id.view_phone);
+        view_username = findViewById(R.id.textViewUserName);
+        view_bdate = findViewById(R.id.view_bdate);
+
+        edit_profile = findViewById(R.id.edit_profile);
+        edit_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Profile.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
 
         profileList = new ArrayList<>();
+
+
 
         db = FirebaseFirestore.getInstance();
         db.collection("Profile").whereEqualTo("email", currentusermail).get()
@@ -125,15 +138,18 @@ public class Profile extends AppCompatActivity {
                                 name1 = p.getfname();
                                 name2 = p.getlname();
                                 phonenum = p.getphone();
+                                username = p.getUsername();
+                                bdate = p.getBdate();
                             }
                             view_fname.setText(name1);
                             view_email.setText(mail);
                             view_lname.setText(name2);
                             view_phone.setText(phonenum);
+                            view_username.setText(username);
+                            view_bdate.setText(bdate);
                         }
                     }
                 });
-
 
 
     }

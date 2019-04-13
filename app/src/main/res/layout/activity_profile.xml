@@ -30,42 +30,20 @@
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/user" />
 
-            <TextView
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/username_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
                 android:fontFamily="@fonts/eligiblesansregular"
-                android:id="@+id/edit_profile"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Edit profile" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="30dp"
-
-                android:background="@drawable/head_layout"
-                android:orientation="vertical">
-
-                <TextView
-                    android:fontFamily="@fonts/eligiblesansregular"
-                    android:id="@+id/name_profile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:text="TextView"
-                    android:textColor="@color/com_facebook_button_login_silver_background_color"
-                    android:textSize="20dp" />
-
-            </LinearLayout>
+                android:hint="  Username" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp">
@@ -77,7 +55,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:fontFamily="@fonts/eligiblesansregular"
-                    android:hint="First Name" />
+                    android:hint=" First Name" />
 
                 <android.support.design.widget.TextInputEditText
                     android:fontFamily="@fonts/eligiblesansregular"
@@ -85,18 +63,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Last Name" />
+                    android:hint=" Last Name" />
             </LinearLayout>
-
-            <!--<android.support.design.widget.TextInputEditText-->
-                <!--android:fontFamily="@fonts/eligiblesansregular"-->
-                <!--android:id="@+id/email_profile"-->
-                <!--android:layout_marginTop="5dp"-->
-                <!--android:layout_marginRight="20dp"-->
-                <!--android:layout_marginLeft="20dp"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:hint="Email:" />-->
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/phone_profile"
@@ -106,15 +74,28 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="20dp"
                 android:fontFamily="@fonts/eligiblesansregular"
-                android:hint="Phone:"
+                android:hint="  Phone Number"
                 android:inputType="number" />
+
+            <EditText
+                android:id="@+id/bdate_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:hint="  Birthday"
+                android:inputType="date" />
 
             <Button
                 android:id="@+id/save_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:text="Save" />
-
 
         </LinearLayout>
 

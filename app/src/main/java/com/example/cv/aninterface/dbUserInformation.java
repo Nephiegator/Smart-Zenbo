@@ -12,18 +12,21 @@ public class dbUserInformation implements Serializable {
     public String lname;
     public String email;
     public String phone;
+    public String username;
+    public String bdate;
 
     public dbUserInformation(){
 
     }
-    public dbUserInformation(String fname, String lname, String email, String phone){
+
+    public dbUserInformation(String fname, String lname, String email, String phone, String username, String bdate){
         this.fname = fname;
         this.lname = lname;
         this.email = email;
         this.phone = phone;
+        this.username = username;
+        this.bdate = bdate;
     }
-
-
     public void setId(String id) {
         this.id = id;
     }
@@ -44,4 +47,11 @@ public class dbUserInformation implements Serializable {
 
     public void setphone(String phone) { this.phone = phone; }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public String getBdate() {
+        return bdate;
+    }
 }

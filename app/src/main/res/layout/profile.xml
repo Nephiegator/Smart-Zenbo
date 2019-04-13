@@ -32,7 +32,8 @@
 
             <TextView
                 android:fontFamily="@fonts/eligiblesansregular"
-                android:id="@+id/textView35"
+                android:id="@+id/edit_profile"
+                android:textSize="16dp"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
@@ -101,6 +102,16 @@
             <TextView
                 android:fontFamily="@fonts/eligiblesansregular"
                 android:id="@+id/view_phone"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                tools:text="text" />
+
+            <TextView
+                android:fontFamily="@fonts/eligiblesansregular"
+                android:id="@+id/view_bdate"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
