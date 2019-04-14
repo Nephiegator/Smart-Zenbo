@@ -73,6 +73,7 @@
 
                 <TextView
                     android:fontFamily="@fonts/eligiblesansregular"
+                    android:textSize="16dp"
                     android:id="@+id/view_fname"
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
@@ -82,6 +83,7 @@
 
                 <TextView
                     android:fontFamily="@fonts/eligiblesansregular"
+                    android:textSize="16dp"
                     android:id="@+id/view_lname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -91,6 +93,7 @@
 
             <TextView
                 android:fontFamily="@fonts/eligiblesansregular"
+                android:textSize="16dp"
                 android:id="@+id/view_email"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="20dp"
@@ -101,6 +104,7 @@
 
             <TextView
                 android:fontFamily="@fonts/eligiblesansregular"
+                android:textSize="16dp"
                 android:id="@+id/view_phone"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
@@ -111,6 +115,7 @@
 
             <TextView
                 android:fontFamily="@fonts/eligiblesansregular"
+                android:textSize="16dp"
                 android:id="@+id/view_bdate"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
