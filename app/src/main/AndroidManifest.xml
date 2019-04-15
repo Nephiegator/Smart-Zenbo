@@ -15,11 +15,21 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".TaskSelect"></activity>
+
         <activity android:name=".alarm" />
+
         <activity
             android:name=".register"
             android:label="@string/title_activity_register"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -29,6 +39,7 @@
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
+
         <activity
             android:name="com.facebook.CustomTabActivity"
             android:exported="true">
@@ -41,16 +52,14 @@
                 <data android:scheme="@string/facebook_login_protocol_schema" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".Home"
             android:label="@string/title_activity_login"
             android:launchMode="singleTop"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-            <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+
         </activity>
 
         <activity android:name=".SignIn">
@@ -61,19 +70,19 @@
             android:name=".AddTask"
             android:label="New Task" />
         <activity
-            android:name=".AddTaskMed"
-            android:label="Take A Pill" />
-        <activity
-            android:name=".AddTaskApm"
-            android:label="New Appointment" />
+            android:name=".ProfileActivity"
+            android:label="Save Information" />
         <activity
             android:name=".MainListActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".Home"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".AddPlan" />
-        <activity android:name=".MainTask" />
 
+        <activity android:name=".reset" />
+
+        <activity android:name=".AddPlan" />
+
+        <activity android:name=".MainTask" />
 
         <activity android:name=".UpdateTask" />
 

@@ -20,6 +20,7 @@ import android.widget.CalendarView;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -38,10 +39,14 @@ public class Home extends AppCompatActivity
     //private SimpleDateFormat dateFormatYear = new SimpleDateFormat("yyyy", Locale.getDefault());
     BottomNavigationView bottomNavigationView;
     CalendarView calendar;
-    private FirebaseFirestore db;
+
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     private List<dbReminder> comingtasklist;
     private UpcomingAdapter adapter1;
     private RecyclerView recyclerView;
+    FirebaseAuth mAuth;
+    FirebaseAuth.AuthStateListener mAuthListner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +69,8 @@ public class Home extends AppCompatActivity
 
             }
         });
+
+        mAuth = FirebaseAuth.getInstance();
 
         //upcoming tasks
         recyclerView = findViewById(R.id.recyclerComingTask);
@@ -92,44 +99,18 @@ public class Home extends AppCompatActivity
                         }
                     }
                 });
-/* old
-        final TextView yLabel = findViewById(R.id.yLabel);
-        final TextView mLabel = findViewById(R.id.mLabel);
 
-        Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MMMM", Locale.US);
-        String strDate = sdf.format(cal.getTime());
 
-        String[] values = strDate.split("/",0);
-
-        //Create Calendar
-        compactcalendar = findViewById(R.id.compactcalendar_view);
-        compactcalendar.setUseThreeLetterAbbreviation(true);
-
-        //Set an event for Teachers' Day of 2019
-        Event ev1 = new Event(Color.rgb(3, 169, 244), 1546300800000L, "New Year's Day");
-        compactcalendar.addEvent(ev1);
-
-        compactcalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
+        mAuthListner = new FirebaseAuth.AuthStateListener() {
             @Override
-            public void onDayClick(Date dateClicked) {
-                Context context = getApplicationContext();
-
-                if (dateClicked.toString().compareTo("Tue Jan 1 07:00:00 GMT+07:00 2019") == 0) {
-                    Toast.makeText(context, "New Year's Day", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(context, "No Event Planned for this day", Toast.LENGTH_SHORT).show();
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if (firebaseAuth.getCurrentUser()==null)
+                {
+                    startActivity(new Intent(Home.this, SignIn.class));
                 }
             }
-
-            @Override
-            public void onMonthScroll(Date firstDayOfNewMonth) {
-
-                mLabel.setText(dateFormatMonth.format(firstDayOfNewMonth));
-                yLabel.setText(dateFormatYear.format(firstDayOfNewMonth));
-            }
-        });
-        */
+        };
+        mAuth.addAuthStateListener(mAuthListner);
 
         //Hamburger Bar
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -164,47 +145,13 @@ public class Home extends AppCompatActivity
             }
         });
 
-        //bottomNavigationView.setOnNavigationItemSelectedListener(this);
-
-        FloatingActionMenu materialDesignFAM;
-        FloatingActionButton floatingActionButton1, floatingActionButton2, floatingActionButton3,
-                floatingActionButton4, floatingActionButton5;
-
-        materialDesignFAM = findViewById(R.id.fab);
-        //floatingActionButton1 = findViewById(R.id.floating_btn_1);
-        //floatingActionButton2 = findViewById(R.id.floating_btn_2);
-        floatingActionButton3 = findViewById(R.id.floating_btn_3);
-        floatingActionButton4 = findViewById(R.id.floating_btn_4);
-        floatingActionButton5 = findViewById(R.id.floating_btn_5);
-
-
-        /*floatingActionButton1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //TODO something when floating action menu first item clicked
-            }
-        });
-        floatingActionButton2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //TODO something when floating action menu second item clicked
-
-            }
-        });*/
-        floatingActionButton3.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent f3 = new Intent(Home.this, AddTaskApm.class);
-                startActivity(f3);
-            }
-        });
-        floatingActionButton4.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent f4 = new Intent(Home.this, AddTaskMed.class);
-                startActivity(f4);
-            }
-        });
-        floatingActionButton5.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent f5 = new Intent(Home.this, AddTask.class);
-                startActivity(f5);
+        FloatingActionButton floatingActionButton;
+        floatingActionButton = findViewById(R.id.floating_btn);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent f = new Intent(Home.this, AddTask.class);
+                startActivity(f);
             }
         });
 
@@ -226,8 +173,12 @@ public class Home extends AppCompatActivity
                 Intent nav3 = new Intent(Home.this, MainListActivity.class);
                 startActivity(nav3);
                 break;
-            case R.id.nav_setting:
-                Intent nav4 = new Intent(Home.this, Setting.class);
+            case R.id.nav_logout:
+
+                mAuth.signOut();
+
+                finish();
+                Intent nav4 = new Intent(Home.this, SignIn.class);
                 startActivity(nav4);
                 break;
         }
@@ -269,4 +220,10 @@ public class Home extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }*/
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListner);
+    }
+
 }

@@ -1,9 +1,11 @@
 package com.example.cv.aninterface;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -19,40 +21,38 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class register extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth firebaseAuth;
     private Button buttonSignup;
-    private EditText emailSignup;
-    private EditText passwordSignup;
-    private EditText FNameSignup;
-    private EditText LNameSignup;
-    private TextView textViewSignup;
+    private TextInputEditText emailSignup;
+    private TextInputEditText passwordSignup;
+    private TextView textViewLogin;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-
-        if(firebaseAuth.getCurrentUser() != null){
-
-        }
-
         setContentView(R.layout.activity_register);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        buttonSignup = (Button) findViewById(R.id.signup_btn);
-        emailSignup = (EditText) findViewById(R.id.signup_email);
-        passwordSignup = (EditText) findViewById(R.id.signup_password);
-        FNameSignup = (EditText) findViewById(R.id.signup_fname);
-        LNameSignup = (EditText) findViewById(R.id.signup_lname);
+        buttonSignup = findViewById(R.id.signup_btn);
+        emailSignup = findViewById(R.id.signup_email);
+        passwordSignup = findViewById(R.id.signup_password);
 
+        textViewLogin = findViewById(R.id.textViewLogin);
         firebaseAuth = FirebaseAuth.getInstance();
 
         buttonSignup.setOnClickListener(this);
-        textViewSignup.setOnClickListener(this);
+
+        mAuth = FirebaseAuth.getInstance();
 
     }
 
@@ -60,8 +60,6 @@ public class register extends AppCompatActivity implements View.OnClickListener 
 
         final String email = emailSignup.getText().toString().trim();
         final String pass = passwordSignup.getText().toString().trim();
-        final String fname = FNameSignup.getText().toString().trim();
-        final String lname = LNameSignup.getText().toString().trim();
 
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(this, "Please enter your email", Toast.LENGTH_LONG).show();
@@ -73,16 +71,6 @@ public class register extends AppCompatActivity implements View.OnClickListener 
             return;
         }
 
-        if (TextUtils.isEmpty(fname)) {
-            Toast.makeText(this, "Please enter your First Name", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if (TextUtils.isEmpty(lname)) {
-            Toast.makeText(this, "Please enter your First Name", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
         firebaseAuth.createUserWithEmailAndPassword(email, pass)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -90,12 +78,10 @@ public class register extends AppCompatActivity implements View.OnClickListener 
 
                             User user = new User(
                                     email,
-                                    pass,
-                                    fname,
-                                    lname
+                                    pass
                             );
 
-                            FirebaseDatabase.getInstance().getReference("Users")
+                            FirebaseDatabase.getInstance().getReference("User")
                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                             .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
@@ -112,6 +98,7 @@ public class register extends AppCompatActivity implements View.OnClickListener 
                         }
                     }
                 });
+
     }
 
     @Override
@@ -119,10 +106,16 @@ public class register extends AppCompatActivity implements View.OnClickListener 
         if (view == buttonSignup)
         {
             registerUser();
+            Intent a3 = new Intent(register.this, ProfileActivity.class);
+            startActivity(a3);
         }
-        if (view == textViewSignup) {
+        if (view == textViewLogin) {
             // will open login activity here
+            /*Intent login = new Intent(register.this, SignIn.class);
+            startActivity(login);*/
+            startActivity(new Intent(this, SignIn.class));
         }
+
     }
 
 }

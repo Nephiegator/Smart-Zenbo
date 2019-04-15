@@ -33,7 +33,6 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
     private RecyclerView recyclerView;
     private TaskAdapter adapter1, adapter2;
     private List<dbReminder> remtasklist;
-    //private List<dbReminder> apptasklist;
 
     private FirebaseFirestore db;
 
@@ -83,23 +82,6 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
                         }
                     }
                 });
-        /*
-        db.collection("Appointment").get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if (!queryDocumentSnapshots.isEmpty()) {
-                            List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
-
-                            for (DocumentSnapshot d : list) {
-                                dbTaskApm q = d.toObject(dbTaskApm.class);
-                                q.setId(d.getId());
-                                apptasklist.add(q);
-                            }
-                            adapter2.notifyDataSetChanged();
-                        }
-                    }
-                });*/
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

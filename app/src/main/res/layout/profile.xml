@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/lightblue">
+
+        <LinearLayout
+            android:layout_marginTop="70dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/profile_layout">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="171dp"
+                android:layout_height="114dp"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/user" />
+
+            <TextView
+                android:fontFamily="@fonts/eligiblesansregular"
+                android:id="@+id/edit_profile"
+                android:textSize="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit profile" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+
+                android:background="@drawable/head_layout"
+                android:orientation="vertical">
+
+                <TextView
+                    android:fontFamily="@fonts/eligiblesansregular"
+                    android:id="@+id/textViewUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    tools:text="text"
+                    android:textColor="@color/com_facebook_button_login_silver_background_color"
+                    android:textSize="20dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:fontFamily="@fonts/eligiblesansregular"
+                    android:textSize="16dp"
+                    android:id="@+id/view_fname"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:text="text"/>
+
+                <TextView
+                    android:fontFamily="@fonts/eligiblesansregular"
+                    android:textSize="16dp"
+                    android:id="@+id/view_lname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:text="text"/>
+            </LinearLayout>
+
+            <TextView
+                android:fontFamily="@fonts/eligiblesansregular"
+                android:textSize="16dp"
+                android:id="@+id/view_email"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="text" />
+
+            <TextView
+                android:fontFamily="@fonts/eligiblesansregular"
+                android:textSize="16dp"
+                android:id="@+id/view_phone"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                tools:text="text" />
+
+            <TextView
+                android:fontFamily="@fonts/eligiblesansregular"
+                android:textSize="16dp"
+                android:id="@+id/view_bdate"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                tools:text="text" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

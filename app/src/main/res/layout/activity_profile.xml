@@ -2,7 +2,6 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -23,91 +22,79 @@
             android:background="@drawable/profile_layout">
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/imageView_profile"
                 android:layout_width="171dp"
                 android:layout_height="114dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="50dp"
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/user" />
 
-            <TextView
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/username_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
                 android:fontFamily="@fonts/eligiblesansregular"
-                android:id="@+id/textView35"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Edit profile" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="30dp"
-
-                android:background="@drawable/head_layout"
-                android:orientation="vertical">
-
-                <TextView
-                    android:fontFamily="@fonts/eligiblesansregular"
-                    android:id="@+id/textView26"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:text="TextView"
-                    android:textColor="@color/com_facebook_button_login_silver_background_color"
-                    android:textSize="20dp" />
-
-            </LinearLayout>
+                android:hint="  Username" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp">
 
-                <TextView
-                    android:fontFamily="@fonts/eligiblesansregular"
-                    android:id="@+id/textView31"
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/fname_profile"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Email: " />
-
-                <TextView
                     android:fontFamily="@fonts/eligiblesansregular"
-                    android:id="@+id/textView32"
+                    android:hint=" First Name" />
+
+                <android.support.design.widget.TextInputEditText
+                    android:fontFamily="@fonts/eligiblesansregular"
+                    android:id="@+id/lname_profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Phone: " />
+                    android:hint=" Last Name" />
             </LinearLayout>
 
-            <TextView
-                android:fontFamily="@fonts/eligiblesansregular"
-                android:id="@+id/textView33"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
-            <TextView
-                android:fontFamily="@fonts/eligiblesansregular"
-                android:id="@+id/textView34"
-                android:layout_marginTop="5dp"
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/phone_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="20dp"
-                android:text="TextView" />
+                android:fontFamily="@fonts/eligiblesansregular"
+                android:hint="  Phone Number"
+                android:inputType="number" />
 
+            <EditText
+                android:id="@+id/bdate_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:hint="  Birthday"
+                android:inputType="date" />
+
+            <Button
+                android:id="@+id/save_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="Save" />
 
         </LinearLayout>
 

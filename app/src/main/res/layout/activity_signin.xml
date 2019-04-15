@@ -59,6 +59,15 @@
                 android:textSize="16dp" />
         </android.support.design.widget.TextInputLayout>
 
+        <TextView
+            android:id="@+id/textViewForgot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="15dp"
+            android:text="Forgot password?"
+            android:textColor="@color/white"/>
+
         <Button
             android:id="@+id/login"
             android:layout_width="match_parent"
@@ -69,7 +78,7 @@
             android:background="@drawable/border"
             android:backgroundTint="@color/two"
             android:fontFamily="@font/eligiblesansbold"
-            android:text="SIGN UP" />
+            android:text="SIGN IN" />
 
         <com.facebook.login.widget.LoginButton
             android:id="@+id/login_fb_btn"
@@ -78,6 +87,16 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="50dp" />
+
+        <TextView
+            android:id="@+id/textViewSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:onClick="onClick"
+            android:textColor="@color/white"
+            android:text="Doesn't have account? Sign Up" />
 
 
     </LinearLayout>

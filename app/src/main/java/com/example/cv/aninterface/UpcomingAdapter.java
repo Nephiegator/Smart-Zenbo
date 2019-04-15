@@ -47,7 +47,7 @@ public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.coming
         return comingtasklist.size();
     }
 
-    class comingtaskViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class comingtaskViewHolder extends RecyclerView.ViewHolder {
         TextView textViewTitle, textViewLoc, textViewTime;
 
 
@@ -58,18 +58,18 @@ public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.coming
             textViewLoc = itemView.findViewById(R.id.textView_loc_task);
             textViewTime = itemView.findViewById(R.id.textView_time_task);
 
-            itemView.setOnClickListener(this);
+            //itemView.setOnClickListener(this);
 
         }
 
 
-        @Override
-        public void onClick(View v) {
-            dbReminder tt = comingtasklist.get(getAdapterPosition());
-            Intent intent = new Intent(mCtx, UpdateTask.class);
-            intent.putExtra("Reminder", tt);
-            mCtx.startActivity(intent);
-        }
+//        @Override
+//        public void onClick(View v) {
+//            dbReminder tt = comingtasklist.get(getAdapterPosition());
+//            Intent intent = new Intent(mCtx, UpdateTask.class);
+//            intent.putExtra("Reminder", tt);
+//            mCtx.startActivity(intent);
+//        }
     }
 
 

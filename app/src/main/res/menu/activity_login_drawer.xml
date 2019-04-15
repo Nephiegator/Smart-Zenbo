@@ -23,12 +23,12 @@
             android:title="History" />
     </group>
 
-    <item android:title="Setting">
+    <item android:title="Logout">
         <menu>
             <item
-                android:id="@+id/nav_setting"
+                android:id="@+id/nav_logout"
                 android:icon="@drawable/settingsgears"
-                android:title="Setting" />
+                android:title="Logout" />
 
         </menu>
     </item>
