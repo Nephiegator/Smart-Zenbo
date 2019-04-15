@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +21,7 @@
             android:background="@drawable/profile_layout">
 
             <ImageView
-                android:id="@+id/imageView_profile"
+                android:id="@+id/imageView_Updateprofile"
                 android:layout_width="171dp"
                 android:layout_height="114dp"
                 android:layout_marginTop="50dp"
@@ -30,7 +29,7 @@
                 app:srcCompat="@drawable/user" />
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/username_profile"
+                android:id="@+id/username_Updateprofile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -48,7 +47,7 @@
                 android:layout_marginRight="20dp">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/fname_profile"
+                    android:id="@+id/fname_Updateprofile"
                     android:layout_width="75dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -58,7 +57,7 @@
 
                 <android.support.design.widget.TextInputEditText
                     android:fontFamily="@fonts/eligiblesansregular"
-                    android:id="@+id/lname_profile"
+                    android:id="@+id/lname_Updateprofile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -66,7 +65,7 @@
             </LinearLayout>
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/phone_profile"
+                android:id="@+id/phone_Updateprofile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -77,7 +76,7 @@
                 android:inputType="number" />
 
             <EditText
-                android:id="@+id/bdate_profile"
+                android:id="@+id/bdate_Updateprofile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -88,15 +87,17 @@
                 android:inputType="date" />
 
             <Button
-                android:id="@+id/save_profile"
-                android:layout_width="match_parent"
+                android:id="@+id/save_Updateprofile"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:text="Save" />
+                android:text="Update" />
 
         </LinearLayout>
 
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
