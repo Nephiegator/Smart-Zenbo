@@ -54,4 +54,6 @@ public class dbUserInformation implements Serializable {
     public String getBdate() {
         return bdate;
     }
+
+    public String getId() { return id; }
 }
