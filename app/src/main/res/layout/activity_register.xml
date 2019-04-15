@@ -44,16 +44,19 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="15dp"
+            android:background="@drawable/roundbox_white"
+            android:theme="@style/TextInputLayoutAppearance">
 
             <android.support.design.widget.TextInputEditText
+                android:id="@+id/signup_email"
                 android:fontFamily="@font/eligiblesansregular"
                 android:textSize="16dp"
-                android:id="@+id/signup_email"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:background="@drawable/roundbox_white"
-                android:hint="    Email"
+                android:hint="Email"
+                android:layout_marginStart="5dp"
+                android:inputType="textEmailAddress"
                 />
         </android.support.design.widget.TextInputLayout>
 
@@ -62,17 +65,26 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             app:boxStrokeColor="@color/white"
-            app:boxStrokeWidth="1dp">
+            app:boxStrokeWidth="1dp"
+            android:background="@drawable/roundbox_white"
+            android:theme="@style/TextInputLayoutAppearance">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/signup_password"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:background="@drawable/roundbox_white"
-                android:hint="    Password"
-                android:inputType="textPassword"
-                />
+                android:hint="Password"
+                android:fontFamily="@font/eligiblesansregular"
+                android:textSize="16dp"
+                android:layout_marginStart="5dp" />
         </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:textColor="@color/white"
+            android:text="Require password at least 8 characters"/>
 
         <Button
             android:id="@+id/signup_btn"
@@ -93,6 +105,7 @@
             android:layout_marginTop="20dp"
             android:onClick="onClick"
             android:textColor="@color/white"
+            android:textSize="16dp"
             android:text="Already have account? Login" />
 
 

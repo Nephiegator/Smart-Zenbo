@@ -97,8 +97,8 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
 
                         break;
                     case R.id.navigation_plan:
-                        Intent a3 = new Intent(MainTask.this, MainListActivity.class);
-                        startActivity(a3);
+//                        Intent a3 = new Intent(MainTask.this, MainListActivity.class);
+//                        startActivity(a3);
                         break;
                 }
                 return false;

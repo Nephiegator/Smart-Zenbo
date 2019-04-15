@@ -139,8 +139,8 @@ public class Home extends AppCompatActivity
                         startActivity(a2);
                         break;
                     case R.id.navigation_plan:
-                        Intent a3 = new Intent(Home.this, MainListActivity.class);
-                        startActivity(a3);
+                        //Intent a3 = new Intent(Home.this, MainListActivity.class);
+                        //startActivity(a3);
                         break;
                 }
                 return false;
@@ -172,8 +172,8 @@ public class Home extends AppCompatActivity
                 startActivity(nav2);
                 break;
             case R.id.nav_plan:
-                Intent nav3 = new Intent(Home.this, MainListActivity.class);
-                startActivity(nav3);
+//                Intent nav3 = new Intent(Home.this, MainListActivity.class);
+//                startActivity(nav3);
                 break;
             case R.id.nav_logout:
 

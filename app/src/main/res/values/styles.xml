@@ -65,6 +65,13 @@
         <item name="android:textColor">@color/grey</item>
     </style>
 
+    <style name="TextInputLayoutAppearance" parent="Widget.Design.TextInputLayout">
+        <!-- reference our hint & error styles -->
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textColorHint">@color/mediume_persian</item>
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/mediume_persian</item>
+    </style>
 
 
 
