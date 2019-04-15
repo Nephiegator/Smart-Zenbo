@@ -76,7 +76,7 @@ public class Home extends AppCompatActivity
         recyclerView.setAdapter(adapter1);
 
         db = FirebaseFirestore.getInstance();
-        db.collection("Reminder").get()
+        db.collection("Reminder").orderBy("time").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
