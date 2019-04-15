@@ -59,8 +59,6 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
         txt_title = findViewById(R.id.task_title);
         txt_description = findViewById(R.id.task_des);
         timeTextView = findViewById(R.id.time_textview);
-        //txt_hour = findViewById(R.id.TextView_hour);
-        //txt_minute = findViewById(R.id.TextView_minute);
 
         Button Create = (Button) findViewById(R.id.create_btn);
         Create.setOnClickListener(this);
@@ -169,48 +167,6 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
         }
     }
 
-
-   /* public void onItemSelected (AdapterView<?> parent, View view, int position, long id)
-    {
-        switch (parent.getId()) {
-            case R.id.inLocation:
-                xx = parent.getItemAtPosition(position).toString();
-                break;
-            case R.id.ObjPerson:
-                yy = parent.getItemAtPosition(position).toString();
-                break;
-        }
-    }*/
-
-    /*public void timeSet(){
-        final Calendar c = Calendar.getInstance();
-        int hour = c.get(Calendar.HOUR_OF_DAY);
-        int minute = c.get(Calendar.MINUTE);
-
-        final TimePickerDialog timePickerDialog = new TimePickerDialog(AddTask.this,
-                new TimePickerDialog.OnTimeSetListener() {
-
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay,
-                                          int minute) {
-                        if(hourOfDay<10 && minute<10){
-                            timeText.setText("0"+hourOfDay+":"+"0"+minute);
-                        }else if(hourOfDay>10 && minute<10){
-                            timeText.setText(hourOfDay+":"+"0"+minute);
-                        }else if(hourOfDay<10 && minute>10) {
-                            timeText.setText("0"+hourOfDay + ":" +minute);
-                        }else timeText.setText(hourOfDay + ":" + minute);
-                        time = hourOfDay+":"+minute;
-                       // timeText.setText(hourOfDay + ":" + minute);
-                        //time = hourOfDay+ " : " + minute;
-                        Toast.makeText(AddTask.this, "time check " + time, Toast.LENGTH_SHORT).show();
-
-                    }
-                }, hour, minute, true);
-        timePickerDialog.show();
-
-
-    }*/
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {

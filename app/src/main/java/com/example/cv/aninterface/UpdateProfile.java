@@ -64,6 +64,7 @@ public class UpdateProfile extends AppCompatActivity implements View.OnClickList
             return true;
         }
         if (bdate.isEmpty()){
+
             bdate_Updateprofile.setError("Birth day Required");
             bdate_Updateprofile.requestFocus();
             return true;
