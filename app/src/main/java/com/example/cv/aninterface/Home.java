@@ -82,10 +82,8 @@ public class Home extends AppCompatActivity
         //adapter1 = new TaskAdapter(this, comingtasklist);
         recyclerView.setAdapter(adapter1);
 
-//        db = FirebaseFirestore.getInstance();
-
-
-        db.collection("Reminder").get()
+        db = FirebaseFirestore.getInstance();
+        db.collection("Reminder").orderBy("time").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
