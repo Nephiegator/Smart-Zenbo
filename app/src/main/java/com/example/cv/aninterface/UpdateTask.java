@@ -1,10 +1,12 @@
 package com.example.cv.aninterface;
 
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,6 +14,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,32 +26,40 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class UpdateTask extends AppCompatActivity implements View.OnClickListener {
+import java.text.DateFormat;
+import java.util.Calendar;
+
+public class UpdateTask extends AppCompatActivity implements View.OnClickListener, TimePickerDialog.OnTimeSetListener {
 
     private TextInputEditText txt_title;
     private TextInputEditText txt_description;
-
     private FirebaseFirestore db;
-
     private dbReminder tt;
-    private  String yy,xx,ttime;
+    private  String yy,xx;
+    private TextView timeTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_updatetask);
 
-
         tt = (dbReminder) getIntent().getSerializableExtra("Reminder");
         db = FirebaseFirestore.getInstance();
 
         txt_title = findViewById(R.id.task_title);
         txt_description = findViewById(R.id.task_des);
+        timeTextView = findViewById(R.id.time_textview);
 
         txt_title.setText(tt.getTitle());
         txt_description.setText(tt.getDesc());
 
-
+        findViewById(R.id.time_set_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment timePicker = new TimePickerFragment();
+                timePicker.show(getSupportFragmentManager(), "time picker");
+            }
+        });
 
         findViewById(R.id.update_btn).setOnClickListener(this);
         findViewById(R.id.delete_btn).setOnClickListener(this);
@@ -60,7 +72,7 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         ArrayAdapter<UpdateTask.State1> spinnerArrayAdapter1 = new ArrayAdapter<UpdateTask.State1> (this,
                 android.R.layout.simple_spinner_item, new UpdateTask.State1[] {
                 new UpdateTask.State1("None"),
-                new UpdateTask.State1("Dad Room"),
+                new UpdateTask.State1("Bedroom"),
                 new UpdateTask.State1("Kitchen"),
         });
         splocation.setAdapter(spinnerArrayAdapter1);
@@ -69,9 +81,9 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         ArrayAdapter<UpdateTask.State2> spinnerArrayAdapter2 = new ArrayAdapter<UpdateTask.State2> (this,
                 android.R.layout.simple_spinner_item, new UpdateTask.State2[] {
                 new UpdateTask.State2("None"),
-                new UpdateTask.State2("Lisa"),
-                new UpdateTask.State2("Jisoo"),
-                new UpdateTask.State2("Rose")
+                new UpdateTask.State2("Johny"),
+                new UpdateTask.State2("Irene"),
+                new UpdateTask.State2("Wendy")
         });
         spperson.setAdapter(spinnerArrayAdapter2);
         spperson.setOnItemSelectedListener(new UpdateTask.MyOnItemSelectedListener());
@@ -96,7 +108,9 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         if (person.isEmpty()){
             return false;
         }
-
+        if (time.isEmpty()){
+            return false;
+        }
 
         return false;
     }
@@ -145,6 +159,24 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         }
     }
 
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.HOUR_OF_DAY, hourOfDay);
+        c.set(Calendar.MINUTE, minute);
+        c.set(Calendar.SECOND, 0);
+
+        updateTimeText(c);
+
+    }
+
+    private void updateTimeText(Calendar c) {
+        String timeText = "" + DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
+
+        timeTextView.setText(timeText);
+    }
+
     private void deleteTask() {
         db.collection("Reminder").document(tt.getId()).delete()
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -165,7 +197,7 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         String description = txt_description.getText().toString().trim();
         String location = xx;
         String person = yy;
-        String time = ttime;
+        String time = timeTextView.getText().toString().trim();
 
         if (!hasvalidateInputs(title,description,location,person,time)){
 
@@ -189,6 +221,8 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         switch (v.getId()) {
             case R.id.update_btn:
                 updateTask();
+                Intent intent = new Intent(UpdateTask.this, MainTask.class);
+                startActivity(intent);
                 break;
             case R.id.delete_btn:
                 /*AlertDialog.Builder builder = new AlertDialog.Builder(this);

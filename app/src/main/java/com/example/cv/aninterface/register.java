@@ -1,5 +1,6 @@
 package com.example.cv.aninterface;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -9,9 +10,12 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +50,7 @@ public class register extends AppCompatActivity implements View.OnClickListener 
         buttonSignup = findViewById(R.id.signup_btn);
         emailSignup = findViewById(R.id.signup_email);
         passwordSignup = findViewById(R.id.signup_password);
+        passwordSignup.setTransformationMethod(new PasswordTransformationMethod());
 
         textViewLogin = findViewById(R.id.textViewLogin);
         firebaseAuth = FirebaseAuth.getInstance();
@@ -92,8 +97,10 @@ public class register extends AppCompatActivity implements View.OnClickListener 
                                 }
                             });
 
-                            Toast.makeText(register.this, "Successfully registered.", Toast.LENGTH_SHORT).show();
+                            Intent a3 = new Intent(register.this, ProfileActivity.class);
+                            startActivity(a3);
                         } else {
+                            hideKeyboard(buttonSignup);
                             Toast.makeText(register.this, "Error occurred, please try again.", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -106,8 +113,7 @@ public class register extends AppCompatActivity implements View.OnClickListener 
         if (view == buttonSignup)
         {
             registerUser();
-            Intent a3 = new Intent(register.this, ProfileActivity.class);
-            startActivity(a3);
+
         }
         if (view == textViewLogin) {
             // will open login activity here
@@ -116,6 +122,14 @@ public class register extends AppCompatActivity implements View.OnClickListener 
             startActivity(new Intent(this, SignIn.class));
         }
 
+    }
+
+    public void hideKeyboard(View view) {
+        try {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        } catch(Exception ignored) {
+        }
     }
 
 }

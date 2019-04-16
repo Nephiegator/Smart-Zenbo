@@ -37,7 +37,8 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="20dp"
                 android:fontFamily="@fonts/eligiblesansregular"
-                android:hint="  Username" />
+                android:hint="  Nickname"
+                android:theme="@style/TextInput"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -45,7 +46,8 @@
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp">
+                android:layout_marginRight="20dp"
+                android:theme="@style/TextInput">
 
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/fname_profile"
@@ -62,7 +64,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint=" Last Name" />
+                    android:hint=" Last Name"
+                    android:theme="@style/TextInput"/>
             </LinearLayout>
 
             <android.support.design.widget.TextInputEditText
@@ -74,18 +77,60 @@
                 android:layout_marginRight="20dp"
                 android:fontFamily="@fonts/eligiblesansregular"
                 android:hint="  Phone Number"
-                android:inputType="number" />
+                android:inputType="number"
+                android:theme="@style/TextInput"/>
 
-            <EditText
-                android:id="@+id/bdate_profile"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:ems="10"
-                android:hint="  Birthday"
-                android:inputType="date" />
+                android:theme="@style/TextInput">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Day"
+                    android:textSize="18dp"
+                    android:fontFamily="@fonts/eligiblesansregular"/>
+                <EditText
+                    android:id="@+id/day_profile"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="date" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Month"
+                    android:textSize="18dp"
+                    android:fontFamily="@fonts/eligiblesansregular"/>
+                <EditText
+                    android:id="@+id/month_profile"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="date" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Year"
+                    android:textSize="18dp"
+                    android:fontFamily="@fonts/eligiblesansregular"/>
+                <EditText
+                    android:id="@+id/year_profile"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="date" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DD MM YYYY"
+                android:fontFamily="@fonts/eligiblesansregular"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"/>
 
             <Button
                 android:id="@+id/save_profile"
@@ -94,7 +139,9 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:text="Save" />
+                android:text="Save"
+                android:textColor="@color/white"
+                android:background="@color/mediume_persian"/>
 
         </LinearLayout>
 

@@ -8,6 +8,7 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -159,6 +160,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
 
         emailLogin = findViewById(R.id.userlogin);
         passwordLogin = findViewById(R.id.password);
+        passwordLogin.setTransformationMethod(new PasswordTransformationMethod());
 
         login = findViewById(R.id.login);
 

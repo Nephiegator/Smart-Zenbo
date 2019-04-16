@@ -1,4 +1,3 @@
-//https://www.youtube.com/watch?v=NjTs4lMkRM4
 package com.example.cv.aninterface;
 
 import android.content.Intent;
@@ -27,7 +26,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private TextInputEditText fname_profile;
     private TextInputEditText lname_profile;
     private TextInputEditText phone_profile;
-    private EditText bdate_profile;
+    private EditText dd, mm, yyyy;
     private TextInputEditText username_profile;
     private Button save_profile;
     private FirebaseFirestore db;
@@ -54,7 +53,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         phone_profile = findViewById(R.id.phone_profile);
         save_profile = findViewById(R.id.save_profile);
         username_profile = findViewById(R.id.username_profile);
-        bdate_profile = findViewById(R.id.bdate_profile);
+        dd = findViewById(R.id.day_profile);
+        mm = findViewById(R.id.month_profile);
+        yyyy = findViewById(R.id.year_profile);
 
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
@@ -74,11 +75,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             return true;
         }
 
-        if (phone.isEmpty()) {
-            phone_profile.setError("Phone number Required");
-            phone_profile.requestFocus();
-            return true;
-        }
 
         if (phone.isEmpty()) {
             phone_profile.setError("Phone number Required");
@@ -91,11 +87,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             username_profile.requestFocus();
         }
 
-        if (bdate.isEmpty()) {
-            bdate_profile.setError("Username Required");
-            bdate_profile.requestFocus();
-        }
-
 
         return false;
     }
@@ -106,7 +97,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         String email = firebaseAuth.getCurrentUser().getEmail();
         String phone = phone_profile.getText().toString().trim();
         String username = username_profile.getText().toString().trim();
-        String bdate = bdate_profile.getText().toString().trim();
+        String bdate = dd.getText().toString().trim()+mm.getText().toString().trim()+yyyy.getText().toString().trim();
 
         if (!validateInputs(fname, lname, email, phone, username, bdate)) {
 

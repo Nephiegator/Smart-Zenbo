@@ -29,16 +29,19 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="15dp"
+            android:background="@drawable/roundbox_white"
+            android:theme="@style/TextInputLayoutAppearance">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/userlogin"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:background="@drawable/roundbox_white"
                 android:fontFamily="@font/eligiblesansregular"
-                android:hint="    Username"
-                android:textSize="16dp" />
+                android:hint="Email"
+                android:layout_marginStart="5dp"
+                android:textSize="16dp"
+                android:inputType="textEmailAddress"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -46,17 +49,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             app:boxStrokeColor="@color/white"
-            app:boxStrokeWidth="1dp">
+            app:boxStrokeWidth="1dp"
+            android:background="@drawable/roundbox_white"
+            android:theme="@style/TextInputLayoutAppearance">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:background="@drawable/roundbox_white"
                 android:fontFamily="@font/eligiblesansregular"
-                android:hint="    Password"
-                android:inputType="textPassword"
-                android:textSize="16dp" />
+                android:hint="Password"
+                android:textSize="16dp"
+                android:layout_marginStart="5dp"/>
         </android.support.design.widget.TextInputLayout>
 
         <TextView
