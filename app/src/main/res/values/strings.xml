@@ -44,5 +44,6 @@
     <string name="checkbox">CheckBox</string>
     <string name="set_time">Set Time</string>
     <string name="time">Time</string>
+    <string name="profile_text">Profile</string>
 
 </resources>

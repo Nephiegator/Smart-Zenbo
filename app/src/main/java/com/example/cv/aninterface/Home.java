@@ -1,7 +1,9 @@
 package com.example.cv.aninterface;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -32,7 +34,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class Home extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        /*implements NavigationView.OnNavigationItemSelectedListener*/ {
 
     //CompactCalendarView compactcalendar;
     //private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM", Locale.getDefault());
@@ -47,6 +49,7 @@ public class Home extends AppCompatActivity
     private RecyclerView recyclerView;
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListner;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,14 +116,14 @@ public class Home extends AppCompatActivity
         mAuth.addAuthStateListener(mAuthListner);
 
         //Hamburger Bar
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+//        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+//        drawer.addDrawerListener(toggle);
+//        toggle.syncState();
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+//        NavigationView navigationView = findViewById(R.id.nav_view);
+//        navigationView.setNavigationItemSelectedListener(this);
 
 
         //Bottom Navigation Bar
@@ -137,7 +140,7 @@ public class Home extends AppCompatActivity
                         startActivity(a2);
                         break;
                     case R.id.navigation_plan:
-                        Intent a3 = new Intent(Home.this, MainListActivity.class);
+                        Intent a3 = new Intent(Home.this, Profile.class);
                         startActivity(a3);
                         break;
                 }
@@ -155,35 +158,42 @@ public class Home extends AppCompatActivity
             }
         });
 
+//        SharedPreferences sharedPreferences = context.getSharedPreferences(Context.MODE_PRIVATE);
+//        String userName = sharedPreferences.getString("email", null);
+//        String password = sharedPreferences.getString("password", null);
+//        if (userName != null && password != null ) {
+//            doLogin(userName, password);
+//        }
+
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        item.setChecked(true);
-        switch (item.getItemId()) {
-            case R.id.nav_profile:
-                Intent nav1 = new Intent(Home.this, Profile.class);
-                startActivity(nav1);
-                break;
-            case R.id.nav_task:
-                Intent nav2 = new Intent(Home.this, MainTask.class);
-                startActivity(nav2);
-                break;
-            case R.id.nav_plan:
-                Intent nav3 = new Intent(Home.this, MainListActivity.class);
-                startActivity(nav3);
-                break;
-            case R.id.nav_logout:
-
-                mAuth.signOut();
-
-                finish();
-                Intent nav4 = new Intent(Home.this, SignIn.class);
-                startActivity(nav4);
-                break;
-        }
-        return false;
-    }
+//    @Override
+//    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//        item.setChecked(true);
+//        switch (item.getItemId()) {
+//            case R.id.nav_profile:
+//                Intent nav1 = new Intent(Home.this, Profile.class);
+//                startActivity(nav1);
+//                break;
+//            case R.id.nav_task:
+//                Intent nav2 = new Intent(Home.this, MainTask.class);
+//                startActivity(nav2);
+//                break;
+//            case R.id.nav_plan:
+//                Intent nav3 = new Intent(Home.this, Profile.class);
+//                startActivity(nav3);
+//                break;
+//            case R.id.nav_logout:
+//
+//                mAuth.signOut();
+//
+//                finish();
+//                Intent nav4 = new Intent(Home.this, SignIn.class);
+//                startActivity(nav4);
+//                break;
+//        }
+//        return false;
+//    }
 
 
     @Override

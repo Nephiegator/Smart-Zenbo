@@ -48,12 +48,6 @@ public class MainListActivity extends AppCompatActivity {
             }
         });*/
 
-    }
-
-
-
-
-
 
 
     private List<BaseItem> createItem() {

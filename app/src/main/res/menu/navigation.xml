@@ -13,7 +13,7 @@
 
     <item
         android:id="@+id/navigation_plan"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_plan" />
+        android:icon="@drawable/man-user"
+        android:title="@string/profile_text" />
 
 </menu>

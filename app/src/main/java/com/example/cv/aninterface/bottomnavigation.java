@@ -18,28 +18,6 @@ public class bottomnavigation extends AppCompatActivity{
 
    private TextView mTextMessage;
 
-
-    /*private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Intent in;
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_task:
-                    mTextMessage.setText(R.string.title_task);
-                    return true;
-                case R.id.navigation_plan:
-                    mTextMessage.setText(R.string.title_plan);
-                    return true;
-            }
-            return false;
-        }
-    };*/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +42,7 @@ public class bottomnavigation extends AppCompatActivity{
                         overridePendingTransition(0, 0);
                         break;
                     case R.id.navigation_plan:
-                        in = new Intent(getBaseContext(), MainListActivity.class);
+                        in = new Intent(getBaseContext(), Profile.class);
                         startActivity(in);
                         overridePendingTransition(0, 0);
                         break;
