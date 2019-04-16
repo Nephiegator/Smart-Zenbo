@@ -33,12 +33,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class Home extends AppCompatActivity
-        /*implements NavigationView.OnNavigationItemSelectedListener*/ {
+public class Home extends AppCompatActivity {
 
-    //CompactCalendarView compactcalendar;
-    //private SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMMM", Locale.getDefault());
-    //private SimpleDateFormat dateFormatYear = new SimpleDateFormat("yyyy", Locale.getDefault());
+
     BottomNavigationView bottomNavigationView;
     CalendarView calendar;
 
@@ -115,15 +112,6 @@ public class Home extends AppCompatActivity
         };
         mAuth.addAuthStateListener(mAuthListner);
 
-        //Hamburger Bar
-//        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-//        drawer.addDrawerListener(toggle);
-//        toggle.syncState();
-
-//        NavigationView navigationView = findViewById(R.id.nav_view);
-//        navigationView.setNavigationItemSelectedListener(this);
 
 
         //Bottom Navigation Bar
@@ -133,14 +121,16 @@ public class Home extends AppCompatActivity
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.navigation_home:
-
+                        menuItem.setIcon(R.drawable.ic_home_black_24dp);
                         break;
                     case R.id.navigation_task:
                         Intent a2 = new Intent(Home.this, MainTask.class);
+                        menuItem.setIcon(R.drawable.ic_task);
                         startActivity(a2);
                         break;
                     case R.id.navigation_plan:
                         Intent a3 = new Intent(Home.this, Profile.class);
+                        menuItem.setIcon(R.drawable.man_user);
                         startActivity(a3);
                         break;
                 }
@@ -158,52 +148,19 @@ public class Home extends AppCompatActivity
             }
         });
 
-//        SharedPreferences sharedPreferences = context.getSharedPreferences(Context.MODE_PRIVATE);
-//        String userName = sharedPreferences.getString("email", null);
-//        String password = sharedPreferences.getString("password", null);
-//        if (userName != null && password != null ) {
-//            doLogin(userName, password);
-//        }
 
     }
 
-//    @Override
-//    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//        item.setChecked(true);
-//        switch (item.getItemId()) {
-//            case R.id.nav_profile:
-//                Intent nav1 = new Intent(Home.this, Profile.class);
-//                startActivity(nav1);
-//                break;
-//            case R.id.nav_task:
-//                Intent nav2 = new Intent(Home.this, MainTask.class);
-//                startActivity(nav2);
-//                break;
-//            case R.id.nav_plan:
-//                Intent nav3 = new Intent(Home.this, Profile.class);
-//                startActivity(nav3);
-//                break;
-//            case R.id.nav_logout:
-//
-//                mAuth.signOut();
-//
-//                finish();
-//                Intent nav4 = new Intent(Home.this, SignIn.class);
-//                startActivity(nav4);
-//                break;
-//        }
-//        return false;
-//    }
 
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+//        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+//        if (drawer.isDrawerOpen(GravityCompat.START)) {
+//            drawer.closeDrawer(GravityCompat.START);
+//        } else {
+//            super.onBackPressed();
+//        }
     }
 
 
@@ -235,5 +192,7 @@ public class Home extends AppCompatActivity
         super.onStart();
         mAuth.addAuthStateListener(mAuthListner);
     }
+
+
 
 }

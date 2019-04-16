@@ -3,8 +3,10 @@ package com.example.cv.aninterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -60,6 +62,29 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
         save_profile.setOnClickListener(this);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.navigation_home:
+                        Intent a3 = new Intent(ProfileActivity.this, Home.class);
+                        startActivity(a3);
+                        finish();
+                        break;
+                    case R.id.navigation_task:
+                        Intent a2 = new Intent(ProfileActivity.this, MainTask.class);
+                        startActivity(a2);
+                        finish();
+                        break;
+                    case R.id.navigation_plan:
+
+                        break;
+                }
+                return false;
+            }
+        });
     }
 
     private boolean validateInputs(String fname, String lname, String email, String phone, String username, String bdate) {

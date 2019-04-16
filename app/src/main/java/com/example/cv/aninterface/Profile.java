@@ -2,20 +2,19 @@ package com.example.cv.aninterface;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -23,62 +22,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-//public class Profile extends RecyclerView.Adapter<Profile.UsertaskViewHolder> {
-//
-//    private Context mCtx;
-//    private List<dbUserInformation> Usertasklist;
-//
-//
-//    public Profile (Context mCtx, List<dbReminder> remtasklist) {
-//        this.mCtx = mCtx;
-//        this.Usertasklist = Usertasklist;
-//    }
-//
-//    @NonNull
-//    @Override
-//    public Profile.UsertaskViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-//        return null;
-//    }
-//
-//    @Override
-//    public void onBindViewHolder(@NonNull UsertaskViewHolder usertaskViewHolder, int position) {
-//
-//        dbUserInformation profile = Usertasklist.get(position);
-//
-//
-//        usertaskViewHolder.textViewfName.setText(profile.getfname());
-//        usertaskViewHolder.textViewlName.setText(profile.getlname());
-//
-//    }
-//
-//    @Override
-//    public int getItemCount() {
-//        return Usertasklist.size();
-//    }
-//
-//    class UsertaskViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-//        TextView textViewfName, textViewlName;
-//
-//
-//        public UsertaskViewHolder(View itemView) {
-//            super(itemView);
-//
-//            textViewfName = itemView.findViewById(R.id.view_fname);
-//            textViewlName = itemView.findViewById(R.id.view_lname);
-//
-//
-//            itemView.setOnClickListener(this);
-//
-//        }
-//
-//        @Override
-//        public void onClick(View v) {
-//
-//        }
-//    }
-//}
 
-public class Profile extends AppCompatActivity {
+
+public class Profile extends AppCompatActivity{
 
     private FirebaseFirestore db;
     private FirebaseAuth firebaseAuth;
@@ -91,6 +37,7 @@ public class Profile extends AppCompatActivity {
     private TextView edit_profile;
     private String mail, name1, name2, phonenum, username, bdate;
     private List<dbUserInformation> profileList;
+    private Button logoubtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +55,7 @@ public class Profile extends AppCompatActivity {
         view_phone = findViewById(R.id.view_phone);
         view_username = findViewById(R.id.textViewUserName);
         view_bdate = findViewById(R.id.view_bdate);
+        logoubtn = findViewById(R.id.logout_button);
 
         edit_profile = findViewById(R.id.edit_profile);
         edit_profile.setOnClickListener(new View.OnClickListener() {
@@ -118,9 +66,45 @@ public class Profile extends AppCompatActivity {
             }
         });
 
+        logoubtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences sharedPreferences = getSharedPreferences("preferences", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.remove("email");
+                editor.remove("password");
+                editor.commit();
+                Intent intent = new Intent(getApplicationContext(), SignIn.class);
+                startActivity(intent);
+            }
+        });
+
         profileList = new ArrayList<>();
 
-
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.navigation_home:
+                        Intent a3 = new Intent(Profile.this, Home.class);
+                        startActivity(a3);
+                        menuItem.setIcon(R.drawable.ic_home_black_24dp);
+                        finish();
+                        break;
+                    case R.id.navigation_task:
+                        Intent a2 = new Intent(Profile.this, MainTask.class);
+                        startActivity(a2);
+                        menuItem.setIcon(R.drawable.ic_task);
+                        finish();
+                        break;
+                    case R.id.navigation_plan:
+                        menuItem.setIcon(R.drawable.man_user);
+                        break;
+                }
+                return false;
+            }
+        });
 
         db = FirebaseFirestore.getInstance();
         db.collection("Profile").whereEqualTo("email", currentusermail).get()
@@ -152,7 +136,14 @@ public class Profile extends AppCompatActivity {
                 });
 
 
+
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
+
 
 
 }

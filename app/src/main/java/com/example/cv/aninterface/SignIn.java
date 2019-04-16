@@ -58,101 +58,6 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
 
-        //txtUser = (TextView) findViewById(R.id.txtUser);
-        /* txtEmail = (TextView) findViewById(R.id.txtEmail);
-        //imgProfile = (ImageView) findViewById(R.id.imgProfile);
-        firebaseAuth = FirebaseAuth.getInstance();
-        callbackManager = CallbackManager.Factory.create();
-
-        loginButton = (LoginButton) findViewById(R.id.login_fb_btn);
-        //logoutButton.setOnClickListener(this);
-
-
-        loginButton.setReadPermissions("email", "public_profile");//user_status, publish_actions..
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                handleFacebookAccessToken(loginResult.getAccessToken());
-            }
-
-            @Override
-            public void onCancel() {
-                Toast.makeText(SignIn.this, "Sign In canceled", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-                Toast.makeText(SignIn.this, "Something bad happened", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (AccessToken.getCurrentAccessToken() != null)
-                    Toast.makeText(SignIn.this, AccessToken.getCurrentAccessToken().getExpires().toString(), Toast.LENGTH_SHORT).show();
-                if (user != null) {
-                    String email = user.getEmail();
-                    String userName = user.getDisplayName();
-                    txtEmail.setText(email);
-                    //txtUser.setText(userName);
-                //    Picasso.with(SignIn.this).load(user.getPhotoUrl()).into(imgProfile);
-                    loginButton.setVisibility(View.GONE);
-                    //logoutButton.setVisibility(View.VISIBLE);
-                } else {
-                    Log.d("TG", "SIGNED OUT");
-                    txtEmail.setText("");
-                    //txtUser.setText("");
-                    //imgProfile.setImageBitmap(null);
-                    loginButton.setVisibility(View.VISIBLE);
-                    //logoutButton.setVisibility(View.GONE);
-                }
-            }
-        };
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        firebaseAuth.addAuthStateListener(mAuthListener);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (mAuthListener != null) {
-            firebaseAuth.removeAuthStateListener(mAuthListener);
-        }
-    }
-
-    private void handleFacebookAccessToken(AccessToken token) {
-
-        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
-        firebaseAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (!task.isSuccessful()) {
-                            Toast.makeText(SignIn.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                });
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode,
-                resultCode, data);
-    }
-
-    @Override
-    public void onClick(View v) {
-        firebaseAuth.signOut();
-        LoginManager.getInstance().logOut();  */
 
         findViewById(R.id.textViewSignUp).setOnClickListener(this);
         findViewById(R.id.textViewForgot).setOnClickListener(this);
@@ -168,22 +73,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
         mAuth = FirebaseAuth.getInstance();
 
 
-        /*btnSignOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mAuth.signOut();
-                toastMessage("Signing Out...");
-            }
-        });
 
-        btnAddItems.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d(TAG, "onClick: Switching Activities.");
-                Intent intent = new Intent(MainActivity.this, AddItemsToDatabase.class);
-                startActivity(intent);
-            }
-        });*/
     }
 
     private void userLogin(){
@@ -243,12 +133,11 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onBackPressed() {
-        // disable going back to the MainActivity
-        moveTaskToBack(true);
+
     }
 
     public void onLoginSuccess() {
-        Loginbtn.setEnabled(true);
+        //Loginbtn.setEnabled(true);
         SharedPreferences sharedPreferences = getSharedPreferences("preferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("email", emailLogin.getText().toString());

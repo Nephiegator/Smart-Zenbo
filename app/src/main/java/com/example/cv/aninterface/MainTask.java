@@ -91,14 +91,16 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
                 switch (menuItem.getItemId()) {
                     case R.id.navigation_home:
                         Intent a1 = new Intent(MainTask.this, Home.class);
+                        menuItem.setIcon(R.drawable.ic_home_black_24dp);
                         startActivity(a1);
                         break;
                     case R.id.navigation_task:
-
+                        menuItem.setIcon(R.drawable.ic_task);
                         break;
                     case R.id.navigation_plan:
-//                        Intent a3 = new Intent(MainTask.this, MainListActivity.class);
-//                        startActivity(a3);
+                        Intent a3 = new Intent(MainTask.this, Profile.class);
+                        startActivity(a3);
+                        menuItem.setIcon(R.drawable.man_user);
                         break;
                 }
                 return false;
