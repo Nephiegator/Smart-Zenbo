@@ -36,7 +36,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="20dp"
                 android:fontFamily="@fonts/eligiblesansregular"
-                android:hint="  Username" />
+                android:hint="  Nickname" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -88,12 +88,14 @@
 
             <Button
                 android:id="@+id/save_Updateprofile"
-                android:layout_width="120dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
+                android:background="@color/mediume_persian"
+                android:textColor="@color/white"
                 android:text="Update" />
 
         </LinearLayout>

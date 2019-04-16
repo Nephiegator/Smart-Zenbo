@@ -73,6 +73,10 @@
         <item name="colorControlActivated">@color/mediume_persian</item>
     </style>
 
+    <style name="TextInput" parent="Widget.Design.TextInputLayout">
+        <item name="android:colorControlActivated">@color/lightblue</item>
+    </style>
+
 
 
 </resources>

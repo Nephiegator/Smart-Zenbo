@@ -187,6 +187,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
     }
 
     public void createTask(){
+
         String title = txt_title.getText().toString().trim();
         String description = txt_description.getText().toString().trim();
         String location = xx;
@@ -196,7 +197,6 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
 
 
         if (!validateInputs(title, description, location, person, time)) {
-
             CollectionReference dbReminder = db.collection("Reminder");
 
             dbReminder reminder = new dbReminder(
@@ -222,26 +222,6 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
                         }
                     });
 
-            /*DocumentReference rmdDocumentRef = db.collection("Tasks").document("Reminder");
-
-            dbReminder reminder = new dbReminder(
-                    title, description, location, person, time
-            );
-
-            rmdDocumentRef.add(reminder)
-                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                        @Override
-                        public void onSuccess(DocumentReference documentReference) {
-                            Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
-
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(AddTask.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });*/
         }
 
     }

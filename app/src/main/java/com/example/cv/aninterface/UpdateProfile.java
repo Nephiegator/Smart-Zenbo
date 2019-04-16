@@ -37,7 +37,15 @@ public class UpdateProfile extends AppCompatActivity implements View.OnClickList
         phone_Updateprofile = findViewById(R.id.phone_Updateprofile);
         bdate_Updateprofile = findViewById(R.id.bdate_Updateprofile);
 
+//        username_Updateprofile.setText(dp.getUsername());
+//        fname_Updateprofile.setText(dp.getfname());
+//        lname_Updateprofile.setText(dp.getlname());
+//        phone_Updateprofile.setText(dp.getphone());
+//        bdate_Updateprofile.setText(dp.bdate);
+
         findViewById(R.id.save_Updateprofile).setOnClickListener(this);
+
+
 
     }
 
@@ -88,7 +96,7 @@ public class UpdateProfile extends AppCompatActivity implements View.OnClickList
                     username, fname, lname, bdate, phone, email
             );
 
-            db.collection("Profile").document(dp.getId())
+            db.collection("Profile").document(dp.getemail())
                     .set(profile)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
