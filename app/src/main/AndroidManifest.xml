@@ -77,11 +77,6 @@
         <activity
             android:name=".ProfileActivity"
             android:label="Save Information" />
-        <activity
-            android:name=".MainListActivity"
-            android:launchMode="singleTop"
-            android:parentActivityName=".Home"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <activity android:name=".reset" />
 

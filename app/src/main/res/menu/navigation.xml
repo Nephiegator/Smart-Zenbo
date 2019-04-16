@@ -13,7 +13,7 @@
 
     <item
         android:id="@+id/navigation_plan"
-        android:icon="@drawable/man-user"
+        android:icon="@drawable/man_user"
         android:title="@string/profile_text" />
 
 </menu>
