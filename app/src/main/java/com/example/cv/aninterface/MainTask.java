@@ -43,8 +43,8 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
 
         recyclerView = findViewById(R.id.recyclerViewTask);
         // linear layout
-        //recyclerView.setHasFixedSize(true);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         toolbar =(Toolbar) findViewById(R.id.maintask_toolbar);
         setSupportActionBar(toolbar);
@@ -52,11 +52,8 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
         toolbar.setTitleTextColor(0xFFFFFFFF);
 
         // grid layout
-        int numberOfColumns = 2;
-        recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
-
-        //apptasklist = new ArrayList<>();
-        //adapter2 = new TaskAdapter(this, apptasklist);
+//        int numberOfColumns = 2;
+//        recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
 
         remtasklist = new ArrayList<>();
         adapter1 = new TaskAdapter(this, remtasklist);
