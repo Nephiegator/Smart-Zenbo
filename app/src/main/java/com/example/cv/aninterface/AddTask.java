@@ -1,11 +1,13 @@
 package com.example.cv.aninterface;
 
 import android.app.TimePickerDialog;
+import android.graphics.PorterDuff;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -43,9 +45,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
     private String yy, xx;
     private String time;
     private List<dbReminder> reminderList;
-
-
-
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +55,14 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
        // timePicker = findViewById(R.id.alarmTimePicker)
 
         db = FirebaseFirestore.getInstance();
+
+        toolbar = findViewById(R.id.task_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(" New Tasks");
+        toolbar.setTitleTextColor(0xFFFFFFFF);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
 
         txt_title = findViewById(R.id.task_title);
         txt_description = findViewById(R.id.task_des);
@@ -238,10 +246,13 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
 
         }
 
-
     }
 
-
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 
 
 }
