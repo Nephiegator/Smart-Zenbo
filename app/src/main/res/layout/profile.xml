@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/profile_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/AppBarTextColor">
+
+    </android.support.v7.widget.Toolbar>
+
+    <!--<android.widget.Toolbar-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/colorPrimary"-->
+        <!--android:elevation="4dp"-->
+        <!--android:id="@+id/profile_toolbar"-->
+        <!--android:theme="@style/AppBarTextColor">-->
+    <!--</android.widget.Toolbar>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,23 +46,6 @@
             android:background="@drawable/profile_layout"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="171dp"
-                android:layout_height="114dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                app:srcCompat="@drawable/user" />
-
-            <TextView
-                android:id="@+id/edit_profile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@fonts/eligiblesansregular"
-                android:text="Edit profile"
-                android:textSize="16dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -135,7 +138,7 @@
                 android:backgroundTint="@color/hotcoral"
                 android:elevation="0dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="300dp"
                 android:layout_marginRight="20dp"
                 android:text="@string/logout"
                 android:textAppearance="@android:style/TextAppearance.Material.Button" />
@@ -159,4 +162,4 @@
         app:itemTextColor="@drawable/bottomnavigation_color"
         android:layout_alignParentBottom="true"
         app:menu="@menu/navigation" />
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
