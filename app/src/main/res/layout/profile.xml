@@ -49,11 +49,10 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="47dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
-
                 android:background="@drawable/head_layout"
                 android:orientation="vertical">
 
@@ -62,11 +61,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:gravity="center"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="@fonts/eligiblesansregular"
                     android:textColor="@color/com_facebook_button_login_silver_background_color"
                     android:textSize="20dp"
-                    tools:text="text" />
+                    tools:text="text"
+                    android:fontFamily="@font/codebold"/>
 
             </LinearLayout>
 
@@ -84,8 +84,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:fontFamily="@fonts/eligiblesansregular"
-                    android:textSize="16dp"
+                    android:fontFamily="@font/cloudlight"
+                    android:textSize="17dp"
                     tools:text="text" />
 
                 <TextView
@@ -93,8 +93,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="@fonts/eligiblesansregular"
-                    android:textSize="16dp"
+                    android:fontFamily="@font/cloudlight"
+                    android:textSize="17dp"
                     tools:text="text" />
             </LinearLayout>
 
@@ -105,7 +105,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="20dp"
-                android:fontFamily="@fonts/eligiblesansregular"
+                android:fontFamily="@font/cloudlight"
                 android:textSize="16dp"
                 tools:text="text" />
 
@@ -116,7 +116,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="20dp"
-                android:fontFamily="@fonts/eligiblesansregular"
+                android:fontFamily="@font/cloudlight"
                 android:textSize="16dp"
                 tools:text="text" />
 
@@ -127,7 +127,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="20dp"
-                android:fontFamily="@fonts/eligiblesansregular"
+                android:fontFamily="@font/cloudlight"
                 android:textSize="16dp"
                 tools:text="text" />
 

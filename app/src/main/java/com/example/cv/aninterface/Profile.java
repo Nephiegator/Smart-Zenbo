@@ -144,10 +144,9 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
 
     }
 
-    @Override
-    public void onBackPressed() {
-
-    }
+//    @Override
+//    public void onBackPressed() {
+//    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -171,6 +170,11 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
         return false;
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 
 
 }

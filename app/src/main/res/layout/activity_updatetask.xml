@@ -33,7 +33,6 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:layout_marginTop="80dp"
         android:layout_marginBottom="68dp"
         android:background="@drawable/box"
@@ -45,14 +44,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
 
-        <TextView
-            android:id="@+id/textView2"
+        <Switch
+            android:id="@+id/Switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="25dp"
-            android:text="@string/add_task"
-            android:textSize="20sp" />
+            android:checked="true"
+            android:layout_marginEnd="20dp"
+            android:theme="@style/SwitchCompatTheme"
+            android:switchMinWidth="70dp"
+            android:layout_gravity="end"/>
 
         <!-- //////////////// Title //////////////////// -->
         <LinearLayout

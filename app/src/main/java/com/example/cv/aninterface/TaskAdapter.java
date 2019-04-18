@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.util.List;
@@ -64,6 +66,16 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.remtaskViewHol
             textViewTime = itemView.findViewById(R.id.textView_time_task);
 
             itemView.setOnClickListener(this);
+
+//            final Switch simpleSwitch = itemView.findViewById(R.id.Switch); // initiate Switch
+//            simpleSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//                @Override
+//                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                    if (simpleSwitch.isChecked()) {
+//
+//                    }
+//                }
+//            });
 
         }
 

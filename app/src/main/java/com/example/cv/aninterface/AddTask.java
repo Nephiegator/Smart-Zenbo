@@ -193,6 +193,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
         String location = xx;
         String person = yy;
         String time = timeTextView.getText().toString().trim();
+        String status = "true";
 
 
 
@@ -204,7 +205,8 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
                     description,
                     location,
                     person,
-                    time
+                    time,
+                    status
             );
 
 

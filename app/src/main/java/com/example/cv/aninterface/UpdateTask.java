@@ -13,7 +13,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -37,6 +39,8 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
     private dbReminder tt;
     private  String yy,xx;
     private TextView timeTextView;
+    private Switch sswitch;
+    private String status = "false";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +56,20 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
 
         txt_title.setText(tt.getTitle());
         txt_description.setText(tt.getDesc());
+
+        //set switch to ON
+        //sswitch.setChecked(false);
+        sswitch = findViewById(R.id.Switch);
+        sswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    status = "true";
+                } else {
+                    status = "false";
+                }
+            }
+        });
 
         findViewById(R.id.time_set_btn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,7 +108,7 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
 
     }
 
-    private boolean hasvalidateInputs(String title, String description, String location, String person, String time){
+    private boolean hasvalidateInputs(String title, String description, String location, String person, String time, String status){
         if (title.isEmpty()){
             txt_title.setError("Title Required");
             txt_title.requestFocus();
@@ -110,6 +128,9 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         }
         if (time.isEmpty()){
             return false;
+        }
+        if (status.isEmpty()) {
+
         }
 
         return false;
@@ -192,17 +213,17 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
     }
 
     public void updateTask() {
-
         String title = txt_title.getText().toString().trim();
         String description = txt_description.getText().toString().trim();
         String location = xx;
         String person = yy;
         String time = timeTextView.getText().toString().trim();
+        String sstatus = status;
 
-        if (!hasvalidateInputs(title,description,location,person,time)){
+        if (!hasvalidateInputs(title,description,location,person,time, sstatus)){
 
             dbReminder reminder = new dbReminder(
-                    title, description, location, person, time
+                    title, description, location, person, time, sstatus
             );
 
             db.collection("Reminder").document(tt.getId())
