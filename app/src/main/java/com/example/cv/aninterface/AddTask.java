@@ -1,11 +1,13 @@
 package com.example.cv.aninterface;
 
 import android.app.TimePickerDialog;
+import android.graphics.PorterDuff;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -45,8 +47,6 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
     private FirebaseFirestore db;
     private String yy, xx;
     private List<dbReminder> reminderList;
-    FirebaseAuth mAuth;
-    FirebaseAuth.AuthStateListener mAuthListner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +58,14 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
         mAuth = FirebaseAuth.getInstance();
         //Firestore
         db = FirebaseFirestore.getInstance();
+
+        toolbar = findViewById(R.id.task_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(" New Tasks");
+        toolbar.setTitleTextColor(0xFFFFFFFF);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
 
         txt_title = findViewById(R.id.task_title);
         txt_description = findViewById(R.id.task_des);
@@ -198,6 +206,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
         String location = xx;
         String person = yy;
         String time = timeTextView.getText().toString().trim();
+        String status = "true";
 
         if (!validateInputs(title, description, location, person, time)) {
             CollectionReference dbReminder = db.collection("Reminder");
@@ -207,7 +216,8 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
                     description,
                     location,
                     person,
-                    time
+                    time,
+                    status
             );
 
 
@@ -275,4 +285,3 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
 
     }
 
-}

@@ -40,7 +40,6 @@ public class TaskAdapterSelected extends RecyclerView.Adapter<TaskAdapterSelecte
         holder.textViewDecs.setText("   "+reminder.getDesc());
         holder.textViewLoc.setText("At room: " + reminder.getInLocation());
         holder.textViewPer.setText("To: " + reminder.getObjPerson());
-        holder.myCheckBox.setChecked(reminder.isSelected());
         holder.myCheckBox.setTag(reminder);
 /*
         holder.setItemClickListener(new remtaskselViewHolder.ItemClickListener() {

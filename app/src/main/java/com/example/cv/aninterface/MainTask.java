@@ -2,6 +2,7 @@ package com.example.cv.aninterface;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -14,6 +15,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Switch;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -31,7 +33,7 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
 
     Toolbar toolbar;
     private RecyclerView recyclerView;
-    private TaskAdapter adapter1, adapter2;
+    private TaskAdapter adapter1;
     private List<dbReminder> remtasklist;
 
     private FirebaseFirestore db;
@@ -43,20 +45,22 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
 
         recyclerView = findViewById(R.id.recyclerViewTask);
         // linear layout
-        //recyclerView.setHasFixedSize(true);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         toolbar =(Toolbar) findViewById(R.id.maintask_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(" Tasks");
         toolbar.setTitleTextColor(0xFFFFFFFF);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
+
+
 
         // grid layout
-        int numberOfColumns = 2;
-        recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
-
-        //apptasklist = new ArrayList<>();
-        //adapter2 = new TaskAdapter(this, apptasklist);
+//        int numberOfColumns = 2;
+//        recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
 
         remtasklist = new ArrayList<>();
         adapter1 = new TaskAdapter(this, remtasklist);
@@ -107,6 +111,7 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
             }
         });
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.maintask_menu, menu);
@@ -122,31 +127,6 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
     public boolean onOptionsItemSelected(MenuItem item) {
         String msg = " ";
         switch (item.getItemId()) {
-            case R.id.addplan:
-                //msg = "Add";
-                //break;
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("Make New Plan");
-                builder.setMessage("Are you sure to make new plan list");
-
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent a = new Intent(MainTask.this, TaskSelect.class);
-                        startActivity(a);
-                    }
-                });
-
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-
-                AlertDialog ad = builder.create();
-                ad.show();
-                break;
             case R.id.refresh:
                 super.onRestart();
                 Intent i = new Intent (MainTask.this, MainTask.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
@@ -154,5 +134,11 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
                 break;
         }
         return false;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

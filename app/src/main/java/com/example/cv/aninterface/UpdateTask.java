@@ -3,17 +3,23 @@ package com.example.cv.aninterface;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -37,6 +43,9 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
     private dbReminder tt;
     private  String yy,xx;
     private TextView timeTextView;
+    private Switch sswitch;
+    private String status = "false";
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +59,30 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         txt_description = findViewById(R.id.task_des);
         timeTextView = findViewById(R.id.time_textview);
 
+        toolbar =(Toolbar) findViewById(R.id.update_task_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(" Update Task");
+        toolbar.setTitleTextColor(0xFFFFFFFF);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
+
         txt_title.setText(tt.getTitle());
         txt_description.setText(tt.getDesc());
+
+        //set switch to ON
+        //sswitch.setChecked(false);
+        sswitch = findViewById(R.id.Switch);
+        sswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    status = "true";
+                } else {
+                    status = "false";
+                }
+            }
+        });
 
         findViewById(R.id.time_set_btn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,8 +92,8 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
             }
         });
 
+
         findViewById(R.id.update_btn).setOnClickListener(this);
-        findViewById(R.id.delete_btn).setOnClickListener(this);
 
 
         Spinner splocation =  (Spinner) findViewById(R.id.inLocation);
@@ -90,7 +121,7 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
 
     }
 
-    private boolean hasvalidateInputs(String title, String description, String location, String person, String time){
+    private boolean hasvalidateInputs(String title, String description, String location, String person, String time, String status){
         if (title.isEmpty()){
             txt_title.setError("Title Required");
             txt_title.requestFocus();
@@ -110,6 +141,9 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         }
         if (time.isEmpty()){
             return false;
+        }
+        if (status.isEmpty()) {
+
         }
 
         return false;
@@ -192,17 +226,17 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
     }
 
     public void updateTask() {
-
         String title = txt_title.getText().toString().trim();
         String description = txt_description.getText().toString().trim();
         String location = xx;
         String person = yy;
         String time = timeTextView.getText().toString().trim();
+        String sstatus = status;
 
-        if (!hasvalidateInputs(title,description,location,person,time)){
+        if (!hasvalidateInputs(title,description,location,person,time, sstatus)){
 
             dbReminder reminder = new dbReminder(
-                    title, description, location, person, time
+                    title, description, location, person, time, sstatus
             );
 
             db.collection("Reminder").document(tt.getId())
@@ -224,8 +258,45 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
                 Intent intent = new Intent(UpdateTask.this, MainTask.class);
                 startActivity(intent);
                 break;
-            case R.id.delete_btn:
-                /*AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//            case R.id.delete_btn:
+//                /*AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//                builder.setTitle("Are your sure to delete it?");
+//                builder.setMessage("Deletion of permanent...");
+//
+//                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        deleteTask();
+//                    }
+//                });
+//
+//                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                    }
+//                });
+//
+//                AlertDialog ad = builder.create();
+//                ad.show(); */
+//                deleteTask();
+//                break;
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.update_menu, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        String msg = " ";
+        switch (item.getItemId()) {
+            case R.id.delete:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("Are your sure to delete it?");
                 builder.setMessage("Deletion of permanent...");
 
@@ -244,10 +315,16 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
                 });
 
                 AlertDialog ad = builder.create();
-                ad.show(); */
-                deleteTask();
+                ad.show();
                 break;
         }
+        return false;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
 }

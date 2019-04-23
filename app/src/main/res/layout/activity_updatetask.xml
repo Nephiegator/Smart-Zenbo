@@ -23,17 +23,19 @@
              app:popupTheme="@style/PopupOverlay" />
 
      </android.support.design.widget.AppBarLayout>-->
-    <include
-        android:id="@+id/appbar"
-        layout="@layout/addplan_app_bar">
-
-    </include>
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:id="@+id/update_task_toolbar"
+        android:theme="@style/AppBarTextColor">
+    </android.support.v7.widget.Toolbar>
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:layout_marginTop="80dp"
         android:layout_marginBottom="68dp"
         android:background="@drawable/box"
@@ -45,14 +47,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
 
-        <TextView
-            android:id="@+id/textView2"
+        <Switch
+            android:id="@+id/Switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="25dp"
-            android:text="@string/add_task"
-            android:textSize="20sp" />
+            android:checked="true"
+            android:layout_marginEnd="20dp"
+            android:theme="@style/SwitchCompatTheme"
+            android:switchMinWidth="70dp"
+            android:layout_gravity="end"/>
 
         <!-- //////////////// Title //////////////////// -->
         <LinearLayout
@@ -220,21 +223,13 @@
             android:layout_gravity="end"
             android:layout_marginRight="40dp">
 
-        <Button
-            android:id="@+id/delete_btn"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:background="@color/hotcoral"
-            android:layout_marginRight="30dp"
-            android:textColor="@color/white"
-            android:text="Delete"
-            android:textSize="15dp" />
+
 
             <Button
             android:id="@+id/update_btn"
-            android:layout_width="80dp"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:background="@color/selective_yellow"
+            android:background="@color/mediume_persian"
                 android:textColor="@color/white"
             android:text="UPDATE"
             android:textSize="15dp" />

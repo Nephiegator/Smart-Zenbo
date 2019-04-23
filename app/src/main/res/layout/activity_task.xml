@@ -24,7 +24,7 @@
 
      </android.support.design.widget.AppBarLayout>-->
     <include
-        android:id="@+id/appbar"
+        android:id="@+id/task_toolbar"
         layout="@layout/addplan_app_bar">
 
     </include>
