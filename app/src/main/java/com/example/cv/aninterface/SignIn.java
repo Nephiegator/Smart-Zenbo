@@ -69,10 +69,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
 
         login = findViewById(R.id.login);
 
-
         mAuth = FirebaseAuth.getInstance();
-
-
 
     }
 

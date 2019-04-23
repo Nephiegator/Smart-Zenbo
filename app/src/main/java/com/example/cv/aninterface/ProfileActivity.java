@@ -33,7 +33,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private Button save_profile;
     private FirebaseFirestore db;
 
-    private DatabaseReference databaseReference;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,8 +46,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             finish();
             startActivity(new Intent(ProfileActivity.this, Profile.class));
         }
-
-        databaseReference = FirebaseDatabase.getInstance().getReference();
 
         fname_profile = findViewById(R.id.fname_profile);
         lname_profile = findViewById(R.id.lname_profile);

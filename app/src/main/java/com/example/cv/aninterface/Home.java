@@ -187,6 +187,7 @@ public class Home extends AppCompatActivity {
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }*/
+
     @Override
     protected void onStart() {
         super.onStart();

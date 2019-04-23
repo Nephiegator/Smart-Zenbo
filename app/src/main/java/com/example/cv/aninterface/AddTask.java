@@ -18,6 +18,12 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -35,17 +41,12 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
     private TextInputEditText txt_title;
     private TextInputEditText txt_description;
     private TextView timeTextView;
-    //private TextView txt_hour;
-    //private TextView txt_minute;
-
     private String TAG = "AddTask";
     private FirebaseFirestore db;
     private String yy, xx;
-    private String time;
     private List<dbReminder> reminderList;
-
-
-
+    FirebaseAuth mAuth;
+    FirebaseAuth.AuthStateListener mAuthListner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,8 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
 
        // timePicker = findViewById(R.id.alarmTimePicker)
 
+        mAuth = FirebaseAuth.getInstance();
+        //Firestore
         db = FirebaseFirestore.getInstance();
 
         txt_title = findViewById(R.id.task_title);
@@ -61,6 +64,9 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
         timeTextView = findViewById(R.id.time_textview);
 
         Button Create = (Button) findViewById(R.id.create_btn);
+        Create.setOnClickListener(this);
+
+        Button test = (Button) findViewById(R.id.test_btn);
         Create.setOnClickListener(this);
 
         findViewById(R.id.time_set_btn).setOnClickListener(new View.OnClickListener() {
@@ -158,7 +164,6 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
                     yy = parent.getItemAtPosition(position).toString();
                     break;
             }
-
         }
 
         @Override
@@ -194,8 +199,6 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
         String person = yy;
         String time = timeTextView.getText().toString().trim();
 
-
-
         if (!validateInputs(title, description, location, person, time)) {
             CollectionReference dbReminder = db.collection("Reminder");
 
@@ -226,6 +229,37 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
 
     }
 
+//    private void writeNewTask() {
+//
+//        final String title = txt_title.getText().toString().trim();
+//        final String description = txt_description.getText().toString().trim();
+//        final String location = xx;
+//        final String person = yy;
+//        final String time = timeTextView.getText().toString().trim();
+//
+//
+//        myRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                // This method is called once with the initial value and again
+//                // whenever data at this location is updated.
+//                String value = dataSnapshot.getValue(String.class);
+//                myRef.child("Task").child(title).setValue(title);
+//                myRef.child("Task").child(description).setValue(description);
+//                myRef.child("Task").child(location).setValue(location);
+//                myRef.child("Task").child(person).setValue(person);
+//                myRef.child("Task").child(time).setValue(time);
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError error) {
+//                // Failed to read value
+//                Log.w(TAG, "Failed to read value.", error.toException());
+//            }
+//        });
+//    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -233,13 +267,12 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
                 createTask();
                 finish();
                 break;
-
+//            case R.id.test_btn:
+//                writeNewTask();
+//                finish();
+//                break;
         }
 
-
     }
-
-
-
 
 }

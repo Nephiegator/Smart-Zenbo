@@ -17,8 +17,6 @@ public class dbReminder implements Serializable {
     private String desc;
     private String inLocation;
     private String ObjPerson;
-    //private int hourOfDay;
-    //private int minute;
     private boolean isSelected;
     private String time;
 
