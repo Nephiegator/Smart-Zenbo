@@ -74,38 +74,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
-                    android:text="First Name"
+                    android:text="Nickname"
                     android:layout_weight="0.5"
                     android:fontFamily="@font/cloudlight"
                     android:textSize="17dp" />
 
                 <TextView
-                    android:id="@+id/view_fname"
+                    android:id="@+id/view_name"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/cloudlight"
                     android:textSize="17dp"
-                    tools:text="text" />
-            </TableRow>
-
-            <TableRow>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:text="Last Name"
-                    android:layout_weight="0.5"
-                    android:fontFamily="@font/cloudlight"
-                    android:textSize="17dp" />
-
-                <TextView
-                    android:id="@+id/view_lname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/cloudlight"
-                    android:textSize="17dp"
-                    tools:text="text" />
+                    tools:text="   text" />
             </TableRow>
 
             <TableRow>
@@ -116,6 +97,8 @@
                     android:layout_weight="0.5"
                     android:fontFamily="@font/cloudlight"
                     android:textSize="17dp" />
+
+
 
                 <TextView
                     android:id="@+id/view_email"
@@ -131,20 +114,21 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
-                    android:text="Phone Number"
+                    android:text="User"
                     android:layout_weight="0.5"
                     android:fontFamily="@font/cloudlight"
                     android:textSize="17dp" />
 
                 <TextView
-                    android:id="@+id/view_phone"
+                    android:id="@+id/view_user"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
+                    android:layout_weight="1"
                     android:fontFamily="@font/cloudlight"
-                    android:textSize="16dp"
-                    tools:text="text"
-                    android:layout_weight="1"/>
+                    android:textSize="17dp"
+                    tools:text="text" />
             </TableRow>
+
 
             <TableRow>
                 <TextView
@@ -165,6 +149,44 @@
                     android:layout_weight="1"/>
             </TableRow>
 
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:text="Relation"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/cloudlight"
+                    android:textSize="17dp" />
+
+                <TextView
+                    android:id="@+id/view_relation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:fontFamily="@font/cloudlight"
+                    android:textSize="16dp"
+                    tools:text="text"
+                    android:layout_weight="1"/>
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:text="Gender"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/cloudlight"
+                    android:textSize="17dp" />
+
+                <TextView
+                    android:id="@+id/view_gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:fontFamily="@font/cloudlight"
+                    android:textSize="16dp"
+                    tools:text="text"
+                    android:layout_weight="1"/>
+            </TableRow>
+
         </TableLayout>
 
             <Button
@@ -174,7 +196,7 @@
             android:backgroundTint="@color/hotcoral"
             android:elevation="0dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="220dp"
+            android:layout_marginTop="200dp"
             android:layout_marginRight="20dp"
             android:text="@string/logout"
             android:textAppearance="@android:style/TextAppearance.Material.Button" />

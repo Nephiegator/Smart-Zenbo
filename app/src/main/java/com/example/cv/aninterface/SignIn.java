@@ -47,7 +47,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
     private TextView textViewForgot;
     private static final String TAG = "SignIn";
 
-    private TextInputEditText emailLogin;
+    private TextInputEditText usernameLogin;
     private TextInputEditText passwordLogin;
 
     public SignIn() {
@@ -63,7 +63,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
         findViewById(R.id.textViewForgot).setOnClickListener(this);
         findViewById(R.id.login).setOnClickListener(this);
 
-        emailLogin = findViewById(R.id.userlogin);
+        usernameLogin = findViewById(R.id.userlogin);
         passwordLogin = findViewById(R.id.password);
         passwordLogin.setTransformationMethod(new PasswordTransformationMethod());
 
@@ -75,11 +75,11 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
 
     private void userLogin(){
 
-        final String email = emailLogin.getText().toString().trim();
+        final String username = usernameLogin.getText().toString().trim() + "@domainname.com";
         final String pass = passwordLogin.getText().toString().trim();
 
-        if (TextUtils.isEmpty(email)) {
-            Toast.makeText(this, "Please enter your email", Toast.LENGTH_LONG).show();
+        if (TextUtils.isEmpty(username)) {
+            Toast.makeText(this, "Please enter your username", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -89,7 +89,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
         }
 
 
-        mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.signInWithEmailAndPassword(username, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
@@ -97,7 +97,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }else{
-                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -137,7 +137,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
         //Loginbtn.setEnabled(true);
         SharedPreferences sharedPreferences = getSharedPreferences("preferences", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("email", emailLogin.getText().toString());
+        editor.putString("username", usernameLogin.getText().toString() + "@domainname.com");
         editor.putString("password", passwordLogin.getText().toString());
         editor.commit();
         Intent intent = new Intent(getApplicationContext(), Home.class);

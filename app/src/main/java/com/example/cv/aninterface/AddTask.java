@@ -47,15 +47,15 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
     private FirebaseFirestore db;
     private String yy, xx;
     private List<dbReminder> reminderList;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task);
 
-       // timePicker = findViewById(R.id.alarmTimePicker)
+        // timePicker = findViewById(R.id.alarmTimePicker)
 
-        mAuth = FirebaseAuth.getInstance();
         //Firestore
         db = FirebaseFirestore.getInstance();
 
@@ -90,8 +90,8 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
         Spinner spperson = (Spinner) findViewById(R.id.ObjPerson);
 
         //Spinner method to read the selected value
-        ArrayAdapter<State1> spinnerArrayAdapter1 = new ArrayAdapter<State1> (this,
-                android.R.layout.simple_spinner_item, new State1[] {
+        ArrayAdapter<State1> spinnerArrayAdapter1 = new ArrayAdapter<State1>(this,
+                android.R.layout.simple_spinner_item, new State1[]{
                 new State1("None"),
                 new State1("Bedroom"),
                 new State1("Kitchen"),
@@ -99,8 +99,8 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
         splocation.setAdapter(spinnerArrayAdapter1);
         splocation.setOnItemSelectedListener(new MyOnItemSelectedListener());
 
-        ArrayAdapter<State2> spinnerArrayAdapter2 = new ArrayAdapter<State2> (this,
-                android.R.layout.simple_spinner_item, new State2[] {
+        ArrayAdapter<State2> spinnerArrayAdapter2 = new ArrayAdapter<State2>(this,
+                android.R.layout.simple_spinner_item, new State2[]{
                 new State2("None"),
                 new State2("Johnny"),
                 new State2("Irene"),
@@ -118,18 +118,18 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
             return true;
         }
 
-        if (description.isEmpty()){
+        if (description.isEmpty()) {
             txt_description.setError("Description Required");
             txt_description.requestFocus();
             return true;
         }
-        if (location.isEmpty()){
+        if (location.isEmpty()) {
             return false;
         }
-        if (person.isEmpty()){
+        if (person.isEmpty()) {
             return false;
         }
-        if (time.isEmpty()){
+        if (time.isEmpty()) {
             return false;
         }
 
@@ -140,7 +140,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
     public class State1 {
         public String loc = "";
 
-        public State1(String _loc){
+        public State1(String _loc) {
             loc = _loc;
         }
 
@@ -152,7 +152,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
     public class State2 {
         public String name = "";
 
-        public State2(String _name){
+        public State2(String _name) {
             name = _name;
         }
 
@@ -199,7 +199,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
         timeTextView.setText(timeText);
     }
 
-    public void createTask(){
+    public void createTask() {
 
         String title = txt_title.getText().toString().trim();
         String description = txt_description.getText().toString().trim();
@@ -284,4 +284,5 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
         }
 
     }
+}
 

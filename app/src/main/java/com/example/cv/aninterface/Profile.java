@@ -24,9 +24,11 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
+import java.util.concurrent.TimeUnit;
 
 
 public class Profile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -35,13 +37,16 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
     private FirebaseFirestore db;
     private FirebaseAuth firebaseAuth;
     private TextView view_fname;
-    private TextView view_lname;
+    private TextView view_user;
     private TextView view_email;
-    private TextView view_phone;
+    private TextView view_gender;
     private TextView view_username;
     private TextView view_bdate;
-    private String mail, name1, name2, phonenum, username, bdate;
-    private List<dbUserInformation> profileList;
+    private TextView view_relation;
+    private String mail, name, username, relation;
+    private Integer gen, admin;
+    private Long bdate;
+    private List<dbZenboUser> profileList;
     private Button logoubtn;
 
     @Override
@@ -62,15 +67,19 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
 
         FirebaseUser user = firebaseAuth.getCurrentUser();
         String currentusermail = firebaseAuth.getCurrentUser().getEmail();
+        String test[] = currentusermail.toString().split("@");
+        String usern = test[0];
+        System.out.println(usern);
 
-        view_fname = findViewById(R.id.view_fname);
-        view_lname = findViewById(R.id.view_lname);
+        view_fname = findViewById(R.id.view_name);
+        view_user = findViewById(R.id.view_user);
         view_email = findViewById(R.id.view_email);
-        view_phone = findViewById(R.id.view_phone);
+        view_gender = findViewById(R.id.view_gender);
         view_username = findViewById(R.id.textViewUserName);
         view_bdate = findViewById(R.id.view_bdate);
-        logoubtn = findViewById(R.id.logout_button);
+        view_relation = findViewById(R.id.view_relation);
 
+        logoubtn = findViewById(R.id.logout_button);
         logoubtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,7 +121,7 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
         });
 
         db = FirebaseFirestore.getInstance();
-        db.collection("Profile").whereEqualTo("email", currentusermail).get()
+        db.collection("ZenboUser").whereEqualTo("username", usern).get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -120,22 +129,25 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
                             List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
 
                             for (DocumentSnapshot d : list) {
-                                dbUserInformation p = d.toObject(dbUserInformation.class);
-                                p.setId(d.getId());
-                                profileList.add(p);
-                                mail = p.getemail();
-                                name1 = p.getfname();
-                                name2 = p.getlname();
-                                phonenum = p.getphone();
-                                username = p.getUsername();
-                                bdate = p.getBdate();
+                                dbZenboUser z = d.toObject(dbZenboUser.class);
+                                z.setId(d.getId());
+                                profileList.add(z);
+
+                                username = z.getUsername();
+                                mail = z.getUserId();
+                                name = z.getNickName();
+                                admin = z.getAdmin();
+                                bdate = z.getBirthday();
+                                relation = z.getRelation();
+                                gen = z.getGender();
                             }
-                            view_fname.setText(name1);
-                            view_email.setText(mail);
-                            view_lname.setText(name2);
-                            view_phone.setText(phonenum);
                             view_username.setText(username);
-                            view_bdate.setText(bdate);
+                            view_fname.setText(name);
+                            view_email.setText(mail);
+                            view_bdate.setText(getDate(bdate));
+                            view_user.setText(getAdmin(admin));
+                            view_relation.setText(relation);
+                            view_gender.setText(getGender(gen));
                         }
                     }
                 });
@@ -147,6 +159,38 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
 //    @Override
 //    public void onBackPressed() {
 //    }
+    private String getAdmin(int ad) {
+        String state = null;
+        if (ad == 1) {
+            state = "Regular user";
+        }else if (ad == 2) {
+            state = "Advance user";
+        }else if (ad == 3) {
+            state = "Admin user";
+        }
+        return state;
+    }
+
+    private String getGender(int gen) {
+        String state = null;
+        if (gen == 1) {
+            state = "Male";
+        }else if (gen == 2) {
+            state = "Female";
+        }
+        return state;
+    }
+
+    private String getDate(Long timestamp){
+        try{
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            Date netDate = (new Date(timestamp));
+            return sdf.format(netDate);
+        }
+        catch (Exception e){
+            return "xx";
+        }
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {

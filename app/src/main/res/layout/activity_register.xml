@@ -49,14 +49,14 @@
             android:theme="@style/TextInputLayoutAppearance">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/signup_email"
+                android:id="@+id/signup_username"
                 android:fontFamily="@font/eligiblesansregular"
                 android:textSize="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:hint="Email"
+                android:hint="Username"
                 android:layout_marginStart="5dp"
-                android:inputType="textEmailAddress"
+
                 />
         </android.support.design.widget.TextInputLayout>
 

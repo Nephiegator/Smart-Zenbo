@@ -33,7 +33,7 @@ public class register extends AppCompatActivity implements View.OnClickListener 
 
     private FirebaseAuth firebaseAuth;
     private Button buttonSignup;
-    private TextInputEditText emailSignup;
+    private TextInputEditText usernameSignup;
     private TextInputEditText passwordSignup;
     private TextView textViewLogin;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -48,7 +48,7 @@ public class register extends AppCompatActivity implements View.OnClickListener 
         setSupportActionBar(toolbar);
 
         buttonSignup = findViewById(R.id.signup_btn);
-        emailSignup = findViewById(R.id.signup_email);
+        usernameSignup = findViewById(R.id.signup_username);
         passwordSignup = findViewById(R.id.signup_password);
         passwordSignup.setTransformationMethod(new PasswordTransformationMethod());
 
@@ -63,11 +63,11 @@ public class register extends AppCompatActivity implements View.OnClickListener 
 
     private void registerUser() {
 
-        final String email = emailSignup.getText().toString().trim();
+        final String username = usernameSignup.getText().toString().trim() + "@domainname.com";
         final String pass = passwordSignup.getText().toString().trim();
 
-        if (TextUtils.isEmpty(email)) {
-            Toast.makeText(this, "Please enter your email", Toast.LENGTH_LONG).show();
+        if (TextUtils.isEmpty(username)) {
+            Toast.makeText(this, "Please enter your username", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -76,13 +76,13 @@ public class register extends AppCompatActivity implements View.OnClickListener 
             return;
         }
 
-        firebaseAuth.createUserWithEmailAndPassword(email, pass)
+        firebaseAuth.createUserWithEmailAndPassword(username, pass)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
                             User user = new User(
-                                    email,
+                                    username,
                                     pass
                             );
 
@@ -97,7 +97,7 @@ public class register extends AppCompatActivity implements View.OnClickListener 
                                 }
                             });
 
-                            Intent a3 = new Intent(register.this, ProfileActivity.class);
+                            Intent a3 = new Intent(register.this, Home.class);
                             startActivity(a3);
                         } else {
                             hideKeyboard(buttonSignup);
