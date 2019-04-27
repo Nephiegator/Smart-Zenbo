@@ -95,6 +95,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
                 new State1("None"),
                 new State1("Bedroom"),
                 new State1("Kitchen"),
+                new State1("Living room")
         });
         splocation.setAdapter(spinnerArrayAdapter1);
         splocation.setOnItemSelectedListener(new MyOnItemSelectedListener());

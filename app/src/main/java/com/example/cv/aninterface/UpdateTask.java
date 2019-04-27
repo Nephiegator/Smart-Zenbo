@@ -105,6 +105,7 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
                 new UpdateTask.State1("None"),
                 new UpdateTask.State1("Bedroom"),
                 new UpdateTask.State1("Kitchen"),
+                new UpdateTask.State1("Living room")
         });
         splocation.setAdapter(spinnerArrayAdapter1);
         splocation.setOnItemSelectedListener(new UpdateTask.MyOnItemSelectedListener());
