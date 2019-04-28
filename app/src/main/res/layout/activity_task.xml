@@ -35,7 +35,9 @@
          android:layout_height="match_parent"
          android:layout_marginTop="80dp"
          android:layout_marginBottom="68dp"
-         android:background="@drawable/box"
+         android:layout_marginStart="15dp"
+         android:layout_marginEnd="15dp"
+         android:background="@drawable/profile_layout"
          android:orientation="vertical"
          app:layout_constraintBottom_toBottomOf="parent"
          app:layout_constraintEnd_toEndOf="parent"
@@ -43,15 +45,6 @@
          app:layout_constraintStart_toStartOf="parent"
          app:layout_constraintTop_toTopOf="parent"
          app:layout_constraintVertical_bias="1.0">
-
-         <TextView
-             android:id="@+id/textView2"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_marginStart="15dp"
-             android:layout_marginTop="25dp"
-             android:text="@string/add_task"
-             android:textSize="22sp" />
 
          <!-- //////////////// Title //////////////////// -->
         <LinearLayout
@@ -225,18 +218,9 @@
              android:background="@color/mediume_persian"
              android:textColor="@color/white"
              android:text="CREATE"
-             android:textSize="16dp" />
+             android:textSize="16dp"
+             android:fontFamily="@font/eligiblesansbold"/>
 
-         <Button
-             android:id="@+id/test_btn"
-             android:layout_width="350dp"
-             android:layout_height="wrap_content"
-             android:layout_gravity="center"
-             android:layout_marginTop="15dp"
-             android:background="@color/mediume_persian"
-             android:textColor="@color/white"
-             android:text="TEST"
-             android:textSize="16dp" />
 
     </LinearLayout>
 

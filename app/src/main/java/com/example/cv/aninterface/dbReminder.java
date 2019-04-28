@@ -19,15 +19,17 @@ public class dbReminder implements Serializable {
     private String ObjPerson;
     private String time;
     private String status;
+    private String username;
 
 
-    public dbReminder(String title, String desc, String inLocation, String objPerson, String time, String status) {
+    public dbReminder(String title, String desc, String inLocation, String objPerson, String time, String status, String username) {
         this.title = title;
         this.desc = desc;
         this.inLocation = inLocation;
         this.ObjPerson = objPerson;
         this.time = time;
         this.status = status;
+        this.username = username;
     }
 
     public dbReminder() {
@@ -87,5 +89,13 @@ public class dbReminder implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

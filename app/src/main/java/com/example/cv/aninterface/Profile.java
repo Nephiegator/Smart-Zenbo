@@ -47,7 +47,6 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
     private Integer gen, admin;
     private Long bdate;
     private List<dbZenboUser> profileList;
-    private Button logoubtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,19 +78,6 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
         view_bdate = findViewById(R.id.view_bdate);
         view_relation = findViewById(R.id.view_relation);
 
-        logoubtn = findViewById(R.id.logout_button);
-        logoubtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferences sharedPreferences = getSharedPreferences("preferences", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.remove("email");
-                editor.remove("password");
-                editor.commit();
-                Intent intent = new Intent(getApplicationContext(), SignIn.class);
-                startActivity(intent);
-            }
-        });
 
         profileList = new ArrayList<>();
 
@@ -206,8 +192,13 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.edit:
-                Intent intent = new Intent(Profile.this, UpdateProfile.class);
+            case R.id.logout:
+                SharedPreferences sharedPreferences = getSharedPreferences("preferences", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.remove("email");
+                editor.remove("password");
+                editor.commit();
+                Intent intent = new Intent(getApplicationContext(), SignIn.class);
                 startActivity(intent);
                 break;
         }

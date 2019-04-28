@@ -28,6 +28,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -46,6 +47,8 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
     private Switch sswitch;
     private String status = "false";
     Toolbar toolbar;
+    private FirebaseAuth firebaseAuth;
+    private TextView textview_username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +57,12 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
 
         tt = (dbReminder) getIntent().getSerializableExtra("Reminder");
         db = FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
         txt_title = findViewById(R.id.task_title);
         txt_description = findViewById(R.id.task_des);
         timeTextView = findViewById(R.id.time_textview);
+        textview_username = findViewById(R.id.textview_username);
 
         toolbar =(Toolbar) findViewById(R.id.update_task_toolbar);
         setSupportActionBar(toolbar);
@@ -67,8 +72,12 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
 
+        String[] test = tt.getUsername().toString().split("@");
+        String usern = test[0];
+
         txt_title.setText(tt.getTitle());
         txt_description.setText(tt.getDesc());
+        textview_username.setText(usern);
 
         //set switch to ON
         //sswitch.setChecked(false);
@@ -122,7 +131,7 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
 
     }
 
-    private boolean hasvalidateInputs(String title, String description, String location, String person, String time, String status){
+    private boolean hasvalidateInputs(String title, String description, String location, String person, String time, String status, String username){
         if (title.isEmpty()){
             txt_title.setError("Title Required");
             txt_title.requestFocus();
@@ -144,6 +153,9 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
             return false;
         }
         if (status.isEmpty()) {
+
+        }
+        if (username.isEmpty()) {
 
         }
 
@@ -233,11 +245,12 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         String person = yy;
         String time = timeTextView.getText().toString().trim();
         String sstatus = status;
+        String username = firebaseAuth.getCurrentUser().getEmail();
 
-        if (!hasvalidateInputs(title,description,location,person,time, sstatus)){
+        if (!hasvalidateInputs(title,description,location,person,time, sstatus, username)){
 
             dbReminder reminder = new dbReminder(
-                    title, description, location, person, time, sstatus
+                    title, description, location, person, time, sstatus, username
             );
 
             db.collection("Reminder").document(tt.getId())
