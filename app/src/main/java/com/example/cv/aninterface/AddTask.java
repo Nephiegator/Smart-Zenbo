@@ -288,22 +288,22 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
         String dateText = "";
         if ((mm+1) < 10) {
             if (dd < 10) {
-                dateText =  "0" + dd + "0" + (mm+1) + "" + yy ;
+                dateText =  "0" + dd + "/" + "0" + (mm+1) + "/" + yy ;
 
             } else if (dd >= 10) {
-                dateText =  "" + dd + "0" + (mm+1) + "" + yy ;
+                dateText = dd + "/" + "0" + (mm+1) + "/" + yy ;
             }
         } else if ((mm+1) == 10) {
             if (dd < 10) {
-                dateText =  "0" + dd + "" + (mm+1) + "" + yy ;
+                dateText =  "0" + dd + "/" + (mm+1) + "/" + yy ;
             } else if (dd >= 10) {
-                dateText =  "" + dd + "" + (mm+1) + "" + yy ;
+                dateText = dd + "/" + (mm+1) + "/" + yy ;
             }
         } else if ((mm+1) > 10) {
             if (dd < 10) {
-                dateText =  "0" + dd + "" + (mm+1) + "" + yy;
+                dateText =  "0" + dd + "/" + (mm+1) + "/" + yy;
             } else if (dd >= 10) {
-                dateText =  "" + dd + "" + (mm+1) + "" + yy;
+                dateText = dd + "/" + (mm+1) + "/" + yy;
             }
         }
         PickDate.setText(dateText);
