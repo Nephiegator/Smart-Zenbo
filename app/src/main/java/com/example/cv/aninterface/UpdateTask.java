@@ -131,7 +131,9 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
 
     }
 
-    private boolean hasvalidateInputs(String title, String description, String location, String person, String time, String status, String username){
+    private boolean hasvalidateInputs(String title, String description, String location,
+                                      String person, String time, String status, String username,
+                                      String priority, String date, String repeat){
         if (title.isEmpty()){
             txt_title.setError("Title Required");
             txt_title.requestFocus();
@@ -143,21 +145,15 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
             txt_description.requestFocus();
             return true;
         }
-        if (location.isEmpty()){
-            return false;
-        }
-        if (person.isEmpty()){
-            return false;
-        }
-        if (time.isEmpty()){
-            return false;
-        }
-        if (status.isEmpty()) {
+        if (location.isEmpty()){ return false; }
+        if (person.isEmpty()){ return false; }
+        if (time.isEmpty()){ return false; }
+        if (status.isEmpty()) { return false; }
+        if (username.isEmpty()) { return false; }
+        if (priority.isEmpty()) { return false; }
+        if (date.isEmpty()) { return false; }
+        if (repeat.isEmpty()) { return false; }
 
-        }
-        if (username.isEmpty()) {
-
-        }
 
         return false;
     }
@@ -246,11 +242,17 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         String time = timeTextView.getText().toString().trim();
         String sstatus = status;
         String username = firebaseAuth.getCurrentUser().getEmail();
+        String priority = "priority";
+        String date = "yey";
+        String repeat = "repeat";
 
-        if (!hasvalidateInputs(title,description,location,person,time, sstatus, username)){
+
+        if (!hasvalidateInputs(title,description,location,person,time, sstatus, username, priority,
+                date, repeat)){
 
             dbReminder reminder = new dbReminder(
-                    title, description, location, person, time, sstatus, username
+                    title, description, location, person, time, sstatus, username, priority,
+                    date, repeat
             );
 
             db.collection("Reminder").document(tt.getId())

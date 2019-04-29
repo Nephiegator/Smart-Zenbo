@@ -1,5 +1,6 @@
 package com.example.cv.aninterface;
 
+import android.telephony.mbms.StreamingServiceInfo;
 import android.widget.TextView;
 
 import com.google.firebase.firestore.Exclude;
@@ -20,9 +21,14 @@ public class dbReminder implements Serializable {
     private String time;
     private String status;
     private String username;
+    private String priority;
+    private String date;
+    private String repeat;
 
 
-    public dbReminder(String title, String desc, String inLocation, String objPerson, String time, String status, String username) {
+    public dbReminder(String title, String desc, String inLocation, String objPerson, String time,
+                      String status, String username, String priority, String date, String repeat) {
+
         this.title = title;
         this.desc = desc;
         this.inLocation = inLocation;
@@ -30,6 +36,9 @@ public class dbReminder implements Serializable {
         this.time = time;
         this.status = status;
         this.username = username;
+        this.priority = priority;
+        this.date = date;
+        this.repeat = repeat;
     }
 
     public dbReminder() {
@@ -97,5 +106,25 @@ public class dbReminder implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPriority() {
+        return priority;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getRepeat() {
+        return repeat;
+    }
+
+    public void setRepeat(String repeat) {
+        this.repeat = repeat;
     }
 }

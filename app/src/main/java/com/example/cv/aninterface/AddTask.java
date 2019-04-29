@@ -1,18 +1,28 @@
 package com.example.cv.aninterface;
 
+import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Layout;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -34,21 +44,25 @@ import com.google.firebase.firestore.Query;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class AddTask extends AppCompatActivity implements View.OnClickListener, TimePickerDialog.OnTimeSetListener {
+public class AddTask extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
     private TextInputEditText txt_title;
     private TextInputEditText txt_description;
     private TextView timeTextView;
     private String TAG = "AddTask";
     private FirebaseFirestore db;
-    private String yy, xx;
+    private String yy, xx, zz, rp;
     private List<dbReminder> reminderList;
     Toolbar toolbar;
     private FirebaseAuth firebaseAuth;
+    private LinearLayout PickTime;
+    private TextView PickDate;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,10 +89,8 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
         txt_description = findViewById(R.id.task_des);
         timeTextView = findViewById(R.id.time_textview);
 
-        Button Create = (Button) findViewById(R.id.create_btn);
-        Create.setOnClickListener(this);
-
-        findViewById(R.id.time_set_btn).setOnClickListener(new View.OnClickListener() {
+        PickTime = findViewById(R.id.picktime);
+        PickTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DialogFragment timePicker = new TimePickerFragment();
@@ -86,9 +98,27 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
             }
         });
 
+        PickDate = findViewById(R.id.datepicker);
+        PickDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment datePicker = new DatePickerFragment();
+                datePicker.show(getSupportFragmentManager(), "date picker");
+            }
+        });
+
+//        findViewById(R.id.time_set_btn).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                DialogFragment timePicker = new TimePickerFragment();
+//                timePicker.show(getSupportFragmentManager(), "time picker");
+//            }
+//        });
+
 
         Spinner splocation = (Spinner) findViewById(R.id.inLocation);
         Spinner spperson = (Spinner) findViewById(R.id.ObjPerson);
+
 
         //Spinner method to read the selected value
         ArrayAdapter<State1> spinnerArrayAdapter1 = new ArrayAdapter<State1>(this,
@@ -111,6 +141,32 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
         spperson.setAdapter(spinnerArrayAdapter2);
         spperson.setOnItemSelectedListener(new MyOnItemSelectedListener());
 
+        Spinner Pri = findViewById(R.id.priority);
+        ArrayAdapter<State3> spinnerArrayAdapter3 = new ArrayAdapter<State3>(this,
+                android.R.layout.simple_spinner_item, new State3[] {
+                new State3("0"),
+                new State3("1"),
+                new State3("2"),
+                new State3("3")
+        });
+        Pri.setAdapter(spinnerArrayAdapter3);
+        Pri.setOnItemSelectedListener(new MyOnItemSelectedListener());
+
+        Spinner rep = findViewById(R.id.repeat);
+        ArrayAdapter<State4> spinnerArrayAdapter4 = new ArrayAdapter<State4>(this,
+                android.R.layout.simple_spinner_item, new State4[] {
+                new State4("Sunday"),
+                new State4("Monday"),
+                new State4("Tuesday"),
+                new State4("Wednesday"),
+                new State4("Thursday"),
+                new State4("Friday"),
+                new State4("Saturday"),
+                new State4("None")
+        });
+        rep.setAdapter(spinnerArrayAdapter4);
+        rep.setOnItemSelectedListener(new MyOnItemSelectedListener());
+
     }
 
     private boolean validateInputs(String title, String description, String location, String person, String time) {
@@ -121,9 +177,7 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
         }
 
         if (description.isEmpty()) {
-            txt_description.setError("Description Required");
-            txt_description.requestFocus();
-            return true;
+            return false;
         }
         if (location.isEmpty()) {
             return false;
@@ -163,6 +217,30 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
         }
     }
 
+    public class State3 {
+        public String priority = "";
+
+        public State3(String _priority) {
+            priority = _priority;
+        }
+
+        public String toString() {
+            return priority;
+        }
+    }
+
+    public class State4 {
+        public String repeat = "";
+
+        public State4(String _repeat) {
+            repeat = _repeat;
+        }
+
+        public String toString() {
+            return repeat;
+        }
+    }
+
     public class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListener {
 
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -172,6 +250,12 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
                     break;
                 case R.id.ObjPerson:
                     yy = parent.getItemAtPosition(position).toString();
+                    break;
+                case R.id.priority:
+                    zz = parent.getItemAtPosition(position).toString();
+                    break;
+                case R.id.repeat:
+                    rp = parent.getItemAtPosition(position).toString();
                     break;
             }
         }
@@ -191,14 +275,45 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
         c.set(Calendar.MINUTE, minute);
         c.set(Calendar.SECOND, 0);
 
-        updateTimeText(c);
+        updateDateTimeText(c);
 
     }
 
-    private void updateTimeText(Calendar c) {
+    public void onDateSet(DatePicker view, int yy, int mm, int dd) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, yy);
+        c.set(Calendar.MONTH, mm);
+        c.set(Calendar.DAY_OF_MONTH, dd);
+
+        String dateText = "";
+        if ((mm+1) < 10) {
+            if (dd < 10) {
+                dateText =  "0" + dd + "0" + (mm+1) + "" + yy ;
+
+            } else if (dd >= 10) {
+                dateText =  "" + dd + "0" + (mm+1) + "" + yy ;
+            }
+        } else if ((mm+1) == 10) {
+            if (dd < 10) {
+                dateText =  "0" + dd + "" + (mm+1) + "" + yy ;
+            } else if (dd >= 10) {
+                dateText =  "" + dd + "" + (mm+1) + "" + yy ;
+            }
+        } else if ((mm+1) > 10) {
+            if (dd < 10) {
+                dateText =  "0" + dd + "" + (mm+1) + "" + yy;
+            } else if (dd >= 10) {
+                dateText =  "" + dd + "" + (mm+1) + "" + yy;
+            }
+        }
+        PickDate.setText(dateText);
+    }
+
+    private void updateDateTimeText(Calendar c) {
         String timeText = "" + DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
 
         timeTextView.setText(timeText);
+
     }
 
     public void createTask() {
@@ -210,6 +325,9 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
         String time = timeTextView.getText().toString().trim();
         String status = "true";
         String username = firebaseAuth.getCurrentUser().getEmail();
+        String pri = zz;
+        String date = PickDate.getText().toString().trim();
+        String repeat = rp;
 
         if (!validateInputs(title, description, location, person, time)) {
             CollectionReference dbReminder = db.collection("Reminder");
@@ -221,7 +339,11 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
                     person,
                     time,
                     status,
-                    username
+                    username,
+                    pri,
+                    date,
+                    repeat
+
             );
 
 
@@ -244,15 +366,43 @@ public class AddTask extends AppCompatActivity implements View.OnClickListener, 
     }
 
 
+//    @Override
+//    public void onClick(View v) {
+//        switch (v.getId()) {
+//            case R.id.create_btn:
+//                createTask();
+//                finish();
+//                break;
+//        }
+//
+//    }
+
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        return false;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.addtask_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.create_btn:
                 createTask();
                 finish();
                 break;
         }
+        return false;
+    }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }
 

@@ -78,7 +78,6 @@ public class Profile extends AppCompatActivity implements NavigationView.OnNavig
         view_bdate = findViewById(R.id.view_bdate);
         view_relation = findViewById(R.id.view_relation);
 
-
         profileList = new ArrayList<>();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
