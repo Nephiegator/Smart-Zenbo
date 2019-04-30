@@ -62,6 +62,7 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
     private FirebaseAuth firebaseAuth;
     private LinearLayout PickTime;
     private TextView PickDate;
+    private int yyear, mmonth, dday;
 
 
     @Override
@@ -99,6 +100,13 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
         });
 
         PickDate = findViewById(R.id.datepicker);
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        CharSequence sDate = df.format(c.getTime());
+
+        PickDate.setText(sDate);
+
+
         PickDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
