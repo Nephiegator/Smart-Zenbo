@@ -50,7 +50,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
 
             <ImageView
                 android:layout_width="17dp"
@@ -65,13 +66,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="35dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
                     android:hint="  Title"
                     android:inputType="text"
                     android:background="#00000000"
-                    android:theme="@style/TextInput"/>
+                    android:theme="@style/TextInput"
+                    android:fontFamily="@font/bikoregular"/>
 
         </LinearLayout>
 
@@ -89,20 +88,16 @@
                 android:src="@drawable/ic_subject"
                 android:tint="#6F6F6F" />
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/task_des"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:hint="  Description" />
-            </android.support.design.widget.TextInputLayout>
+                    android:hint="  Add Note"
+                     android:background="#00000000"
+                    android:theme="@style/TextInput"
+                    android:fontFamily="@font/bikoregular"/>
+
         </LinearLayout>
 
         <!-- //////////// Indoor location ////////////////// -->
@@ -116,7 +111,6 @@
                 android:layout_height="20dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
                 android:src="@drawable/ic_building"
                 android:tint="#6F6F6F" />
 
@@ -125,17 +119,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:text="select indoor location"/>
+                android:text="select indoor location"
+                android:fontFamily="@font/bikoregular"
+                android:theme="@style/spinnerItemStyle"/>
         </LinearLayout>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:layout_marginStart="55dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/input_line" />
 
         <!-- ////////////// Object Person /////////////////// -->
         <LinearLayout
@@ -148,7 +135,6 @@
                 android:layout_height="20dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
                 android:src="@drawable/ic_avatar"
                 android:tint="#969696" />
 
@@ -157,17 +143,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp" />
+                android:fontFamily="@font/bikoregular"/>
 
         </LinearLayout>
 
-         <ImageView
-             android:layout_width="match_parent"
-             android:layout_height="5dp"
-             android:layout_marginStart="55dp"
-             android:layout_marginEnd="10dp"
-             android:background="@drawable/input_line" />
+         <TextView
+             android:id="@+id/datepicker"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="15dp"
+             android:layout_marginStart="15dp"
+             android:text="Date"
+             android:fontFamily="@font/bikoregular"
+             android:textSize="20dp"
+             android:textColor="@color/mediume_persian"/>
 
          <!-- ////////////// Time Picker /////////////////// -->
          <LinearLayout
@@ -194,7 +183,7 @@
                  android:layout_weight="1"
                  android:gravity="center_vertical"
                  android:text="    Set a Time"
-                 android:fontFamily="@font/cloudlight"
+                 android:fontFamily="@font/bikoregular"
                  android:background="@drawable/rounbox_gray"/>
 
          </LinearLayout>
@@ -204,46 +193,47 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="4">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Priority"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/bikoregular"/>
-
-        <Spinner
-            android:id="@+id/priority"
-            android:layout_width="80dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"/>
+        android:layout_marginTop="15dp"
+        >
 
         <ImageView
             android:layout_width="23dp"
             android:layout_height="23dp"
             android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
             android:src="@drawable/ic_repeat_black_24dp"
-            android:tint="#6F6F6F"
-            android:layout_weight="1"/>
+            android:tint="#6F6F6F" />
 
         <Spinner
             android:id="@+id/repeat"
             android:layout_width="100dp"
             android:layout_height="40dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        >
 
          <TextView
-             android:id="@+id/datepicker"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:text="Date"
-             android:layout_gravity="center"/>
+             android:text="Priority"
+             android:layout_gravity="center"
+             android:layout_weight="1"
+             android:layout_marginStart="10dp"
+             android:fontFamily="@font/bikoregular"
+             android:textSize="18dp"/>
 
+         <Spinner
+             android:id="@+id/priority"
+             android:layout_width="30dp"
+             android:layout_height="40dp"
+             android:layout_weight="1" />
+    </LinearLayout>
 
 
      </LinearLayout>

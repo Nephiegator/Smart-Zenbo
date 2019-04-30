@@ -59,26 +59,27 @@
 
         </activity>
         <activity android:name=".SignIn">
+
+        </activity>
+
+        <activity
+            android:name=".AddTask"
+            android:label="New Task">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".AddTask"
-            android:label="New Task" />
         <activity
             android:name=".ProfileActivity"
             android:label="Save Information" />
 
         <activity android:name=".reset" />
 
-        <activity android:name=".AddPlan" />
-
         <activity android:name=".MainTask"
-            android:launchMode="singleTop"/>
+            android:launchMode="singleTop">
+        </activity>
 
         <activity android:name=".UpdateTask" />
 

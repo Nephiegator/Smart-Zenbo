@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TextInputEditText;
@@ -63,6 +64,7 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
     private LinearLayout PickTime;
     private TextView PickDate;
     private int yyear, mmonth, dday;
+    Typeface test;
 
 
     @Override
@@ -115,14 +117,6 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
             }
         });
 
-//        findViewById(R.id.time_set_btn).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                DialogFragment timePicker = new TimePickerFragment();
-//                timePicker.show(getSupportFragmentManager(), "time picker");
-//            }
-//        });
-
 
         Spinner splocation = (Spinner) findViewById(R.id.inLocation);
         Spinner spperson = (Spinner) findViewById(R.id.ObjPerson);
@@ -136,6 +130,7 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
                 new State1("Kitchen"),
                 new State1("Living room")
         });
+        spinnerArrayAdapter1.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         splocation.setAdapter(spinnerArrayAdapter1);
         splocation.setOnItemSelectedListener(new MyOnItemSelectedListener());
 
