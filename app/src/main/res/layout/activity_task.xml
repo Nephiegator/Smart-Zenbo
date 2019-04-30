@@ -244,13 +244,6 @@
              android:text="Date"
              android:layout_gravity="center"/>
 
-         <EditText
-             android:id="@+id/editText2"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:ems="10"
-             android:inputType="textPersonName"
-             android:text="Name" />
 
 
      </LinearLayout>
