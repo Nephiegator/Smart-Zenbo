@@ -60,11 +60,6 @@
                 android:src="@drawable/ic_ring"
                 android:tint="#6F6F6F" />
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:hintTextAppearance="@style/InputText">
-
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/task_title"
                     android:layout_width="match_parent"
@@ -74,8 +69,10 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
                     android:hint="  Title"
-                    android:inputType="text" />
-            </android.support.design.widget.TextInputLayout>
+                    android:inputType="text"
+                    android:background="#00000000"
+                    android:theme="@style/TextInput"/>
+
         </LinearLayout>
 
         <!-- //////////////// Description /////////////////// -->
@@ -215,7 +212,8 @@
             android:text="Priority"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:layout_marginStart="10dp"/>
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/bikoregular"/>
 
         <Spinner
             android:id="@+id/priority"
@@ -246,8 +244,16 @@
              android:text="Date"
              android:layout_gravity="center"/>
 
+         <EditText
+             android:id="@+id/editText2"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:ems="10"
+             android:inputType="textPersonName"
+             android:text="Name" />
 
-    </LinearLayout>
+
+     </LinearLayout>
 
 
 

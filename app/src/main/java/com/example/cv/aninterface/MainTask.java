@@ -125,7 +125,6 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        String msg = " ";
         switch (item.getItemId()) {
             case R.id.refresh:
                 super.onRestart();

@@ -29,6 +29,7 @@
     <color name="colorFailed">#9C3455</color>
 
     <color name="grey">#707070</color>
+    <color name="gray_light">#B3B3B3</color>
     <color name="DeepBlue">#1A3954</color>
 
 </resources>
