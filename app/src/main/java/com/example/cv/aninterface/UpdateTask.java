@@ -1,5 +1,6 @@
 package com.example.cv.aninterface;
 
+import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -34,16 +36,18 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class UpdateTask extends AppCompatActivity implements View.OnClickListener, TimePickerDialog.OnTimeSetListener {
+public class UpdateTask extends AppCompatActivity implements View.OnClickListener, TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
     private TextInputEditText txt_title;
     private TextInputEditText txt_description;
     private FirebaseFirestore db;
     private dbReminder tt;
-    private  String yy,xx;
+    private  String yy,xx, zz, rp;
     private TextView timeTextView;
+    private TextView PickDate;
     private Switch sswitch;
     private String status = "false";
     Toolbar toolbar;
@@ -93,11 +97,29 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
             }
         });
 
+        //TimePicker
         findViewById(R.id.time_set_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DialogFragment timePicker = new TimePickerFragment();
                 timePicker.show(getSupportFragmentManager(), "time picker");
+            }
+        });
+
+        //DatePicker
+        PickDate = findViewById(R.id.datepicker);
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        CharSequence sDate = df.format(c.getTime());
+
+        PickDate.setText(sDate);
+
+
+        PickDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment datePicker = new DatePickerFragment();
+                datePicker.show(getSupportFragmentManager(), "date picker");
             }
         });
 
@@ -129,6 +151,31 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         spperson.setAdapter(spinnerArrayAdapter2);
         spperson.setOnItemSelectedListener(new UpdateTask.MyOnItemSelectedListener());
 
+        Spinner Pri = findViewById(R.id.priority);
+        ArrayAdapter<UpdateTask.State3> spinnerArrayAdapter3 = new ArrayAdapter<UpdateTask.State3>(this,
+                android.R.layout.simple_spinner_item, new UpdateTask.State3[] {
+                new UpdateTask.State3("0"),
+                new UpdateTask.State3("1"),
+                new UpdateTask.State3("2"),
+                new UpdateTask.State3("3")
+        });
+        Pri.setAdapter(spinnerArrayAdapter3);
+        Pri.setOnItemSelectedListener(new UpdateTask.MyOnItemSelectedListener());
+
+        Spinner rep = findViewById(R.id.repeat);
+        ArrayAdapter<UpdateTask.State4> spinnerArrayAdapter4 = new ArrayAdapter<UpdateTask.State4>(this,
+                android.R.layout.simple_spinner_item, new UpdateTask.State4[] {
+                new UpdateTask.State4("Sunday"),
+                new UpdateTask.State4("Monday"),
+                new UpdateTask.State4("Tuesday"),
+                new UpdateTask.State4("Wednesday"),
+                new UpdateTask.State4("Thursday"),
+                new UpdateTask.State4("Friday"),
+                new UpdateTask.State4("Saturday"),
+                new UpdateTask.State4("None")
+        });
+        rep.setAdapter(spinnerArrayAdapter4);
+        rep.setOnItemSelectedListener(new UpdateTask.MyOnItemSelectedListener());
     }
 
     private boolean hasvalidateInputs(String title, String description, String location,
@@ -182,6 +229,30 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         }
     }
 
+    public class State3 {
+        public String priority = "";
+
+        public State3(String _priority) {
+            priority = _priority;
+        }
+
+        public String toString() {
+            return priority;
+        }
+    }
+
+    public class State4 {
+        public String repeat = "";
+
+        public State4(String _repeat) {
+            repeat = _repeat;
+        }
+
+        public String toString() {
+            return repeat;
+        }
+    }
+
     public class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListener {
 
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -191,6 +262,12 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
                     break;
                 case R.id.ObjPerson:
                     yy = parent.getItemAtPosition(position).toString();
+                    break;
+                case R.id.priority:
+                    zz = parent.getItemAtPosition(position).toString();
+                    break;
+                case R.id.repeat:
+                    rp = parent.getItemAtPosition(position).toString();
                     break;
             }
 
@@ -212,6 +289,36 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
 
         updateTimeText(c);
 
+    }
+
+    public void onDateSet(DatePicker view, int yy, int mm, int dd) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, yy);
+        c.set(Calendar.MONTH, mm);
+        c.set(Calendar.DAY_OF_MONTH, dd);
+
+        String dateText = "";
+        if ((mm+1) < 10) {
+            if (dd < 10) {
+                dateText =  "0" + dd + "/" + "0" + (mm+1) + "/" + yy ;
+
+            } else if (dd >= 10) {
+                dateText = dd + "/" + "0" + (mm+1) + "/" + yy ;
+            }
+        } else if ((mm+1) == 10) {
+            if (dd < 10) {
+                dateText =  "0" + dd + "/" + (mm+1) + "/" + yy ;
+            } else if (dd >= 10) {
+                dateText = dd + "/" + (mm+1) + "/" + yy ;
+            }
+        } else if ((mm+1) > 10) {
+            if (dd < 10) {
+                dateText =  "0" + dd + "/" + (mm+1) + "/" + yy;
+            } else if (dd >= 10) {
+                dateText = dd + "/" + (mm+1) + "/" + yy;
+            }
+        }
+        PickDate.setText(dateText);
     }
 
     private void updateTimeText(Calendar c) {

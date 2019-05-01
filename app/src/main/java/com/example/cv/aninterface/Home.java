@@ -19,6 +19,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CalendarView;
+import android.widget.Toast;
+
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,6 +29,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -58,15 +61,18 @@ public class Home extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         calendar = (CalendarView) findViewById(R.id.calendarView);
-
         //Initialize calendar with date
-        Calendar currentCalendar = Calendar.getInstance(Locale.getDefault());
+        //Calendar currentCalendar = Calendar.getInstance(Locale.getDefault());
+
+
 
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
 
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayofMonth) {
-
+                Calendar c = Calendar.getInstance();
+                SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                CharSequence sDate = df.format(c.getTime());
             }
         });
 
