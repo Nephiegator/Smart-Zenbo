@@ -20,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -53,6 +54,7 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
     Toolbar toolbar;
     private FirebaseAuth firebaseAuth;
     private TextView textview_username;
+    private LinearLayout PickTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +100,8 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         });
 
         //TimePicker
-        findViewById(R.id.time_set_btn).setOnClickListener(new View.OnClickListener() {
+        PickTime = findViewById(R.id.picktime);
+        PickTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DialogFragment timePicker = new TimePickerFragment();

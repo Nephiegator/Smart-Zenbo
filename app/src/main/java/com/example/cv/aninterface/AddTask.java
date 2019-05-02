@@ -141,6 +141,7 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
                 new State2("Irene"),
                 new State2("Wendy")
         });
+        spinnerArrayAdapter2.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spperson.setAdapter(spinnerArrayAdapter2);
         spperson.setOnItemSelectedListener(new MyOnItemSelectedListener());
 
