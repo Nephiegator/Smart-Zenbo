@@ -49,7 +49,7 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
     private TextView timeTextView;
     private TextView PickDate;
     private Switch sswitch;
-    private String status = "false";
+    private String status = "true";
     Toolbar toolbar;
     private FirebaseAuth firebaseAuth;
     private TextView textview_username;
@@ -335,7 +335,7 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
                         if (task.isSuccessful()) {
                             Toast.makeText(UpdateTask.this, "Deleted", Toast.LENGTH_LONG).show();
                             finish();
-                            startActivity(new Intent(UpdateTask.this, MainTask.class));
+                            startActivity(new Intent(UpdateTask.this, Home.class));
                         }
                     }
                 });
@@ -349,9 +349,9 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         String time = timeTextView.getText().toString().trim();
         String sstatus = status;
         String username = firebaseAuth.getCurrentUser().getEmail();
-        String priority = "priority";
-        String date = "yey";
-        String repeat = "repeat";
+        String priority = zz;
+        String date =  PickDate.getText().toString().trim();
+        String repeat = rp;
 
 
         if (!hasvalidateInputs(title,description,location,person,time, sstatus, username, priority,
@@ -439,6 +439,7 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
 
                 AlertDialog ad = builder.create();
                 ad.show();
+
                 break;
         }
         return false;

@@ -126,11 +126,14 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.refresh:
-                super.onRestart();
-                Intent i = new Intent (MainTask.this, MainTask.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(i);
-                break;
+//            case R.id.refresh:
+//                super.onRestart();
+//                Intent i = new Intent (MainTask.this, MainTask.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//                startActivity(i);
+//                break;
+            case R.id.toolbar_history:
+                Intent intent_his = new Intent( MainTask.this, Histoty.class);
+                startActivity(intent_his);
         }
         return false;
     }

@@ -53,19 +53,17 @@
             android:launchMode="singleTop"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
         </activity>
 
         <activity android:name=".UpdateProfile">
 
         </activity>
         <activity android:name=".SignIn">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity
@@ -81,6 +79,8 @@
         <activity android:name=".MainTask"
             android:launchMode="singleTop">
         </activity>
+
+        <activity android:name=".Histoty" />
 
         <activity android:name=".UpdateTask" />
 
