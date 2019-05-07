@@ -157,10 +157,9 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         Spinner Pri = findViewById(R.id.priority);
         ArrayAdapter<UpdateTask.State3> spinnerArrayAdapter3 = new ArrayAdapter<UpdateTask.State3>(this,
                 android.R.layout.simple_spinner_item, new UpdateTask.State3[] {
-                new UpdateTask.State3("0"),
-                new UpdateTask.State3("1"),
-                new UpdateTask.State3("2"),
-                new UpdateTask.State3("3")
+                new UpdateTask.State3("!"),
+                new UpdateTask.State3("!!"),
+                new UpdateTask.State3("!!!")
         });
         Pri.setAdapter(spinnerArrayAdapter3);
         Pri.setOnItemSelectedListener(new UpdateTask.MyOnItemSelectedListener());
