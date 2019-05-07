@@ -148,10 +148,9 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
         Spinner Pri = findViewById(R.id.priority);
         ArrayAdapter<State3> spinnerArrayAdapter3 = new ArrayAdapter<State3>(this,
                 android.R.layout.simple_spinner_item, new State3[] {
-                new State3("0"),
-                new State3("1"),
-                new State3("2"),
-                new State3("3")
+                new State3("!"),
+                new State3("!!"),
+                new State3("!!!")
         });
         Pri.setAdapter(spinnerArrayAdapter3);
         Pri.setOnItemSelectedListener(new MyOnItemSelectedListener());
@@ -337,19 +336,9 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
             CollectionReference dbReminder = db.collection("Reminder");
 
             dbReminder reminder = new dbReminder(
-                    title,
-                    description,
-                    location,
-                    person,
-                    time,
-                    status,
-                    username,
-                    pri,
-                    date,
-                    repeat
-
+                    title, description, location, person, time,
+                    status, username, pri, date, repeat
             );
-
 
             dbReminder.add(reminder)
                     .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
