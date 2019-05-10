@@ -73,8 +73,13 @@ public class Home extends AppCompatActivity {
                 Calendar c = Calendar.getInstance();
                 SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
                 CharSequence sDate = df.format(c.getTime());
+                System.out.println(sDate);
             }
         });
+
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        CharSequence Todaydate = df.format(c.getTime());
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -89,7 +94,7 @@ public class Home extends AppCompatActivity {
         recyclerView.setAdapter(adapter1);
 
         db = FirebaseFirestore.getInstance();
-        db.collection("Reminder").orderBy("time").get()
+        db.collection("Reminder").whereEqualTo("date", Todaydate).orderBy("time").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {

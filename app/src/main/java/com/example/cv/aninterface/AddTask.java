@@ -63,6 +63,7 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
     private FirebaseAuth firebaseAuth;
     private LinearLayout pickdatetime;
     private String dateText = "";
+    private String timeText;
     private int year, month, day, hour, min;
     private Long datetime;
     private int sec = 0;
@@ -92,22 +93,6 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
         txt_description = findViewById(R.id.task_des);
         timeTextView = findViewById(R.id.time_textview);
 
-
-//        PickTime.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                DialogFragment timePicker = new TimePickerFragment();
-//                timePicker.show(getSupportFragmentManager(), "time picker");
-//            }
-//        });
-
-//        Calendar c = Calendar.getInstance();
-//        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-//        CharSequence sDate = df.format(c.getTime());
-//
-//        PickDate.setText(sDate);
-//
-//
         pickdatetime = findViewById(R.id.pickdatetime);
         pickdatetime.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -322,10 +307,10 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
 
     private void updateDateTimeText(Calendar c) {
 
-        String timeText = "" + DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
+        timeText = "" + DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
+        //String datetimetext = timeText + " " + dateText;
 
-        String datetimetext = timeText + " " + dateText;
-        timeTextView.setText(datetimetext);
+        timeTextView.setText("  " + timeText + " " + dateText);
 
         setDateTime();
 
@@ -358,18 +343,19 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
         String description = txt_description.getText().toString().trim();
         String location = xx;
         String person = yy;
-        String datetimetext = timeTextView.getText().toString().trim();
         String status = "true";
         String username = firebaseAuth.getCurrentUser().getEmail();
         String pri = zz;
         String repeat = rp;
         Long epochTime = datetime;
+        String date = dateText;
+        String time = timeText;
 
-        if (!validateInputs(title, description, location, person, datetimetext)) {
+        if (!validateInputs(title, description, location, person, time)) {
             CollectionReference dbReminder = db.collection("Reminder");
 
             dbReminder reminder = new dbReminder(
-                    title, description, location, person, datetimetext,
+                    title, description, location, person, date, time,
                     status, username, pri, repeat, epochTime
             );
 
@@ -390,18 +376,6 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
         }
 
     }
-
-
-//    @Override
-//    public void onClick(View v) {
-//        switch (v.getId()) {
-//            case R.id.create_btn:
-//                createTask();
-//                finish();
-//                break;
-//        }
-//
-//    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {

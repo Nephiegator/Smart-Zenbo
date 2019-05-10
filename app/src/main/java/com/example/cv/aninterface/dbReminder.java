@@ -18,7 +18,8 @@ public class dbReminder implements Serializable {
     private String desc;
     private String inLocation;
     private String ObjPerson;
-    private String datetime;
+    private String date;
+    private String time;
     private String status;
     private String username;
     private String priority;
@@ -26,14 +27,15 @@ public class dbReminder implements Serializable {
     private Long epochTime;
 
 
-    public dbReminder(String title, String desc, String inLocation, String objPerson, String datetime,
+    public dbReminder(String title, String desc, String inLocation, String objPerson, String date, String time,
                       String status, String username, String priority, String repeat, Long epochTime) {
 
         this.title = title;
         this.desc = desc;
         this.inLocation = inLocation;
         this.ObjPerson = objPerson;
-        this.datetime = datetime;
+        this.time = time;
+        this.date = date;
         this.status = status;
         this.username = username;
         this.priority = priority;
@@ -84,14 +86,6 @@ public class dbReminder implements Serializable {
         ObjPerson = objPerson;
     }
 
-    public String getDatetime() {
-        return datetime;
-    }
-
-    public void setDatetime(String datetime) {
-        this.datetime = datetime;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -122,5 +116,13 @@ public class dbReminder implements Serializable {
 
     public Long getEpochTime() {
         return epochTime;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getTime() {
+        return time;
     }
 }

@@ -58,6 +58,7 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
     private String dateText = "";
     private int year, month, day, hour, min;
     private Long datetime;
+    private String timeText;
     private int sec = 0;
 
     @Override
@@ -194,7 +195,7 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
     }
 
     private boolean hasvalidateInputs(String title, String description, String location,
-                                      String person, String datetime, String status, String username,
+                                      String person, String date, String time, String status, String username,
                                       String priority, String repeat){
         if (title.isEmpty()){
             txt_title.setError("Title Required");
@@ -209,7 +210,6 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         }
         if (location.isEmpty()){ return false; }
         if (person.isEmpty()){ return false; }
-        if (datetime.isEmpty()){ return false; }
         if (status.isEmpty()) { return false; }
         if (username.isEmpty()) { return false; }
         if (priority.isEmpty()) { return false; }
@@ -342,10 +342,11 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
     }
 
     private void updateTimeText(Calendar c) {
-        String timeText = "" + DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
-        String datetimetext = dateText + " " + timeText;
+        timeText = "" + DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
+        //String datetimetext = dateText + " " + timeText;
 
-        timeTextView.setText(datetimetext);
+        timeTextView.setText("  " + timeText + " " + dateText);
+
         setDateTime();
     }
 
@@ -365,7 +366,20 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
 
     private void setDateTime() {
         Calendar c = Calendar.getInstance();
-        c.set(year, month, day, hour, min, sec);
+        if (min == 0) {
+            if (hour == 0) {
+                c.set(Calendar.HOUR_OF_DAY, 23);
+                c.set(Calendar.MINUTE, 59);
+            }
+            c.set(Calendar.HOUR_OF_DAY, hour - 1);
+            c.set(Calendar.MINUTE, 59);
+        } else {
+            c.set(Calendar.HOUR_OF_DAY, hour);
+            c.set(Calendar.MINUTE, min - 1);
+        }
+        c.set(Calendar.SECOND, 0);
+
+        c.set(year, month, day);
         datetime = c.getTimeInMillis();
         System.out.println("Datetime is: " + datetime);
     }
@@ -375,18 +389,20 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         String description = txt_description.getText().toString().trim();
         String location = xx;
         String person = yy;
-        String datetimetext = timeTextView.getText().toString().trim();
         String sstatus = status;
         String username = firebaseAuth.getCurrentUser().getEmail();
         String priority = zz;
         String repeat = rp;
         Long epochTime = datetime;
+        String date = dateText;
+        String time = timeText;
 
 
-        if (!hasvalidateInputs(title,description,location,person,datetimetext, sstatus, username, priority, repeat)){
+        if (!hasvalidateInputs(title,description,location,person, date, time, sstatus, username, priority, repeat)){
 
             dbReminder reminder = new dbReminder(
-                    title, description, location, person, datetimetext, sstatus, username, priority, repeat, epochTime
+                    title, description, location, person, date, time, sstatus, username, priority,
+                    repeat, epochTime
             );
 
             db.collection("Reminder").document(tt.getId())

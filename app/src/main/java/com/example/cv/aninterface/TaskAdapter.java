@@ -43,7 +43,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.remtaskViewHol
         holder.textViewDecs.setText("   "+reminder.getDesc());
         holder.textViewLoc.setText("At room: " + reminder.getInLocation());
         holder.textViewPer.setText("To: " + reminder.getObjPerson());
-        holder.textViewTime.setText(reminder.getDatetime());
+        holder.textViewTime.setText(reminder.getTime());
 
     }
 

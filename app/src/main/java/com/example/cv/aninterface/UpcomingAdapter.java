@@ -38,7 +38,7 @@ public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.coming
 
         holder.textViewTitle.setText(reminder.getTitle());
         holder.textViewLoc.setText(reminder.getInLocation());
-        holder.textViewTime.setText(reminder.getDatetime());
+        holder.textViewTime.setText(reminder.getTime());
 
     }
 
