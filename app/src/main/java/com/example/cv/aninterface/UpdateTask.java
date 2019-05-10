@@ -54,7 +54,11 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
     Toolbar toolbar;
     private FirebaseAuth firebaseAuth;
     private TextView textview_username;
-    private LinearLayout PickTime;
+    private LinearLayout PickDateTime;
+    private String dateText = "";
+    private int year, month, day, hour, min;
+    private Long datetime;
+    private int sec = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,25 +104,34 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         });
 
         //TimePicker
-        PickTime = findViewById(R.id.picktime);
-        PickTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DialogFragment timePicker = new TimePickerFragment();
-                timePicker.show(getSupportFragmentManager(), "time picker");
-            }
-        });
+//        PickTime = findViewById(R.id.picktime);
+//        PickTime.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                DialogFragment timePicker = new TimePickerFragment();
+//                timePicker.show(getSupportFragmentManager(), "time picker");
+//            }
+//        });
 
         //DatePicker
-        PickDate = findViewById(R.id.datepicker);
-        Calendar c = Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-        CharSequence sDate = df.format(c.getTime());
+//        PickDate = findViewById(R.id.datepicker);
+//        Calendar c = Calendar.getInstance();
+//        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+//        CharSequence sDate = df.format(c.getTime());
+//
+//        PickDate.setText(sDate);
+//
+//
+//        PickDate.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                DialogFragment datePicker = new DatePickerFragment();
+//                datePicker.show(getSupportFragmentManager(), "date picker");
+//            }
+//        });
 
-        PickDate.setText(sDate);
-
-
-        PickDate.setOnClickListener(new View.OnClickListener() {
+        PickDateTime = findViewById(R.id.pickdatetime);
+        PickDateTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DialogFragment datePicker = new DatePickerFragment();
@@ -181,8 +194,8 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
     }
 
     private boolean hasvalidateInputs(String title, String description, String location,
-                                      String person, String time, String status, String username,
-                                      String priority, String date, String repeat){
+                                      String person, String datetime, String status, String username,
+                                      String priority, String repeat){
         if (title.isEmpty()){
             txt_title.setError("Title Required");
             txt_title.requestFocus();
@@ -196,11 +209,10 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         }
         if (location.isEmpty()){ return false; }
         if (person.isEmpty()){ return false; }
-        if (time.isEmpty()){ return false; }
+        if (datetime.isEmpty()){ return false; }
         if (status.isEmpty()) { return false; }
         if (username.isEmpty()) { return false; }
         if (priority.isEmpty()) { return false; }
-        if (date.isEmpty()) { return false; }
         if (repeat.isEmpty()) { return false; }
 
 
@@ -288,6 +300,8 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         c.set(Calendar.HOUR_OF_DAY, hourOfDay);
         c.set(Calendar.MINUTE, minute);
         c.set(Calendar.SECOND, 0);
+        hour = hourOfDay;
+        min = minute;
 
         updateTimeText(c);
 
@@ -299,7 +313,10 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         c.set(Calendar.MONTH, mm);
         c.set(Calendar.DAY_OF_MONTH, dd);
 
-        String dateText = "";
+        year = yy;
+        month = mm;
+        day = dd;
+
         if ((mm+1) < 10) {
             if (dd < 10) {
                 dateText =  "0" + dd + "/" + "0" + (mm+1) + "/" + yy ;
@@ -320,13 +337,16 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
                 dateText = dd + "/" + (mm+1) + "/" + yy;
             }
         }
-        PickDate.setText(dateText);
+        DialogFragment timePicker = new TimePickerFragment();
+        timePicker.show(getSupportFragmentManager(), "time picker");
     }
 
     private void updateTimeText(Calendar c) {
         String timeText = "" + DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
+        String datetimetext = dateText + " " + timeText;
 
-        timeTextView.setText(timeText);
+        timeTextView.setText(datetimetext);
+        setDateTime();
     }
 
     private void deleteTask() {
@@ -343,25 +363,30 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
                 });
     }
 
+    private void setDateTime() {
+        Calendar c = Calendar.getInstance();
+        c.set(year, month, day, hour, min, sec);
+        datetime = c.getTimeInMillis();
+        System.out.println("Datetime is: " + datetime);
+    }
+
     public void updateTask() {
         String title = txt_title.getText().toString().trim();
         String description = txt_description.getText().toString().trim();
         String location = xx;
         String person = yy;
-        String time = timeTextView.getText().toString().trim();
+        String datetimetext = timeTextView.getText().toString().trim();
         String sstatus = status;
         String username = firebaseAuth.getCurrentUser().getEmail();
         String priority = zz;
-        String date =  PickDate.getText().toString().trim();
         String repeat = rp;
+        Long epochTime = datetime;
 
 
-        if (!hasvalidateInputs(title,description,location,person,time, sstatus, username, priority,
-                date, repeat)){
+        if (!hasvalidateInputs(title,description,location,person,datetimetext, sstatus, username, priority, repeat)){
 
             dbReminder reminder = new dbReminder(
-                    title, description, location, person, time, sstatus, username, priority,
-                    date, repeat
+                    title, description, location, person, datetimetext, sstatus, username, priority, repeat, epochTime
             );
 
             db.collection("Reminder").document(tt.getId())

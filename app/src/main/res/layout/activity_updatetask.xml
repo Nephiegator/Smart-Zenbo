@@ -156,20 +156,9 @@
                 android:layout_marginEnd="10dp" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/datepicker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:fontFamily="@font/bikoregular"
-            android:text="Date"
-            android:textColor="@color/mediume_persian"
-            android:textSize="20dp" />
-
 
         <LinearLayout
-            android:id="@+id/picktime"
+            android:id="@+id/pickdatetime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -195,7 +184,7 @@
                 android:background="@drawable/rounbox_gray"
                 android:fontFamily="@font/bikoregular"
                 android:gravity="center_vertical"
-                android:text="    Set a Time" />
+                android:text="    Set Date and Time" />
 
         </LinearLayout>
 
