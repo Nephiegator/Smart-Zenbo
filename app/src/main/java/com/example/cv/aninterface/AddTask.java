@@ -133,9 +133,9 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
         Spinner Pri = findViewById(R.id.priority);
         ArrayAdapter<State3> spinnerArrayAdapter3 = new ArrayAdapter<State3>(this,
                 android.R.layout.simple_spinner_item, new State3[] {
-                new State3("!"),
-                new State3("!!"),
-                new State3("!!!")
+                new State3("1"),
+                new State3("2"),
+                new State3("3")
         });
         Pri.setAdapter(spinnerArrayAdapter3);
         Pri.setOnItemSelectedListener(new MyOnItemSelectedListener());

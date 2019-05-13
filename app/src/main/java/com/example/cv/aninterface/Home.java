@@ -3,14 +3,9 @@ package com.example.cv.aninterface;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,10 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CalendarView;
-import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
-import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -32,9 +25,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class Home extends AppCompatActivity {
 
@@ -61,9 +52,6 @@ public class Home extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         calendar = (CalendarView) findViewById(R.id.calendarView);
-        //Initialize calendar with date
-        //Calendar currentCalendar = Calendar.getInstance(Locale.getDefault());
-
 
 
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -122,8 +110,6 @@ public class Home extends AppCompatActivity {
             }
         };
         mAuth.addAuthStateListener(mAuthListner);
-
-
 
         //Bottom Navigation Bar
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
@@ -188,7 +174,6 @@ public class Home extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
 
         return super.onOptionsItemSelected(item);
     }

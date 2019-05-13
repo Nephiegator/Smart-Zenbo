@@ -225,6 +225,26 @@
              android:layout_weight="1" />
     </LinearLayout>
 
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginStart="5dp"
+             android:fontFamily="@font/bikoregular"
+             android:text="Priority 1 is less concern (!)  "/>
+         <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+             android:layout_marginStart="5dp"
+             android:fontFamily="@font/bikoregular"
+         android:text="Priority 2 is more than 1 (!!)  "/>
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginStart="5dp"
+             android:fontFamily="@font/bikoregular"
+             android:text="Priority 3 is most concern (!!!) "/>
+
 
      </LinearLayout>
 
