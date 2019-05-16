@@ -331,6 +331,7 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
             c.set(Calendar.MINUTE, min - 1);
         }
         c.set(Calendar.SECOND, 0);
+        c.set(Calendar.MILLISECOND, 0);
 
         c.set(year, month, day);
         datetime = c.getTimeInMillis();
