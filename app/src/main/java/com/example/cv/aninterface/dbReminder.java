@@ -23,12 +23,11 @@ public class dbReminder implements Serializable {
     private String status;
     private String username;
     private String priority;
-    private String repeat;
     private Long epochTime;
 
 
     public dbReminder(String title, String desc, String inLocation, String objPerson, String date, String time,
-                      String status, String username, String priority, String repeat, Long epochTime) {
+                      String status, String username, String priority, Long epochTime) {
 
         this.title = title;
         this.desc = desc;
@@ -39,7 +38,6 @@ public class dbReminder implements Serializable {
         this.status = status;
         this.username = username;
         this.priority = priority;
-        this.repeat = repeat;
         this.epochTime = epochTime;
     }
 
@@ -106,20 +104,28 @@ public class dbReminder implements Serializable {
         return priority;
     }
 
-    public String getRepeat() {
-        return repeat;
-    }
-
-    public void setRepeat(String repeat) {
-        this.repeat = repeat;
-    }
-
     public Long getEpochTime() {
         return epochTime;
     }
 
     public String getDate() {
         return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
+    }
+
+    public void setEpochTime(Long epochTime) {
+        this.epochTime = epochTime;
     }
 
     public String getTime() {

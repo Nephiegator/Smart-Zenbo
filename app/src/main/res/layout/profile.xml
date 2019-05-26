@@ -76,7 +76,7 @@
                     android:layout_height="35dp"
                     android:text="Nickname"
                     android:layout_weight="0.5"
-                    android:fontFamily="@font/cloudlight"
+                    android:fontFamily="@font/cloudbold"
                     android:textSize="17dp" />
 
                 <TextView
@@ -95,7 +95,7 @@
                     android:layout_height="35dp"
                     android:text="Email"
                     android:layout_weight="0.5"
-                    android:fontFamily="@font/cloudlight"
+                    android:fontFamily="@font/cloudbold"
                     android:textSize="17dp" />
 
 
@@ -116,7 +116,7 @@
                     android:layout_height="35dp"
                     android:text="User"
                     android:layout_weight="0.5"
-                    android:fontFamily="@font/cloudlight"
+                    android:fontFamily="@font/cloudbold"
                     android:textSize="17dp" />
 
                 <TextView
@@ -136,7 +136,7 @@
                     android:layout_height="35dp"
                     android:text="Birthday"
                     android:layout_weight="0.5"
-                    android:fontFamily="@font/cloudlight"
+                    android:fontFamily="@font/cloudbold"
                     android:textSize="17dp" />
 
                 <TextView
@@ -155,7 +155,7 @@
                     android:layout_height="35dp"
                     android:text="Relation"
                     android:layout_weight="0.5"
-                    android:fontFamily="@font/cloudlight"
+                    android:fontFamily="@font/cloudbold"
                     android:textSize="17dp" />
 
                 <TextView
@@ -174,7 +174,7 @@
                     android:layout_height="35dp"
                     android:text="Gender"
                     android:layout_weight="0.5"
-                    android:fontFamily="@font/cloudlight"
+                    android:fontFamily="@font/cloudbold"
                     android:textSize="17dp" />
 
                 <TextView

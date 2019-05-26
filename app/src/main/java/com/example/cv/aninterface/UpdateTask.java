@@ -179,25 +179,11 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         Pri.setAdapter(spinnerArrayAdapter3);
         Pri.setOnItemSelectedListener(new UpdateTask.MyOnItemSelectedListener());
 
-        Spinner rep = findViewById(R.id.repeat);
-        ArrayAdapter<UpdateTask.State4> spinnerArrayAdapter4 = new ArrayAdapter<UpdateTask.State4>(this,
-                android.R.layout.simple_spinner_item, new UpdateTask.State4[] {
-                new UpdateTask.State4("Sunday"),
-                new UpdateTask.State4("Monday"),
-                new UpdateTask.State4("Tuesday"),
-                new UpdateTask.State4("Wednesday"),
-                new UpdateTask.State4("Thursday"),
-                new UpdateTask.State4("Friday"),
-                new UpdateTask.State4("Saturday"),
-                new UpdateTask.State4("None")
-        });
-        rep.setAdapter(spinnerArrayAdapter4);
-        rep.setOnItemSelectedListener(new UpdateTask.MyOnItemSelectedListener());
     }
 
     private boolean hasvalidateInputs(String title, String description, String location,
                                       String person, String date, String time, String status, String username,
-                                      String priority, String repeat){
+                                      String priority){
         if (title.isEmpty()){
             txt_title.setError("Title Required");
             txt_title.requestFocus();
@@ -214,7 +200,7 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         if (status.isEmpty()) { return false; }
         if (username.isEmpty()) { return false; }
         if (priority.isEmpty()) { return false; }
-        if (repeat.isEmpty()) { return false; }
+
 
 
         return false;
@@ -280,9 +266,6 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
                     break;
                 case R.id.priority:
                     zz = parent.getItemAtPosition(position).toString();
-                    break;
-                case R.id.repeat:
-                    rp = parent.getItemAtPosition(position).toString();
                     break;
             }
 
@@ -400,11 +383,10 @@ public class UpdateTask extends AppCompatActivity implements View.OnClickListene
         String time = timeText;
 
 
-        if (!hasvalidateInputs(title,description,location,person, date, time, sstatus, username, priority, repeat)){
+        if (!hasvalidateInputs(title,description,location,person, date, time, sstatus, username, priority)){
 
             dbReminder reminder = new dbReminder(
-                    title, description, location, person, date, time, sstatus, username, priority,
-                    repeat, epochTime
+                    title, description, location, person, date, time, sstatus, username, priority, epochTime
             );
 
             db.collection("Reminder").document(tt.getId())

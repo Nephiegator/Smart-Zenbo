@@ -29,8 +29,10 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -39,14 +41,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -68,6 +73,7 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
     private Long datetime;
     private int sec = 0;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +85,10 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
         db = FirebaseFirestore.getInstance();
         //Firebase auth
         firebaseAuth = FirebaseAuth.getInstance();
+
+        reminderList = new ArrayList<>();
+
+
 
 
         toolbar = findViewById(R.id.task_toolbar);
@@ -140,20 +150,27 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
         Pri.setAdapter(spinnerArrayAdapter3);
         Pri.setOnItemSelectedListener(new MyOnItemSelectedListener());
 
-        Spinner rep = findViewById(R.id.repeat);
-        ArrayAdapter<State4> spinnerArrayAdapter4 = new ArrayAdapter<State4>(this,
-                android.R.layout.simple_spinner_item, new State4[] {
-                new State4("None"),
-                new State4("Sunday"),
-                new State4("Monday"),
-                new State4("Tuesday"),
-                new State4("Wednesday"),
-                new State4("Thursday"),
-                new State4("Friday"),
-                new State4("Saturday")
+
+
+        db.collection("Reminder").orderBy("epochTime").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                int i=0;
+                if (!queryDocumentSnapshots.isEmpty()) {
+                    List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+
+                    for (DocumentSnapshot d : list) {
+
+                        dbReminder p = d.toObject(dbReminder.class);
+                        p.setId(d.getId());
+                        reminderList.add(p);
+
+                    }
+                }
+                //Collections.sort(remtasklist, new CustomComparator());
+
+            }
         });
-        rep.setAdapter(spinnerArrayAdapter4);
-        rep.setOnItemSelectedListener(new MyOnItemSelectedListener());
 
     }
 
@@ -241,9 +258,6 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
                     break;
                 case R.id.priority:
                     zz = parent.getItemAtPosition(position).toString();
-                    break;
-                case R.id.repeat:
-                    rp = parent.getItemAtPosition(position).toString();
                     break;
             }
         }
@@ -340,6 +354,30 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
 
     public void createTask() {
 
+        for (int i = 0; i < reminderList.size(); i++) {
+            if (datetime.equals(reminderList.get(i).getEpochTime())){
+                if (zz.equals(reminderList.get(i).getPriority())){
+                    datetime = datetime + 180000;
+                }
+                else if (reminderList.get(i).getPriority().equals("1") && !zz.equals(reminderList.get(i).getPriority())){
+                    datetime = datetime + 180000;
+                }
+                else if (reminderList.get(i).getPriority().equals("2") && !zz.equals("1") && !zz.equals(reminderList.get(i).getPriority())){
+                    datetime = datetime + 180000;
+                }
+            }else if(reminderList.get(i).getEpochTime().equals(datetime)){
+                if(reminderList.get(i).getPriority().equals(zz)) {
+                    datetime = datetime + 180000;
+                }
+                else if (reminderList.get(i).getPriority().equals("1") && !zz.equals(reminderList.get(i).getPriority())){
+                    datetime = datetime + 180000;
+                }
+                else if (reminderList.get(i).getPriority().equals("2") && !zz.equals("1") && !zz.equals(reminderList.get(i).getPriority())){
+                    datetime = datetime + 180000;
+                }
+            }
+        }
+
         String title = txt_title.getText().toString().trim();
         String description = txt_description.getText().toString().trim();
         String location = xx;
@@ -347,7 +385,6 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
         String status = "true";
         String username = firebaseAuth.getCurrentUser().getEmail();
         String pri = zz;
-        String repeat = rp;
         Long epochTime = datetime;
         String date = dateText;
         String time = timeText;
@@ -357,7 +394,7 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
 
             dbReminder reminder = new dbReminder(
                     title, description, location, person, date, time,
-                    status, username, pri, repeat, epochTime
+                    status, username, pri, epochTime
             );
 
             dbReminder.add(reminder)
@@ -376,7 +413,79 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
 
         }
 
+
     }
+
+    public void prioritize(){
+
+//            Long temp = comingtasklist.get(i).getEpochTi
+//            me();
+//            //System.out.println(aLongDateTime);
+//            for (int j = i + 1; j < comingtasklist.size(); j++) {
+//                if (temp.equals(comingtasklist.get(j).getEpochTime())) {
+//                    switch (comingtasklist.get(i).getPriority()) {
+//                        case "1":
+//                            if (!comingtasklist.get(j).getPriority().equals(comingtasklist.get(i).getPriority())) {
+//                                Long temp2 = comingtasklist.get(j).getEpochTime();
+//                                comingtasklist.get(j).setEpochTime(temp2+180000);
+//                            }
+//                            break;
+//                        case "2":
+//                            if (comingtasklist.get(j).getPriority().equals(comingtasklist.get(i).getPriority()) && (!comingtasklist.get(j).getPriority().equals("1"))) {
+//                                Long temp2 = comingtasklist.get(j).getEpochTime();
+//                                comingtasklist.get(j).setEpochTime(temp2+180000);
+//                            }
+//                            break;
+//                        case "3":
+//                            if (comingtasklist.get(j).getPriority().equals(comingtasklist.get(i).getPriority()) && (!comingtasklist.get(j).getPriority().equals("1")) && (!comingtasklist.get(j).getPriority().equals("2"))) {
+//                                Long temp2 = comingtasklist.get(j).getEpochTime();
+//                                comingtasklist.get(j).setEpochTime(temp2+180000);
+//                            }
+//                            break;
+//                    }
+//                }
+//            }
+//        }
+//
+//        for (int i = 0; i < comingtasklist.size(); i++) {
+//            Long temp = comingtasklist.get(i).getEpochTime();
+//            for (int j = i + 1; j < comingtasklist.size(); j++) {
+//                if (temp.equals(comingtasklist.get(j).getEpochTime())) {
+//                    if (comingtasklist.get(i).getPriority().equals("2") && !comingtasklist.get(j).getPriority().equals("1") && !comingtasklist.get(j).getPriority().equals(comingtasklist.get(i).getPriority())) {
+//                        Long temp2 = comingtasklist.get(j).getEpochTime();
+//                        comingtasklist.get(j).setEpochTime(temp2+180000);
+//                    } else if (comingtasklist.get(i).getPriority().equals("3") && !comingtasklist.get(j).getPriority().equals("1") && !comingtasklist.get(j).getPriority().equals("2") && comingtasklist.get(j).getPriority().equals("3")) {
+//                        Long temp2 = comingtasklist.get(j).getEpochTime();
+//                        comingtasklist.get(j).setEpochTime(temp2+180000);
+//                    }
+//                }
+//                updateTime(comingtasklist.get(i));
+//            }
+//            //aLongDateTime.add(aDateTime.get(i));
+//            System.out.println(comingtasklist.get(i).getEpochTime());
+//        }
+//
+
+    }
+
+//    public void updateTime(dbReminder reminder){
+//        DocumentReference updateRef = db.collection("Reminder").document(reminder.getId());
+//
+//        updateRef.update(
+//                "epochTime", reminder.getEpochTime()
+//        ).addOnCompleteListener(new OnCompleteListener<Void>() {
+//            @Override
+//            public void onComplete(@NonNull Task<Void> task) {
+//                Toast.makeText(Home.this, "Prioritized", Toast.LENGTH_SHORT).show();
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//                Toast.makeText(Home.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {

@@ -193,23 +193,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="23dp"
-                android:layout_height="23dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="15dp"
-                android:src="@drawable/ic_repeat_black_24dp"
-                android:tint="#6F6F6F" />
-
-            <Spinner
-                android:id="@+id/repeat"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:layout_weight="1" />
-
-        </LinearLayout>
+            android:orientation="horizontal"/>
 
         <!-- ////////////// Priority /////////////////// -->
         <LinearLayout

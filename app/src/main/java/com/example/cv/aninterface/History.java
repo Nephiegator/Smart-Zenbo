@@ -25,7 +25,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Histoty extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class History extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     Toolbar toolbar;
     private RecyclerView recyclerView;
@@ -79,14 +79,14 @@ public class Histoty extends AppCompatActivity implements NavigationView.OnNavig
     }
 
     private void deleteHistory() {
-        db.collection("Reminder").document().delete()
+        db.collection("History").document().delete()
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(Histoty.this, "Cleared", Toast.LENGTH_LONG).show();
+                            Toast.makeText(History.this, "Cleared", Toast.LENGTH_LONG).show();
                             finish();
-                            startActivity(new Intent(Histoty.this, Home.class));
+                            startActivity(new Intent(History.this, Home.class));
                         }
                     }
                 });
