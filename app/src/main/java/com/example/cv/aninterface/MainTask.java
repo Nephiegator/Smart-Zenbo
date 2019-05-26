@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -63,7 +64,7 @@ public class MainTask extends AppCompatActivity implements NavigationView.OnNavi
 
 
         db = FirebaseFirestore.getInstance();
-        db.collection("Reminder").get()
+        db.collection("Reminder").orderBy("epochTime", Query.Direction.DESCENDING).get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {

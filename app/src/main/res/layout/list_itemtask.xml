@@ -27,7 +27,7 @@
                 android:id="@+id/textView_date_task"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
+                android:layout_marginStart="5dp"
                 android:textSize="23dp"
                 android:fontFamily="@font/cloudlight"
                 tools:text="text  " />
@@ -45,6 +45,7 @@
                 android:id="@+id/textView_pri_task"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
                 android:textSize="23dp"
                 android:fontFamily="@font/cloudlight"
                 android:gravity="right"
@@ -58,7 +59,7 @@
             android:id="@+id/textView_title_task"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
+            android:layout_marginStart="5dp"
             android:textSize="20dp"
             tools:text="text"
             android:fontFamily="@font/cloudlight"/>
@@ -67,6 +68,7 @@
             android:id="@+id/textView_desc_task"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
             android:textSize="15dp"
             android:fontFamily="@font/cloudlight"
             tools:text="text" />
@@ -75,7 +77,7 @@
             android:id="@+id/textView_loc_task"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
+            android:layout_marginStart="5dp"
             android:textSize="17dp"
             android:fontFamily="@font/cloudlight"
             tools:text="text" />

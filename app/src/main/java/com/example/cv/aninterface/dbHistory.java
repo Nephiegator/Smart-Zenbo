@@ -1,9 +1,13 @@
 package com.example.cv.aninterface;
 
+import com.google.firebase.firestore.Exclude;
+
 import java.io.Serializable;
 
 public class dbHistory implements Serializable {
 
+    @Exclude
+    private String id;
     private String title;
     private String desc;
     private String inLocation;
@@ -22,6 +26,14 @@ public class dbHistory implements Serializable {
     }
 
     public dbHistory(){}
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
 
     public String getTitle() {
         return title;

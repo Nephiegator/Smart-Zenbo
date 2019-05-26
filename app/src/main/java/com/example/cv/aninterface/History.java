@@ -32,7 +32,9 @@ public class History extends AppCompatActivity implements NavigationView.OnNavig
     private HistoryAdapter adapter1;
     private List<dbHistory> histasklist;
     private FirebaseFirestore db;
-    private dbHistory dbHis;
+    private dbHistory tt;
+    private String x;
+    private ArrayList<String> id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +56,13 @@ public class History extends AppCompatActivity implements NavigationView.OnNavig
 
 
         histasklist = new ArrayList<>();
+        id = new ArrayList<>();
         adapter1 = new HistoryAdapter(this, histasklist);
 
         recyclerView.setAdapter(adapter1);
 
         db = FirebaseFirestore.getInstance();
-        db.collection("History").get()
+        db.collection("History").orderBy("timeStamp").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -68,8 +71,9 @@ public class History extends AppCompatActivity implements NavigationView.OnNavig
 
                             for (DocumentSnapshot d : list) {
                                 dbHistory p = d.toObject(dbHistory.class);
-                                //p.setId(d.getId());
+                                p.setId(d.getId());
                                 histasklist.add(p);
+                                id.add(p.getId());
                             }
                             adapter1.notifyDataSetChanged();
                         }
@@ -79,17 +83,22 @@ public class History extends AppCompatActivity implements NavigationView.OnNavig
     }
 
     private void deleteHistory() {
-        db.collection("History").document().delete()
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(History.this, "Cleared", Toast.LENGTH_LONG).show();
-                            finish();
-                            startActivity(new Intent(History.this, Home.class));
+
+        for (int i=0; i<id.size();i++) {
+
+            db.collection("History").document(histasklist.get(i).getId()).delete()
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(History.this, "Cleared", Toast.LENGTH_LONG).show();
+                                finish();
+                                startActivity(new Intent(History.this, Home.class));
+                            }
                         }
-                    }
-                });
+                    });
+        }
+
     }
 
 
