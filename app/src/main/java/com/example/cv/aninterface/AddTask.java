@@ -172,6 +172,8 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
             }
         });
 
+
+
     }
 
     private boolean validateInputs(String title, String description, String location, String person, String time) {
@@ -355,6 +357,8 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
     public void createTask() {
 
         for (int i = 0; i < reminderList.size(); i++) {
+            Long temp = reminderList.get(i).getEpochTime();
+            DocumentReference docRef = db.collection("Reminder").document(reminderList.get(i).getId());
             if (datetime.equals(reminderList.get(i).getEpochTime())){
                 if (zz.equals(reminderList.get(i).getPriority())){
                     datetime = datetime + 180000;
@@ -362,18 +366,27 @@ public class AddTask extends AppCompatActivity implements NavigationView.OnNavig
                 else if (reminderList.get(i).getPriority().equals("1") && !zz.equals(reminderList.get(i).getPriority())){
                     datetime = datetime + 180000;
                 }
-                else if (reminderList.get(i).getPriority().equals("2") && !zz.equals("1") && !zz.equals(reminderList.get(i).getPriority())){
-                    datetime = datetime + 180000;
+                else if (reminderList.get(i).getPriority().equals("2")){
+                    if (!zz.equals("1") && !zz.equals(reminderList.get(i).getPriority())) {
+                        datetime = datetime + 180000;
+                    }
+                    else if (!zz.equals("3")&&!zz.equals("2")){
+                        docRef.update("epochTime", temp+180000).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d(TAG, "Time Updated!");
+                            }
+                        });
+                    }
                 }
-            }else if(reminderList.get(i).getEpochTime().equals(datetime)){
-                if(reminderList.get(i).getPriority().equals(zz)) {
-                    datetime = datetime + 180000;
-                }
-                else if (reminderList.get(i).getPriority().equals("1") && !zz.equals(reminderList.get(i).getPriority())){
-                    datetime = datetime + 180000;
-                }
-                else if (reminderList.get(i).getPriority().equals("2") && !zz.equals("1") && !zz.equals(reminderList.get(i).getPriority())){
-                    datetime = datetime + 180000;
+                else if (reminderList.get(i).getPriority().equals("3")&& !zz.equals("3"))
+                {
+                    docRef.update("epochTime", temp+180000).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Log.d(TAG, "Time Updated!");
+                        }
+                    });
                 }
             }
         }
